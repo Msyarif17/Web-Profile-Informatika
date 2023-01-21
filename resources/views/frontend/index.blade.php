@@ -6,7 +6,7 @@
     </style>
 @endsection
 @section('content')
-    <section style="margin-top:60px;">
+    <section class="container-fluid p-0" style="margin-top:60px;">
         <div id="carouselExampleIndicators" style="background-color: #7868E6;height: 500px;" class="carousel slide"
             data-bs-ride="true">
             <div class="carousel-indicators">
@@ -144,18 +144,18 @@
             <div class="my-5 py-5">
                 {{-- informasi terbaru --}}
                 <div class="row justify-content-between mb-5">
-                    <div class="col-lg-4 col-md-6 col-sm-6 font-size-24 align">
+                    <div class="col-6 font-size-24">
                         <div class="btn btn-primary border-0  " style="background-color: #4F8A8B">
     
                             <p class="text-light fw-bold my-auto">Informasi terbaru</p>
     
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 font-size-16 align-self-center  text-end">
+                    <div class="col-6 font-size-16 align-self-center  text-end">
     
-                        <a href="/" class="text-dark text-decoration-none"><span>Informasi Lainnya <img
+                        <a href="/" class="text-dark text-decoration-none d-inline-flex "><span class="align-middle">Informasi Lainnya </span ><img
                                     src="{{ asset('assets/images/Polygon 2.png') }}" alt="" sizes="14px"
-                                    srcset=""></span class="align-middle"></a>
+                                    srcset=""></a>
                     </div>
                 </div>
                 <div class="row font-size-12">
@@ -219,18 +219,18 @@
                 </div>
                 {{-- pengumuman --}}
                 <div class="row justify-content-between my-5 pt-2">
-                    <div class="col-lg-4 col-md-6 col-sm-6 font-size-24 align">
+                    <div class="col-6 font-size-24">
                         <div class="btn btn-primary border-0  " style="background-color: #4F8A8B">
     
                             <p class="text-light fw-bold my-auto">Pengumuman</p>
     
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 font-size-16 align-self-center  text-end">
+                    <div class="col-6 font-size-16 align-self-center  text-end">
     
-                        <a href="/" class="text-dark text-decoration-none"><span>Informasi Lainnya <img
+                        <a href="/" class="text-dark text-decoration-none d-inline-flex"><span  class="align-middle">Informasi Lainnya </span ><img
                                     src="{{ asset('assets/images/Polygon 2.png') }}" alt="" sizes="14px"
-                                    srcset=""></span class="align-middle"></a>
+                                    srcset=""></a>
                     </div>
                 </div>
                 <div class="row font-size-12">
@@ -345,7 +345,7 @@
     <section class="my-3">
         <div class="container">
             <div class="row justify-content-between my-5 pt-2">
-                <div class="col-lg-4 col-md-6 col-sm-6 font-size-24 align">
+                <div class="col-6 col-12 font-size-24">
                     <div class="btn btn-primary border-0  " style="background-color: #4F8A8B">
     
                         <p class="text-light fw-bold my-auto">Peminat Prodi Teknik Informatika</p>
@@ -358,7 +358,7 @@
                     <p>Peminat prodi teknik informatika UIN Sunan Gunung Djati Bandung selama satu dekade ditampilkan pada grafik di samping. Data ini diharapkan dapat membantu melengkapi penyusunan rencana pengembangan kegiatan pembelajaran di prodi Teknik Informatika UIN sunan Gunung Djati Bandung.</p>
                 </div>
                 <div class="col-md-6">
-                    {{-- grafik --}}
+                    
                 </div>
             </div>
         </div>
@@ -366,7 +366,7 @@
     <section class="">
         <div class="container mb-5">
             <div class="row justify-content-between mb-3">
-                    <div class="col-lg-4 col-md-6 col-sm-6 font-size-24 align">
+                    <div class="col-md-6 col-12 font-size-24">
                         <div class="btn btn-primary border-0  " style="background-color: #4F8A8B">
     
                             <p class="text-light fw-bold my-auto">Kerjasama Industri</p>

@@ -1,38 +1,41 @@
 <div class="fixed-top bg-light fw-bold" >
+
     <div class="container " style="font-size: 14px;">
-        <div class="d-flex justify-content-between text-center text-nowrap ">
-            <div class="">
+        <div class="row justify-content-between text-center text-nowrap ">
+            <div class="col">
                 <a href="#" class="nav-link link-dark">
                     <i class="fa-solid fa-phone"></i> (022)7800525
                 </a>
             </div>
-            <div class="">
+            <div class="col">
                 <a href="#" class="nav-link link-dark">
                     <i class="fa-solid fa-envelope"></i> info@uinsgd.ac.id
                 </a>
             </div>
-            <div class=" ">
-                <a href="#" class="nav-link link-dark">
+            <div class="col ">
+                <a href="#" class="nav-link link-dark ">
                     <i class="fa-solid fa-location-dot"></i> Jl. A.H. Nasution No.105, Cibiru, Bandung 40614
                 </a>
             </div>
-            <div class="d-flex">
-                <a href="#" class="nav-link link-dark">
-                    <i class="px-2 fa-brands fa-square-facebook"></i>
-                </a>
-                <a href="#" class="nav-link link-dark">
-                    <i class="px-2 fa-brands fa-youtube"></i>
-                </a>
-                <a href="#" class="nav-link link-dark">
-                    <i class="px-2 fa-brands fa-twitter"></i>
-                </a>
+            <div class="col">
+                <div class="d-inline-flex">
+                    <a href="#" class="nav-link link-dark">
+                        <i class="px-2 fa-brands fa-square-facebook"></i>
+                    </a>
+                    <a href="#" class="nav-link link-dark">
+                        <i class="px-2 fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="#" class="nav-link link-dark">
+                        <i class="px-2 fa-brands fa-twitter"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
     <nav class="navbar navbar-expand-md text-bold  navbar-color navbar-dark shadow">
         <div class="container">
             <a class="navbar-brand" href="{{route('index')}}" >
-                <div class="d-flex justify-content-start">
+                <div class="d-inline-flex justify-content-start">
                     <div style="margin-right: 4px;">
                         <img class="" src="{{asset('assets/images/Logo Teknik Informatika.png')}}" alt="Teknik Informatika" height="44px" width="44px" >
                     </div>
