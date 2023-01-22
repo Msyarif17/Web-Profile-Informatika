@@ -16,3 +16,7 @@ use Spatie\Permission\Contracts\Role;
 */
 
 Route::get('/',[IndexController::class,'index'])->name('index');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
