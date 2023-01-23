@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\Dashboard\IndexController as DashboardIndexController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Contracts\Role;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +20,8 @@ use Spatie\Permission\Contracts\Role;
 Route::get('/',[IndexController::class,'index'])->name('index');
 
 Auth::routes();
-
+Route::middleware(['auth'])->name('dash')->prefix('dashboard')->group(function(){
+    Route::get('/', [DashboardIndexController::class,'index']);
+    // Route::resource('')
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

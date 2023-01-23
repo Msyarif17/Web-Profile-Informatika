@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(CategoryMenu::class);
             $table->string('name');
             $table->string('slug');
-            $table->string('url_target');
+            $table->string('url_target')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
