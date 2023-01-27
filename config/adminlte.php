@@ -14,8 +14,8 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
-    'title_prefix' => '',
+    'title' => 'Informatika',
+    'title_prefix' => 'Dashboard',
     'title_postfix' => '',
 
     /*
@@ -31,7 +31,7 @@ return [
     */
 
     'use_ico_only' => false,
-    'use_full_favicon' => false,
+    'use_full_favicon' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -194,7 +194,7 @@ return [
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-dark text-dark',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -291,11 +291,7 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
+        
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
@@ -303,21 +299,61 @@ return [
 
         // Sidebar items:
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
+            'text'        => 'Dashboard',
+            'url'         => 'dashboard',
+            'icon'        => 'fa-solid fa-gauge',
             'label_color' => 'success',
         ],
+        ['header' => 'POST MAKER'],
+        [
+            'text'        => 'Post',
+            'icon'        => 'fa-solid fa-newspaper',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text'  => 'Category Post',
+                    'icon'  => 'fa-solid fa-list',
+                    'url'   => 'dashboard/category-post',
+                ],
+                [
+                    'text'  => 'Tags Post',
+                    'icon'  => 'fa-solid fa-tags',
+                    'url'   => 'dashboard/tags-post',
+                ],
+                [
+                    'text'  => 'Post',
+                    'icon'  => 'fa-solid fa-newspaper',
+                    'url'   => 'dashboard/post',
+
+                ]
+            ]
+        ],
+        ['header' => 'USER INTERFACE',],
+        [
+            'text'        => 'Custom',
+            'icon'        => 'fa-solid fa-paint-roller',
+            'label_color' => 'success',
+            'submenu' => [
+                
+                [
+                    'text'  => 'Color',
+                    'icon'  => 'fa-solid fa-brush',
+                    'url'   => 'dashboard/color',
+                ],
+                [
+                    'text'  => 'Logo',
+                    'icon'  => 'fa-solid  fa-font-awesome',
+                    'url'   => 'dashboard/logo',
+
+                ],
+                [
+                    'text'  => 'Banner',
+                    'icon'  => 'fa-solid fa-id-card',
+                    'url'   => 'dashboard/banner',
+                ],
+            ]
+        ],
+        
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
@@ -329,60 +365,7 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+        
     ],
 
     /*
