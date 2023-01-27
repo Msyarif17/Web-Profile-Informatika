@@ -17,8 +17,8 @@ return new class extends Migration
     {
         Schema::create('tag_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Post::class);
-            $table->foreignIdFor(Tag::class);
+            $table->foreignIdFor(Post::class)->constrained('posts');
+            $table->foreignIdFor(Tag::class)->constrained('tags');
             $table->softDeletes();
             $table->timestamps();
         });

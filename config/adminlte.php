@@ -328,6 +328,11 @@ return [
                 ]
             ]
         ],
+        [
+            'text'  => 'Comment',
+            'icon'  => 'fa-solid fa-list',
+            'url'   => 'dashboard/category-post',
+        ],
         ['header' => 'USER INTERFACE',],
         [
             'text'        => 'Custom',
@@ -473,6 +478,21 @@ return [
                 ],
             ],
         ],
+        // 'tinyMCE' => [
+        //     'active' => false,
+        //     'files' => [
+        //         [
+        //             'type' => 'css',
+        //             'asset' => false,
+        //             'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-center-radar.min.css',
+        //         ],
+        //         [
+        //             'type' => 'js',
+        //             'asset' => false,
+        //             'location' => '//cdnjs.cloudflare.com/ajax/libs/tinymce/6.3.1/tinymce.min.js',
+        //         ],
+        //     ],
+        // ]
     ],
 
     /*

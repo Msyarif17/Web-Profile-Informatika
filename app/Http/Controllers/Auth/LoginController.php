@@ -38,16 +38,16 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    public function redirectTo()
-    {
-        $role = Auth::user()->getRoleNames();
-        switch ($role[0]) {
-            case 'Admin':
-                return '/admin';
-                break;
-            default:
-                return '/';
-                break;
-        }
-    }
+    // public function redirectTo()
+    // {
+    //     $role = Auth::user()->getRoleNames();
+    //     switch ($role[0]) {
+    //         case 'Admin':
+    //             return '/admin';
+    //             break;
+    //         default:
+    //             return '/';
+    //             break;
+    //     }
+    // }
 }
