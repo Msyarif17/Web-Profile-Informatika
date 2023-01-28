@@ -331,7 +331,7 @@ return [
         [
             'text'  => 'Comment',
             'icon'  => 'fa-solid fa-list',
-            'url'   => 'dashboard/category-post',
+            'url'   => 'dashboard/comment',
         ],
         ['header' => 'USER INTERFACE',],
         [

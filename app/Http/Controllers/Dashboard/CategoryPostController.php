@@ -74,9 +74,9 @@ class CategoryPostController extends Controller
     {
         $this->validate($request,[
             'name' => 'required|string',
-            'description' => 'string',
         ]);
         $input = $request->all();
+        $input['description'] = $input['description']? $input['description']:null;
         $input['slug'] = Str::slug($input['name']);
         CategoryPost::create($input);
         return back()->with('success', 'Post Category Created successfully');
@@ -102,7 +102,7 @@ class CategoryPostController extends Controller
     public function edit($id)
     {
         $categoryPost = CategoryPost::find($id);
-        return view('backend.post-category.create',compact('categoryPost'));
+        return view('backend.post-category.edit',compact('categoryPost'));
     }
 
     /**
@@ -135,6 +135,10 @@ class CategoryPostController extends Controller
     {
         CategoryPost::find($id)->delete();
         return redirect()->route('dash.category-post.index')->with('success','Category Post deleted successfully');
+    }
+    public function forceDestroy($id){
+        CategoryPost::withTrashed()->find($id)->forceDelete();
+        return redirect()->route('dash.category-post.index')->with('success', 'Category Post Permanently Deleted successfully');
     }
     public function restore($id){
         CategoryPost::withTrashed()->findOrFail($id)->restore();

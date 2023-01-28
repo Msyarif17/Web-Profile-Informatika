@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
-
+@push('css')
+    @include('backend.component.tinymce-config')
+@endpush
 @section('content')
     <section class="content">
         <div class="row">

@@ -37,6 +37,7 @@ class PostController extends Controller
                     return $post->title;
                 })
                 ->addColumn('kategori', function (Post $post) {
+                    // dd($post->category);
                     return $post->category->name;
                 })
                 ->addColumn('created_by', function (Post $post) {
@@ -83,13 +84,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'title' => 'required',
-        //     'content' => 'required',
-        //     'category_post_id' => 'required|numeric',
-        //     'thumbnail' => 'required|image',
+        $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            'category_post_id' => 'required',
+            'thumbnail' => 'required',
 
-        // ]);
+        ]);
 
         $input = $request->all();
         
@@ -113,8 +114,6 @@ class PostController extends Controller
             $input['banner'] = '/post/image/banner/banner-' . $image->hashName();
         }
         
-        
-        
         Post::create($input);
         return redirect()->route('dash.post.index')->with('success', 'Post Created successfully');
     }
@@ -127,7 +126,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -138,7 +137,21 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::with([
+            'category' => function ($query) {
+                return $query->withTrashed();
+            },
+            'user' => function ($query) {
+                return $query->withTrashed();
+            },
+            'tag' => function ($query) {
+                return $query->withTrashed();
+            }
+        ])->find($id);
+
+        $categoryPost = CategoryPost::pluck('name', 'id')->all();
+        $tag = Tag::pluck('name', 'id')->all();
+        return view('backend.post.edit', compact('categoryPost','post', 'tag'));
     }
 
     /**
@@ -161,7 +174,17 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::find($id)->delete();
+        return redirect()->route('dash.post.index')->with('success', 'Category Post deleted successfully');
     }
-    
+    public function forceDestroy($id)
+    {
+        Post::withTrashed()->find($id)->forceDelete();
+        return redirect()->route('dash.post.index')->with('success', 'Category Post Permanently Deleted successfully');
+    }
+    public function restore($id)
+    {
+        Post::withTrashed()->findOrFail($id)->restore();
+        return redirect()->route('dash.post.index')->with('success', 'Category Post restored successfully');
+    }
 }

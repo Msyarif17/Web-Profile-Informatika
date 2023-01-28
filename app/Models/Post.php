@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\CategoryPost;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,6 +28,6 @@ class Post extends Model
         return $this->belongsToMany(Tag::class,'tag_details');
     }
     public function category(){
-        return $this->belongsTo(CategoryPost::class);
+        return $this->belongsTo(CategoryPost::class,'category_post_id');
     }
 }

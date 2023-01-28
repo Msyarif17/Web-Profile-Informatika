@@ -1,5 +1,7 @@
-@extends('layouts.dashboard')
-
+@extends('layouts.dash')
+@push('css')
+    @include('backend.component.tinymce-config')
+@endpush
 @section('content')
     <section class="content">
         <div class="row">
@@ -21,8 +23,8 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        {!! Form::open(['route' => ['dash.post.update',$webinar->id], 'method' => 'put', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
-                        @include('back-end.webinar._form')
+                        {!! Form::open(['route' => ['dash.post.update',$post->id], 'method' => 'put', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
+                        @include('backend.post._form')
                         {!! Form::close() !!}
                     </div>
                     <!-- /.card-body -->

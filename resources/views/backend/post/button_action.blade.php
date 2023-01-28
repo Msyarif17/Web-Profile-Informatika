@@ -1,18 +1,22 @@
-@if ($Jadwal->deleted_at)
-    <form action="{{ route('dash.post.restore', $Jadwal->id) }}" method="post" class="d-inline">
+@if ($post->deleted_at)
+    <form action="{{ route('dash.post.restore', $post->id) }}" method="post" class="d-inline">
         @method('PATCH')
         @csrf
         <button type="submit" class="btn btn-success btn-flast btn-sm" data-toggle="tootlip" data-placement="top"
             title="restore"><span class="fa fa-undo"></span></button>
     </form>
+    <form action="{{ route('dash.post.forceDelete', $post->id) }}" method="post" class="d-inline"
+        onsubmit="return confirm('apakah anda yakin?')">
+        @csrf
+        <input type="hidden" name="_method" value="delete" />
+        <button type="submit" class="btn btn-dark btn-flat btn-sm delete" data-toggle="tooltip" data-placement="top"
+            title="delete permanent"><span class="fa fa-x"></span></button>
+    </form>
 @else
-    <a href="{{ route('dash.post.edit', $Jadwal->id) }}" class="btn  btn-primary btn-flat btn-sm" data-toggle="tooltip"
+    <a href="{{ route('dash.post.edit', $post->id) }}" class="btn  btn-primary btn-flat btn-sm" data-toggle="tooltip"
         data-placement="top" title="edit"><span class="fa fa-edit"></span></a>
-    <a href="{{ $Jadwal->link }}" class="btn  btn-warning btn-flat btn-sm" data-toggle="tooltip" data-placement="top"
-        title="Link Zoom"><span class="fa fa-external-link-alt text-light"></span></a>
-    <a href="{{ route('absen', $Jadwal->id) }}" class="btn  btn-success btn-flat btn-sm" data-toggle="tooltip"
-        data-placement="top" title="Link Absensi"><span class="fa fa-pencil-alt text-light"></span></a>
-    <form action="{{ route('dash.post.destroy', $Jadwal->id) }}" method="post" class="d-inline"
+    
+    <form action="{{ route('dash.post.destroy', $post->id) }}" method="post" class="d-inline"
         onsubmit="return confirm('apakah anda yakin?')">
         @csrf
         <input type="hidden" name="_method" value="delete" />
