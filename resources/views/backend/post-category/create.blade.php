@@ -11,10 +11,14 @@
                         <div class="row justify-content-between fw-bold align-items-center">
                             <div class="card-title fs-1 ">
                                 
-                                    Create Post
+                                    Create Category Post
                                 
                             </div>
-                            <button class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                            <a href="{{route('dash.back')}}">
+                                <button class="btn btn-primary">
+                                    <i class="fa-solid fa-arrow-left"></i> Back
+                                </button>
+                            </a>
                         </div>
                     </div>
                     <!-- /.card-header -->

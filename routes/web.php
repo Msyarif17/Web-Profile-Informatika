@@ -27,6 +27,16 @@ Route::middleware(['auth'])->name('dash.')->prefix('dashboard')->group(function(
     Route::get('/', [DashboardIndexController::class,'index']);
     // Route::resource('')
     Route::resource('post', PostController::class);
+    Route::patch('post/{id}/restore', [PostController::class,'restore'])->name('post.restore');
+
     Route::resource('category-post', CategoryPostController::class);
+    Route::patch('category-post/{id}/restore', [CategoryPostController::class, 'restore'])->name('category-post.restore');
+    
     Route::resource('tag',TagController::class);
+    Route::patch('tag/{id}/restore', [TagController::class, 'restore'])->name('tag.restore');
+
+    Route::get('back',function(){
+        return back();
+    })->name('back');
+
 });

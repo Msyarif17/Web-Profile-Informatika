@@ -8,12 +8,19 @@
                 
             </div>
         </div>
-        
         <div class="col-sm-12 col-md-6">
             <div class="form-group">
-                {!! Form::label('judul', 'Post Title') !!}
-                {!! Form::text('judul', @$post->judul, $errors->has('judul') ? ['class' => 'form-control is-invalid'] : ['class' => 'form-control']) !!}
-                {!! $errors->first('judul', '<p class="help-block invalid-feedback">:message</p>') !!}
+                {!! Form::label('banner', 'Banner') !!}
+                {!! Form::file('banner', $errors->has('banner') ? ['class'=>'form-control is-invalid','accept'=>"image/*"] : ['class'=>'form-control','accept'=>"image/png, image/*"]) !!}
+                {!! $errors->first('banner', '<p class="help-block invalid-feedback">:message</p>') !!}
+                
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12">
+            <div class="form-group">
+                {!! Form::label('title', 'Post Title') !!}
+                {!! Form::text('title', @$post->title, $errors->has('title') ? ['class' => 'form-control is-invalid'] : ['class' => 'form-control']) !!}
+                {!! $errors->first('title', '<p class="help-block invalid-feedback">:message</p>') !!}
             </div>
         </div>
         <div class="col-sm-12 col-md-6">

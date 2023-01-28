@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Dashboard;
 use Carbon\Carbon;
 use App\Models\Tag;
 use App\Models\Post;
+use Illuminate\Support\Str;
 use App\Models\CategoryPost;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -81,12 +83,40 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'content' => 'required',
-            'category_id' => 'required|numeric',
+        // $this->validate($request, [
+        //     'title' => 'required',
+        //     'content' => 'required',
+        //     'category_post_id' => 'required|numeric',
+        //     'thumbnail' => 'required|image',
 
-        ]);
+        // ]);
+
+        $input = $request->all();
+        
+        $image = $request->file('thumbnail');
+        if($image){
+            $image->storeAs('public/post/image/thumbnail/', 'thumbnail-' . $image->hashName());
+            $input['thumbnail'] = '/post/image/thumbnail/thumbnail-' . $image->hashName();
+        }
+        
+        $input['category_post_id'] = implode("", $request->category_post_id);
+        
+        $input['tag_id'] = $request->tag_id ? implode("", $request->tag_id):null;
+        
+        $input['slug'] = Str::slug($input['title']);
+        
+        $input['posted_by'] = Auth::user()->id;
+        
+        $image = $request->file('banner');
+        if($image){
+            $image->storeAs('public/post/image/banner/', 'banner-' . $image->hashName());
+            $input['banner'] = '/post/image/banner/banner-' . $image->hashName();
+        }
+        
+        
+        
+        Post::create($input);
+        return redirect()->route('dash.post.index')->with('success', 'Post Created successfully');
     }
 
     /**
@@ -133,4 +163,5 @@ class PostController extends Controller
     {
         //
     }
+    
 }

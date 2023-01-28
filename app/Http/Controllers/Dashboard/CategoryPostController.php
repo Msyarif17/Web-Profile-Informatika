@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use App\Models\CategoryPost;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -24,19 +25,19 @@ class CategoryPostController extends Controller
                 },
                 ])->withTrashed())
                 ->addColumn('name', function (CategoryPost $categoryPost) {
-                    return $categoryPost->title;
+                    return $categoryPost->name;
                 })
                 ->addColumn('description', function (CategoryPost $categoryPost) {
-                    return $categoryPost->category->name;
+                    return Str::limit(strip_tags($categoryPost->description,100));
                 })
                 ->addColumn('post_count', function (CategoryPost $categoryPost) {
-                    return $categoryPost->user->name;
+                    return $categoryPost->post->count();
                 })
                 ->addColumn('created_at', function (CategoryPost $categoryPost) {
                     return Carbon::parse($categoryPost->created_at)->format('l, d F Y, H:m A');
                 })
                 ->addColumn('action', function (CategoryPost $categoryPost) {
-                    return \view('backend.post.button_action', compact('post'));
+                    return \view('backend.post-category.button_action', compact('categoryPost'));
                 })
                 ->addColumn('status', function (CategoryPost $categoryPost) {
                     if ($categoryPost->deleted_at) {
@@ -71,7 +72,14 @@ class CategoryPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|string',
+            'description' => 'string',
+        ]);
+        $input = $request->all();
+        $input['slug'] = Str::slug($input['name']);
+        CategoryPost::create($input);
+        return back()->with('success', 'Post Category Created successfully');
     }
 
     /**
@@ -93,7 +101,8 @@ class CategoryPostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categoryPost = CategoryPost::find($id);
+        return view('backend.post-category.create',compact('categoryPost'));
     }
 
     /**
@@ -105,7 +114,15 @@ class CategoryPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string',
+            'description' => 'string',
+        ]);
+        $input = $request->all();
+        $input['slug'] = Str::slug($input['name']);
+
+        CategoryPost::find($id)->update($input);
+        return back()->with('success', 'Post Category Updated successfully');
     }
 
     /**
@@ -116,6 +133,11 @@ class CategoryPostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        CategoryPost::find($id)->delete();
+        return redirect()->route('dash.category-post.index')->with('success','Category Post deleted successfully');
+    }
+    public function restore($id){
+        CategoryPost::withTrashed()->findOrFail($id)->restore();
+        return redirect()->route('dash.category-post.index')->with('success', 'Category Post restored successfully');
     }
 }

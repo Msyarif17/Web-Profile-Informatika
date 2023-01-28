@@ -16,12 +16,12 @@ class Post extends Model
         'title',
         'slug',
         'content',
-        'user_id',
+        'posted_by',
         'banner',
         'thumbnail'
     ];
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'posted_by');
     }
     public function tag(){
         return $this->belongsToMany(Tag::class,'tag_details');
