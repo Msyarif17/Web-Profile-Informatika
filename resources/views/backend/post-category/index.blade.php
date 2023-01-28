@@ -9,7 +9,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Post Category</h3>
                         <div class="float-right">
-                            <a href="{{route('dash.post.create')}}" class="btn btn-success btn-flat btn-sm"
+                            <a href="{{route('dash.category-post.create')}}" class="btn btn-success btn-flat btn-sm"
                                title="Tambah">Tambah</a>
                         </div>
                     </div>
@@ -20,9 +20,10 @@
                             <table id="data" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Judul Webinar</th>
-                                    <th>Narasumber</th>
-                                    <th>Tanggal</th>
+                                    <th>Nama</th>
+                                    <th>Deskripsi</th>
+                                    <th>Jumlah Post</th>
+                                    <th>Tanggal Dibuat</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -47,16 +48,13 @@
                 processing: true,
                 searchDelay: 1000,
                 ajax: {
-                    url: '{{route('dash.post.index')}}',
+                    url: '{{route('dash.category-post.index')}}',
                 },
                 columns: [
-                    {data: 'judul'},
-                    {
-                        data: 'narasumber_name',name: 'narasumber.name',
-                        orderable: false,
-                        searchable: false
-                    },
-                    {data: 'jadwal'},
+                    {data: 'name'},
+                    {data: 'description'},
+                    {data: 'post_count'},
+                    {data: 'created_at'},
                     {
                         data: 'status', name: 'deleted_at', render: function (datum, type, row) {
                             if (row.status == 'Active') {

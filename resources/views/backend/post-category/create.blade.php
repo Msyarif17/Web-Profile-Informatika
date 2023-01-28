@@ -19,8 +19,8 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        {!! Form::open(['route' => 'dash.post.store', 'method' => 'post', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
-                        @include('backend.post._form')
+                        {!! Form::open(['route' => 'dash.category-post.store', 'method' => 'post', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
+                        @include('backend.post-category._form')
                         {!! Form::close() !!}
                     </div>
                     <!-- /.card-body -->

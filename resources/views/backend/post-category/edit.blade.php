@@ -10,8 +10,8 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        {!! Form::open(['route' => ['dash.post.update',$webinar->id], 'method' => 'put', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
-                        @include('back-end.webinar._form')
+                        {!! Form::open(['route' => ['dash.category-post.update',$webinar->id], 'method' => 'put', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
+                        @include('backend.post-category._form')
                         {!! Form::close() !!}
                     </div>
                     <!-- /.card-body -->

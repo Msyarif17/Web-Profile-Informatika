@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use App\Models\CategoryPost;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
+use App\Http\Controllers\Controller;
 
 class CategoryPostController extends Controller
 {
@@ -12,9 +15,42 @@ class CategoryPostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(DataTables $datatables,Request $request)
     {
-        //
+        if ($request->ajax()) {
+            return $datatables->of(CategoryPost::with([
+                'post' => function ($query) {
+                    return $query->withTrashed();
+                },
+                ])->withTrashed())
+                ->addColumn('name', function (CategoryPost $categoryPost) {
+                    return $categoryPost->title;
+                })
+                ->addColumn('description', function (CategoryPost $categoryPost) {
+                    return $categoryPost->category->name;
+                })
+                ->addColumn('post_count', function (CategoryPost $categoryPost) {
+                    return $categoryPost->user->name;
+                })
+                ->addColumn('created_at', function (CategoryPost $categoryPost) {
+                    return Carbon::parse($categoryPost->created_at)->format('l, d F Y, H:m A');
+                })
+                ->addColumn('action', function (CategoryPost $categoryPost) {
+                    return \view('backend.post.button_action', compact('post'));
+                })
+                ->addColumn('status', function (CategoryPost $categoryPost) {
+                    if ($categoryPost->deleted_at) {
+                        return 'Inactive';
+                    } else {
+                        return 'Active';
+                    }
+                })
+                ->rawColumns(['status', 'action'])
+                ->make(true);
+        } else {
+            
+            return view('backend.post-category.index');
+        }
     }
 
     /**
@@ -24,7 +60,7 @@ class CategoryPostController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.post-category.create');
     }
 
     /**
