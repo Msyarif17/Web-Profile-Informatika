@@ -1,4 +1,4 @@
-@extends('layouts.dash')
+@extends('layouts.dashboard')
 @push('css')
     @include('backend.component.tinymce-config')
 @endpush
@@ -11,7 +11,7 @@
                         <div class="row justify-content-between fw-bold align-items-center">
                             <div class="card-title fs-1 ">
                                 
-                                    Create Post
+                                Edit Category Post
                                 
                             </div>
                             <a href="{{URL::previous()}}">
@@ -23,8 +23,8 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        {!! Form::open(['route' => 'dash.post.store', 'method' => 'post', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
-                        @include('backend.post._form')
+                        {!! Form::open(['route' => ['dash.cui.update',$cui->id], 'method' => 'put', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
+                        @include('backend.cui._form')
                         {!! Form::close() !!}
                     </div>
                     <!-- /.card-body -->

@@ -112,8 +112,8 @@ return [
             'path' => 'assets/images/Logo Teknik Informatika.png',
             'alt' => 'Teknik Informatika',
             'effect' => 'animation__shake',
-            'width' => 60,
-            'height' => 60,
+            'width' => 100,
+            'height' => 100,
         ],
     ],
 
@@ -167,7 +167,7 @@ return [
     |
     */
 
-    'classes_auth_card' => 'card-outline card-primary',
+    'classes_auth_card' => 'card shadow',
     'classes_auth_header' => '',
     'classes_auth_body' => '',
     'classes_auth_footer' => '',
@@ -195,7 +195,7 @@ return [
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-dark text-dark',
-    'classes_topnav_nav' => 'navbar-expand',
+    'classes_topnav_nav' => 'navbar-expand ',
     'classes_topnav_container' => 'container',
 
     /*
@@ -211,8 +211,8 @@ return [
     */
 
     'sidebar_mini' => 'lg',
-    'sidebar_collapse' => false,
-    'sidebar_collapse_auto_size' => false,
+    'sidebar_collapse' => true,
+    'sidebar_collapse_auto_size' => true,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
@@ -291,7 +291,7 @@ return [
 
     'menu' => [
         // Navbar items:
-        
+
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
@@ -305,28 +305,22 @@ return [
             'label_color' => 'success',
         ],
         ['header' => 'POST MAKER'],
-        [
-            'text'        => 'Post',
-            'icon'        => 'fa-solid fa-newspaper',
-            'label_color' => 'success',
-            'submenu' => [
-                [
-                    'text'  => 'Category Post',
-                    'icon'  => 'fa-solid fa-list',
-                    'url'   => 'dashboard/category-post',
-                ],
-                [
-                    'text'  => 'Tags Post',
-                    'icon'  => 'fa-solid fa-tags',
-                    'url'   => 'dashboard/tags-post',
-                ],
-                [
-                    'text'  => 'Post',
-                    'icon'  => 'fa-solid fa-newspaper',
-                    'url'   => 'dashboard/post',
 
-                ]
-            ]
+        [
+            'text'  => 'Category Post',
+            'icon'  => 'fa-solid fa-list',
+            'url'   => 'dashboard/category-post/',
+        ],
+        [
+            'text'  => 'Tags Post',
+            'icon'  => 'fa-solid fa-tags',
+            'url'   => 'dashboard/tag/',
+        ],
+        [
+            'text'  => 'Post',
+            'icon'  => 'fa-solid fa-newspaper',
+            'url'   => 'dashboard/post/',
+
         ],
         [
             'text'  => 'Comment',
@@ -339,11 +333,11 @@ return [
             'icon'        => 'fa-solid fa-paint-roller',
             'label_color' => 'success',
             'submenu' => [
-                
+
                 [
-                    'text'  => 'Color',
+                    'text'  => 'Theme',
                     'icon'  => 'fa-solid fa-brush',
-                    'url'   => 'dashboard/color',
+                    'url'   => 'dashboard/cui/',
                 ],
                 [
                     'text'  => 'Logo',
@@ -354,11 +348,11 @@ return [
                 [
                     'text'  => 'Banner',
                     'icon'  => 'fa-solid fa-id-card',
-                    'url'   => 'dashboard/banner',
+                    'url'   => 'dashboard/banner/*',
                 ],
             ]
         ],
-        
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
@@ -370,7 +364,7 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        
+
     ],
 
     /*

@@ -14,7 +14,7 @@
                                     Edit Post
                                 
                             </div>
-                            <a href="{{route('dash.back')}}">
+                            <a href="{{URL::previous()}}">
                                 <button class="btn btn-primary">
                                     <i class="fa-solid fa-arrow-left"></i> Back
                                 </button>

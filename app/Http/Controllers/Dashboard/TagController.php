@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use Carbon\Carbon;
-use App\Models\Tag;
+
 use Illuminate\Support\Str;
-use App\Models\CategoryPost;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
@@ -21,19 +21,19 @@ class TagController extends Controller
                 },
             ])->withTrashed())
                 ->addColumn('name', function (Tag $tag) {
-                    return $tag->title;
+                    return $tag->name;
                 })
                 ->addColumn('description', function (Tag $tag) {
-                    return $tag->category->name;
+                    return $tag->description;
                 })
                 ->addColumn('post_count', function (Tag $tag) {
-                    return $tag->user->name;
+                    return $tag->post->count();
                 })
                 ->addColumn('created_at', function (Tag $tag) {
                     return Carbon::parse($tag->created_at)->format('l, d F Y, H:m A');
                 })
                 ->addColumn('action', function (Tag $tag) {
-                    return \view('backend.post.button_action', compact('post'));
+                    return \view('backend.post-tag.button_action', compact('tag'));
                 })
                 ->addColumn('status', function (Tag $tag) {
                     if ($tag->deleted_at) {
@@ -46,7 +46,7 @@ class TagController extends Controller
                 ->make(true);
         } else {
 
-            return view('backend.post-category.index');
+            return view('backend.post-tag.index');
         }
     }
 
@@ -57,7 +57,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('backend.post-category.create');
+        return view('backend.post-tag.create');
     }
 
     /**
@@ -70,12 +70,12 @@ class TagController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string',
-            'description' => 'string',
+
         ]);
         $input = $request->all();
         $input['slug'] = Str::slug($input['name']);
-        CategoryPost::create($input);
-        return back()->with('success', 'Post Category Created successfully');
+        Tag::create($input);
+        return back()->with('success', 'Post tag Created successfully');
     }
 
     /**
@@ -97,8 +97,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tag = CategoryPost::find($id);
-        return view('backend.post-category.create', compact('categoryPost'));
+        $tag = Tag::find($id);
+        return view('backend.post-tag.create', compact('Tag'));
     }
 
     /**
@@ -117,8 +117,8 @@ class TagController extends Controller
         $input = $request->all();
         $input['slug'] = Str::slug($input['name']);
 
-        CategoryPost::find($id)->update($input);
-        return back()->with('success', 'Post Category Updated successfully');
+        Tag::find($id)->update($input);
+        return back()->with('success', 'Post tag Updated successfully');
     }
 
     /**
@@ -129,12 +129,17 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        CategoryPost::find($id)->delete();
-        return redirect()->route('dash.category-post.index')->with('success', 'Category Post deleted successfully');
+        Tag::find($id)->delete();
+        return redirect()->route('dash.tag-post.index')->with('success', 'tag Post deleted successfully');
+    }
+    public function forceDestroy($id)
+    {
+        Tag::withTrashed()->find($id)->forceDelete();
+        return redirect()->route('dash.category-post.index')->with('success', 'Category Post Permanently Deleted successfully');
     }
     public function restore($id)
     {
-        CategoryPost::withTrashed()->findOrFail($id)->restore();
-        return redirect()->route('dash.category-post.index')->with('success', 'Category Post restored successfully');
+        Tag::withTrashed()->findOrFail($id)->restore();
+        return redirect()->route('dash.tag-post.index')->with('success', 'tag Post restored successfully');
     }
 }

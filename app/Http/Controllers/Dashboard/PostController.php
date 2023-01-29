@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -163,7 +164,38 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            'category_post_id' => 'required',
+            'thumbnail' => 'required',
+
+        ]);
+
+        $input = $request->all();
+        
+        $image = $request->file('thumbnail');
+        if($image){
+            $image->storeAs('public/post/image/thumbnail/', 'thumbnail-' . $image->hashName());
+            $input['thumbnail'] = '/post/image/thumbnail/thumbnail-' . $image->hashName();
+        }
+        
+        $input['category_post_id'] = implode("", $request->category_post_id);
+        
+        $input['tag_id'] = $request->tag_id ? implode("", $request->tag_id):null;
+        
+        $input['slug'] = Str::slug($input['title']);
+        
+        $input['posted_by'] = Auth::user()->id;
+        
+        $image = $request->file('banner');
+        if($image){
+            $image->storeAs('public/post/image/banner/', 'banner-' . $image->hashName());
+            $input['banner'] = '/post/image/banner/banner-' . $image->hashName();
+        }
+        
+        Post::find($id)->update($input);
+        return redirect()->route('dash.post.index')->with('success', 'Post Updated successfully');
     }
 
     /**
@@ -179,7 +211,15 @@ class PostController extends Controller
     }
     public function forceDestroy($id)
     {
-        Post::withTrashed()->find($id)->forceDelete();
+        $post = Post::withTrashed()->find($id);
+        $thumbnail = 'public'.$post->toArray()['thumbnail'];
+        $banner = 'public'.$post->toArray()['banner'];
+        if(Storage::exists($thumbnail)||Storage::exists($banner)){
+            Storage::delete([$thumbnail,$banner]);
+        }
+
+        $post->forceDelete();
+        
         return redirect()->route('dash.post.index')->with('success', 'Category Post Permanently Deleted successfully');
     }
     public function restore($id)
