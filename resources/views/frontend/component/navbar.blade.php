@@ -32,14 +32,14 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-md text-bold  navbar-color navbar-dark shadow">
+    <nav class="navbar navbar-expand-md text-bold shadow">
         <div class="container">
             <a class="navbar-brand" href="{{route('index')}}" >
                 <div class="d-inline-flex justify-content-start">
                     <div style="margin-right: 4px;">
                         <img class="" src="{{asset('assets/images/Logo Teknik Informatika.png')}}" alt="Teknik Informatika" height="44px" width="44px" >
                     </div>
-                    <span class="font-size-16 font-white fw-bold">
+                    <span class="font-size-16 fw-bold">
                         TEKNIK<br>INFORMATIKA
                     </span>
                 </div>
@@ -49,7 +49,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-md-end" id="navbarCollapse">
+            <div class="collapse navbar-collapse justify-content-md-end" id="navbarCollapse" >
                 
                 <ul class="navbar-nav mb-2 mb-md-0 ">
                     <li class="nav-item navbar-pills rounded-0 dropdown">
@@ -74,7 +74,7 @@
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown ">
                         <a class="nav-link" href="#">Akademik</a>
                     </li>
                     <li class="nav-item dropdown">

@@ -1,15 +1,8 @@
 @extends('layouts.dash')
 @section('plugins.', true)
 @push('css')
-<script src=
-"https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">
-    </script>
-    <script src=
-"https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">
-    </script>
-    <link href=
-"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
-          rel="stylesheet" type="text/css" />@endpush
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+@endpush
 @section('content')
     <section class="content">
         <div class="row">
@@ -45,11 +38,8 @@
     </section>
 @endsection
 @push('js') 
-<script type="text/javascript">
-$(document).ready(function() {
-    $(function () {
-      $('.colorpicker').colorpicker();
-    });
-});
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/js/bootstrap-colorpicker.min.js"></script>
+    <script>
+        $('.colorpicker').colorpicker();
+    </script>
 @endpush

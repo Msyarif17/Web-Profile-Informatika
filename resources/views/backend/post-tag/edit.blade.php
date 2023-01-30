@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.dash')
 @push('css')
     @include('backend.component.tinymce-config')
 @endpush

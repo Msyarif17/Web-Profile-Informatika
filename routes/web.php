@@ -46,7 +46,7 @@ Route::middleware(['auth'])->name('dash.')->prefix('dashboard')->group(function(
     Route::resource('cui',CustomUIController::class);
     Route::patch('cui/{id}/restore', [CustomUIController::class, 'restore'])->name('cui.restore');
     Route::delete('cui/{id}/delete-permanently', [CustomUIController::class, 'forceDestroy'])->name('cui.forceDelete');
-    
+    Route::get('cui/{id}/active',[CustomUIController::class, 'activationTheme'])->name('cui.active');
     // Partner
     Route::resource('tag',TagController::class);
     Route::patch('tag/{id}/restore', [TagController::class, 'restore'])->name('tag.restore');

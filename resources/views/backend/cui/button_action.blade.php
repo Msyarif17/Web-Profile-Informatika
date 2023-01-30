@@ -1,4 +1,7 @@
 @if ($cui->deleted_at)
+    <a href="{{ route('dash.cui.edit', $cui->id) }}" class="btn  btn-primary btn-flat btn-sm" data-toggle="tooltip"
+        data-placement="top" title="edit"><span class="fa fa-edit"></span></a>
+    
     <form action="{{ route('dash.cui.restore', $cui->id) }}" method="post" class="d-inline">
         @method('PATCH')
         @csrf
@@ -13,8 +16,18 @@
             title="delete permanent"><span class="fa fa-x"></span></button>
     </form>
 @else
+
     <a href="{{ route('dash.cui.edit', $cui->id) }}" class="btn  btn-primary btn-flat btn-sm" data-toggle="tooltip"
         data-placement="top" title="edit"><span class="fa fa-edit"></span></a>
+    @if ($cui->isActive)
+        <a href="" class="btn  btn-success btn-flat btn-sm" data-toggle="tooltip"
+        data-placement="top" title="toggle-on"><span class="fa fa-toggle-on"></span></a>
+        
+    @else
+    <a href="{{ route('dash.cui.active', $cui->id) }}" class="btn  btn-warning btn-flat btn-sm" data-toggle="tooltip"
+        data-placement="top" title="toggle-off"><span class="fa fa-toggle-off"></span></a>
+    @endif
+    
     
     <form action="{{ route('dash.cui.destroy', $cui->id) }}" method="post" class="d-inline"
         onsubmit="return confirm('apakah anda yakin?')">

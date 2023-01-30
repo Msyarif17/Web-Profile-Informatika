@@ -145,7 +145,7 @@
                 {{-- informasi terbaru --}}
                 <div class="row justify-content-between mb-5">
                     <div class="col-6 font-size-24">
-                        <div class="btn btn-primary border-0  " style="background-color: #4F8A8B">
+                        <div class="btn btn-primary border-0  ">
     
                             <p class="text-light fw-bold my-auto">Informasi terbaru</p>
     
@@ -162,18 +162,18 @@
                     <div class="col-md-4 pb-3">
                         <div class="card">
                             <img src="{{ asset('assets/images/content 1.png') }}" alt="" class="card-img-top">
-                            <div class="card-body" style="background-color: #4F8A8B">
-                                <div class="card-tittle fw-bold font-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus,</div>
+                            <div class="card-body" >
+                                <div class="card-tittle fw-bold ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus,</div>
                                 <div class="row p-0 m-0 justify-content-between py-1">
-                                    <div class="col-6 p-0 m-0 text-start"><span class="font-white"><i class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
-                                    <div class="col-6 p-0 m-0 text-end"><span class="font-white"><i class="fa-solid fa-comment"></i> 0 Comment</span></div>
+                                    <div class="col-6 p-0 m-0 text-start"><span class=""><i class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
+                                    <div class="col-6 p-0 m-0 text-end"><span class=""><i class="fa-solid fa-comment"></i> 0 Comment</span></div>
                                 </div>
-                                <div class="card-text font-size-10 font-white">
+                                <div class="card-text font-size-10 ">
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus, minus assumenda dolorem libero quas adipisci asperiores consequuntur hic repudiandae soluta laborum commodi repellendus veritatis incidunt ea.</p>
                                     
                                 </div>
                                 <div class="text-end">
-                                    <a href="" class="font-white text-decoration-none">Baca selengkapnya <img src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
+                                    <a href="" class=" text-decoration-none">Baca selengkapnya <img src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -181,18 +181,18 @@
                     <div class="col-md-4 pb-3">
                         <div class="card">
                             <img src="{{ asset('assets/images/content 1.png') }}" alt="" class="card-img-top">
-                            <div class="card-body" style="background-color: #4F8A8B">
-                                <div class="card-tittle fw-bold font-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus,</div>
+                            <div class="card-body" >
+                                <div class="card-tittle fw-bold ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus,</div>
                                 <div class="row p-0 m-0 justify-content-between py-1 font-size-10">
-                                    <div class="col-6 p-0 m-0 text-start"><span class="font-white"><i class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
-                                    <div class="col-6 p-0 m-0 text-end"><span class="font-white"><i class="fa-solid fa-comment"></i> 0 Comment</span></div>
+                                    <div class="col-6 p-0 m-0 text-start"><span class=""><i class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
+                                    <div class="col-6 p-0 m-0 text-end"><span class=""><i class="fa-solid fa-comment"></i> 0 Comment</span></div>
                                 </div>
-                                <div class="card-text font-size-10 font-white">
+                                <div class="card-text font-size-10 ">
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus, minus assumenda dolorem libero quas adipisci asperiores consequuntur hic repudiandae soluta laborum commodi repellendus veritatis incidunt ea.</p>
                                     
                                 </div>
                                 <div class="text-end">
-                                    <a href="" class="text-decoration-none font-white">Baca selengkapnya <img src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
+                                    <a href="" class="text-decoration-none ">Baca selengkapnya <img src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -200,18 +200,18 @@
                     <div class="col-md-4 pb-3">
                         <div class="card">
                             <img src="{{ asset('assets/images/content 1.png') }}" alt="" class="card-img-top">
-                            <div class="card-body" style="background-color: #4F8A8B">
-                                <div class="card-tittle fw-bold font-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus,</div>
+                            <div class="card-body" >
+                                <div class="card-tittle fw-bold ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus,</div>
                                 <div class="row p-0 m-0 justify-content-between py-1 font-size-10">
-                                    <div class="col-6 p-0 m-0 text-start"><span class="font-white"><i class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
-                                    <div class="col-6 p-0 m-0 text-end"><span class="font-white"><i class="fa-solid fa-comment"></i> 0 Comment</span></div>
+                                    <div class="col-6 p-0 m-0 text-start"><span class=""><i class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
+                                    <div class="col-6 p-0 m-0 text-end"><span class=""><i class="fa-solid fa-comment"></i> 0 Comment</span></div>
                                 </div>
-                                <div class="card-text font-size-10 font-white">
+                                <div class="card-text font-size-10 ">
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus, minus assumenda dolorem libero quas adipisci asperiores consequuntur hic repudiandae soluta laborum commodi repellendus veritatis incidunt ea.</p>
                                     
                                 </div>
                                 <div class="text-end">
-                                    <a href="" class="text-decoration-none font-white">Baca selengkapnya <img src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
+                                    <a href="" class="text-decoration-none ">Baca selengkapnya <img src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -220,7 +220,7 @@
                 {{-- pengumuman --}}
                 <div class="row justify-content-between my-5 pt-2">
                     <div class="col-6 font-size-24">
-                        <div class="btn btn-primary border-0  " style="background-color: #4F8A8B">
+                        <div class="btn btn-primary border-0  ">
     
                             <p class="text-light fw-bold my-auto">Pengumuman</p>
     
@@ -237,18 +237,18 @@
                     <div class="col-md-4 pb-3">
                         <div class="card">
                             <img src="{{ asset('assets/images/content 1.png') }}" alt="" class="card-img-top">
-                            <div class="card-body" style="background-color: #4F8A8B">
-                                <div class="card-tittle fw-bold font-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus,</div>
+                            <div class="card-body" >
+                                <div class="card-tittle fw-bold ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus,</div>
                                 <div class="row p-0 m-0 justify-content-between py-1">
-                                    <div class="col-6 p-0 m-0 text-start"><span class="font-white"><i class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
-                                    <div class="col-6 p-0 m-0 text-end"><span class="font-white"><i class="fa-solid fa-comment"></i> 0 Comment</span></div>
+                                    <div class="col-6 p-0 m-0 text-start"><span class=""><i class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
+                                    <div class="col-6 p-0 m-0 text-end"><span class=""><i class="fa-solid fa-comment"></i> 0 Comment</span></div>
                                 </div>
-                                <div class="card-text font-size-10 font-white">
+                                <div class="card-text font-size-10 ">
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus, minus assumenda dolorem libero quas adipisci asperiores consequuntur hic repudiandae soluta laborum commodi repellendus veritatis incidunt ea.</p>
                                     
                                 </div>
                                 <div class="text-end">
-                                    <a href="" class="font-white text-decoration-none">Baca selengkapnya <img src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
+                                    <a href="" class=" text-decoration-none">Baca selengkapnya <img src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -256,18 +256,18 @@
                     <div class="col-md-4 pb-3">
                         <div class="card">
                             <img src="{{ asset('assets/images/content 1.png') }}" alt="" class="card-img-top">
-                            <div class="card-body" style="background-color: #4F8A8B">
-                                <div class="card-tittle fw-bold font-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus,</div>
+                            <div class="card-body" >
+                                <div class="card-tittle fw-bold ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus,</div>
                                 <div class="row p-0 m-0 justify-content-between py-1 font-size-10">
-                                    <div class="col-6 p-0 m-0 text-start"><span class="font-white"><i class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
-                                    <div class="col-6 p-0 m-0 text-end"><span class="font-white"><i class="fa-solid fa-comment"></i> 0 Comment</span></div>
+                                    <div class="col-6 p-0 m-0 text-start"><span class=""><i class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
+                                    <div class="col-6 p-0 m-0 text-end"><span class=""><i class="fa-solid fa-comment"></i> 0 Comment</span></div>
                                 </div>
-                                <div class="card-text font-size-10 font-white">
+                                <div class="card-text font-size-10 ">
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus, minus assumenda dolorem libero quas adipisci asperiores consequuntur hic repudiandae soluta laborum commodi repellendus veritatis incidunt ea.</p>
                                     
                                 </div>
                                 <div class="text-end">
-                                    <a href="" class="text-decoration-none font-white">Baca selengkapnya <img src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
+                                    <a href="" class="text-decoration-none ">Baca selengkapnya <img src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -275,18 +275,18 @@
                     <div class="col-md-4 pb-3">
                         <div class="card">
                             <img src="{{ asset('assets/images/content 1.png') }}" alt="" class="card-img-top">
-                            <div class="card-body" style="background-color: #4F8A8B">
-                                <div class="card-tittle fw-bold font-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus,</div>
+                            <div class="card-body" >
+                                <div class="card-tittle fw-bold ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus,</div>
                                 <div class="row p-0 m-0 justify-content-between py-1 font-size-10">
-                                    <div class="col-6 p-0 m-0 text-start"><span class="font-white"><i class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
-                                    <div class="col-6 p-0 m-0 text-end"><span class="font-white"><i class="fa-solid fa-comment"></i> 0 Comment</span></div>
+                                    <div class="col-6 p-0 m-0 text-start"><span class=""><i class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
+                                    <div class="col-6 p-0 m-0 text-end"><span class=""><i class="fa-solid fa-comment"></i> 0 Comment</span></div>
                                 </div>
-                                <div class="card-text font-size-10 font-white">
+                                <div class="card-text font-size-10 ">
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non necessitatibus, minus assumenda dolorem libero quas adipisci asperiores consequuntur hic repudiandae soluta laborum commodi repellendus veritatis incidunt ea.</p>
                                     
                                 </div>
                                 <div class="text-end">
-                                    <a href="" class="text-decoration-none font-white">Baca selengkapnya <img src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
+                                    <a href="" class="text-decoration-none ">Baca selengkapnya <img src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -298,7 +298,7 @@
     <section style="background-color:#4F8A8B;">
         <div class="container pb-3" >
             <div class="row my-3 pt-3">
-                <div class="col-12 pt-3 font-size-24 fw-bold font-white">
+                <div class="col-12 pt-3 font-size-24 fw-bold ">
                     Galeri Prestasi Dosen dan Mahasiswa
                 </div>
             </div>
@@ -346,7 +346,7 @@
         <div class="container">
             <div class="row justify-content-between my-5 pt-2">
                 <div class="col-6 col-12 font-size-24">
-                    <div class="btn btn-primary border-0  " style="background-color: #4F8A8B">
+                    <div class="btn btn-primary border-0  ">
     
                         <p class="text-light fw-bold my-auto">Peminat Prodi Teknik Informatika</p>
     
@@ -367,7 +367,7 @@
         <div class="container mb-5">
             <div class="row justify-content-between mb-3">
                     <div class="col-md-6 col-12 font-size-24">
-                        <div class="btn btn-primary border-0  " style="background-color: #4F8A8B">
+                        <div class="btn btn-primary border-0  ">
     
                             <p class="text-light fw-bold my-auto">Kerjasama Industri</p>
     

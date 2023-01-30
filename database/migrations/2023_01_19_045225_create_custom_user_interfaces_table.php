@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('custom_user_interfaces', function (Blueprint $table) {
             $table->id();
-            $table->string('theme_name');
+            $table->string('name');
             $table->string('logo')->default(asset('assets/images/Logo Teknik Informatika.png'));
             $table->string('logo_name')->default('TEKNIK<br>INFORMATIKA')->nullable();
             $table->string('favicon')->default(asset('assets/images/Logo Teknik Informatika.png'));
@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('button_color')->default('#FFFF');
             $table->string('font')->default('roboto');
             $table->string('footer_color')->default('#FFFF');
+            
             $table->softDeletes();
             $table->timestamps();
         });
