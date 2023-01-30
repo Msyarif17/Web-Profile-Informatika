@@ -43,7 +43,10 @@ class LoginController extends Controller
     //     $role = Auth::user()->getRoleNames();
     //     switch ($role[0]) {
     //         case 'Admin':
-    //             return '/admin';
+    //             return 'dashboard';
+    //             break;
+    //         case 'dosen':
+    //             return 'dashboard';
     //             break;
     //         default:
     //             return '/';

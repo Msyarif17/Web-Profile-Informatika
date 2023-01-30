@@ -355,9 +355,19 @@ return [
 
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Roles',
+            'url'  => 'dashboard/roles',
+            'icon' => 'fa-solid fa-gear',
+        ],
+        [
+            'text' => 'Permissions',
+            'url'  => 'dashboard/permissions',
+            'icon' => 'fa-solid fa-key',
+        ],
+        [
+            'text' => 'Users',
+            'url'  => 'dashboard/Users',
+            'icon' => 'fa-solid fa-users',
         ],
         [
             'text' => 'change_password',

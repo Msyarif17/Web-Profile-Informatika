@@ -30,6 +30,10 @@
     .btn{
       background-color: {{$cui->button_color}};
     }
+    .gallery{
+      background-color: {{$cui->card_color}};
+      color: {{$cui->card_text_color}};
+    }
     body{
       background-color: {{$cui->background_color}};
     }

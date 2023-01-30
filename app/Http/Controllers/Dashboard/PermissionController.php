@@ -2,19 +2,42 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
+use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Permission;
 
-class BannerController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(DataTables $datatables,Request $request)
     {
-        
+        if ($request->ajax()) {
+            return $datatables->of(Permission::query())
+                ->addColumn('name', function (Permission $permissions) {
+                    return $permissions->name;
+                })
+                
+                ->addColumn('action', function (Permission $permissions) {
+                    return \view('backend.permissions.button_action', compact('permissions'));
+                })
+                ->addColumn('status', function (Permission $permissions) {
+                    if (!$permissions->isActive) {
+                        return 'Inactive';
+                    } else {
+                        return 'Active';
+                    }
+                })
+                ->rawColumns(['status', 'action'])
+                ->make(true);
+        } else {
+            
+            return view('backend.permissions.index');
+        }
     }
 
     /**
@@ -24,7 +47,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.permissions.create');
     }
 
     /**
@@ -35,7 +58,11 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+        ]);
+        Permission::create($request->only(['name']));
+        return back()->with('success', 'Post Category Created successfully');
     }
 
     /**

@@ -7,7 +7,9 @@ use Spatie\Permission\Contracts\Role;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Dashboard\TagController;
 use App\Http\Controllers\Dashboard\PostController;
+use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\CustomUIController;
+use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\CategoryPostController;
 use App\Http\Controllers\Dashboard\IndexController as DashboardIndexController;
 
@@ -58,5 +60,6 @@ Route::middleware(['auth'])->name('dash.')->prefix('dashboard')->group(function(
     Route::delete('tag/{id}/delete-permanently', [CategoryPostController::class, 'forceDestroy'])->name('tag.forceDelete');
     
     
-
+    Route::resource('roles', RoleController::class);
+    Route::resource('permissions', PermissionController::class);
 });

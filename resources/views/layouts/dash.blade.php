@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-
+    @include('backend.component.notification')
 @stop
 
 @section('content')
