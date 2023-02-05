@@ -1,12 +1,9 @@
 @extends('frontend.component.master')
 @section('css')
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.0/chart.min.js"
-        integrity="sha512-qKyIokLnyh6oSnWsc5h21uwMAQtljqMZZT17CIMXuCQNIfFSFF4tJdMOaJHL9fQdJUANid6OB6DRR0zdHrbWAw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
 @endsection
 @section('content')
-    <section class="container-fluid p-0" style="margin-top:60px;">
+    <section class="container-fluid p-0" >
         <div id="carouselExampleIndicators" style="background-color: #7868E6;height: 500px;" class="carousel slide"
             data-bs-ride="true">
             <div class="carousel-indicators">
@@ -153,88 +150,38 @@
                     </div>
                     <div class="col-6 font-size-16 align-self-center  text-end">
 
-                        <a href="/" class="text-dark text-decoration-none d-inline-flex "><span
+                        <a href="" class="text-dark text-decoration-none d-inline-flex "><span
                                 class="align-middle">Informasi Lainnya </span><img
                                 src="{{ asset('assets/images/Polygon 2.png') }}" alt="" sizes="14px"
                                 srcset=""></a>
                     </div>
                 </div>
                 <div class="row font-size-12">
+                    @foreach($posts as $post)
                     <div class="col-md-4 pb-3">
                         <div class="card">
-                            <img src="{{ asset('assets/images/content 1.png') }}" alt="" class="card-img-top">
+                            <img src="{{ asset('storage'.$post->thumbnail) }}"  alt="" class="card-img-top img-fluid" style="height:152px;object-fit: cover;object-position: center;">
                             <div class="card-body">
-                                <div class="card-tittle fw-bold ">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Aliquam dolorum quisquam non necessitatibus,</div>
+                                <div class="card-tittle fw-bold ">{{$post->title}}</div>
                                 <div class="row p-0 m-0 justify-content-between py-1">
                                     <div class="col-6 p-0 m-0 text-start"><span class=""><i
-                                                class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
+                                                class="fa-solid fa-calendar"></i>{{Carbon\Carbon::parse($post->created_at)->format('l, d F Y, H:m A')}}</span></div>
                                     <div class="col-6 p-0 m-0 text-end"><span class=""><i
                                                 class="fa-solid fa-comment"></i> 0 Comment</span></div>
                                 </div>
-                                <div class="card-text font-size-10 ">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non
-                                        necessitatibus, minus assumenda dolorem libero quas adipisci asperiores consequuntur
-                                        hic repudiandae soluta laborum commodi repellendus veritatis incidunt ea.</p>
+                                <div class="card-text ">
+                                    <p>{{Str::limit(strip_tags($post->content),100,'...')}}</p>
 
                                 </div>
                                 <div class="text-end">
-                                    <a href="" class=" text-decoration-none">Baca selengkapnya <img
+                                    <a href="{{route('post.detail',$post->slug)}}" class="text-decoration-none ">Baca selengkapnya <img
                                             src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 pb-3">
-                        <div class="card">
-                            <img src="{{ asset('assets/images/content 1.png') }}" alt="" class="card-img-top">
-                            <div class="card-body">
-                                <div class="card-tittle fw-bold ">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Aliquam dolorum quisquam non necessitatibus,</div>
-                                <div class="row p-0 m-0 justify-content-between py-1 font-size-10">
-                                    <div class="col-6 p-0 m-0 text-start"><span class=""><i
-                                                class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
-                                    <div class="col-6 p-0 m-0 text-end"><span class=""><i
-                                                class="fa-solid fa-comment"></i> 0 Comment</span></div>
-                                </div>
-                                <div class="card-text font-size-10 ">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non
-                                        necessitatibus, minus assumenda dolorem libero quas adipisci asperiores consequuntur
-                                        hic repudiandae soluta laborum commodi repellendus veritatis incidunt ea.</p>
-
-                                </div>
-                                <div class="text-end">
-                                    <a href="" class="text-decoration-none ">Baca selengkapnya <img
-                                            src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 pb-3">
-                        <div class="card">
-                            <img src="{{ asset('assets/images/content 1.png') }}" alt="" class="card-img-top">
-                            <div class="card-body">
-                                <div class="card-tittle fw-bold ">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Aliquam dolorum quisquam non necessitatibus,</div>
-                                <div class="row p-0 m-0 justify-content-between py-1 font-size-10">
-                                    <div class="col-6 p-0 m-0 text-start"><span class=""><i
-                                                class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
-                                    <div class="col-6 p-0 m-0 text-end"><span class=""><i
-                                                class="fa-solid fa-comment"></i> 0 Comment</span></div>
-                                </div>
-                                <div class="card-text font-size-10 ">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non
-                                        necessitatibus, minus assumenda dolorem libero quas adipisci asperiores consequuntur
-                                        hic repudiandae soluta laborum commodi repellendus veritatis incidunt ea.</p>
-
-                                </div>
-                                <div class="text-end">
-                                    <a href="" class="text-decoration-none ">Baca selengkapnya <img
-                                            src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endForeach
+                    
                 </div>
                 {{-- pengumuman --}}
                 <div class="row justify-content-between my-5 pt-2">
@@ -254,81 +201,30 @@
                     </div>
                 </div>
                 <div class="row font-size-12">
+                    @foreach($pengumuman as $post)
                     <div class="col-md-4 pb-3">
                         <div class="card">
-                            <img src="{{ asset('assets/images/content 1.png') }}" alt="" class="card-img-top">
+                            <img src="{{ asset('storage'.$post->thumbnail) }}"  alt="" class="card-img-top img-fluid" style="height:152px;object-fit: cover;object-position: center;">
                             <div class="card-body">
-                                <div class="card-tittle fw-bold ">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Aliquam dolorum quisquam non necessitatibus,</div>
+                                <div class="card-tittle fw-bold ">{{$post->title}}</div>
                                 <div class="row p-0 m-0 justify-content-between py-1">
                                     <div class="col-6 p-0 m-0 text-start"><span class=""><i
-                                                class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
+                                                class="fa-solid fa-calendar"></i>{{Carbon\Carbon::parse($post->created_at)->format('l, d F Y, H:m A')}}</span></div>
                                     <div class="col-6 p-0 m-0 text-end"><span class=""><i
                                                 class="fa-solid fa-comment"></i> 0 Comment</span></div>
                                 </div>
-                                <div class="card-text font-size-10 ">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non
-                                        necessitatibus, minus assumenda dolorem libero quas adipisci asperiores consequuntur
-                                        hic repudiandae soluta laborum commodi repellendus veritatis incidunt ea.</p>
+                                <div class="card-text ">
+                                    <p>{{Str::limit(strip_tags($post->content),100,'...')}}</p>
 
                                 </div>
                                 <div class="text-end">
-                                    <a href="" class=" text-decoration-none">Baca selengkapnya <img
+                                    <a href="{{route('post.detail',$post->slug)}}" class="text-decoration-none ">Baca selengkapnya <img
                                             src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 pb-3">
-                        <div class="card">
-                            <img src="{{ asset('assets/images/content 1.png') }}" alt="" class="card-img-top">
-                            <div class="card-body">
-                                <div class="card-tittle fw-bold ">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Aliquam dolorum quisquam non necessitatibus,</div>
-                                <div class="row p-0 m-0 justify-content-between py-1 font-size-10">
-                                    <div class="col-6 p-0 m-0 text-start"><span class=""><i
-                                                class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
-                                    <div class="col-6 p-0 m-0 text-end"><span class=""><i
-                                                class="fa-solid fa-comment"></i> 0 Comment</span></div>
-                                </div>
-                                <div class="card-text font-size-10 ">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non
-                                        necessitatibus, minus assumenda dolorem libero quas adipisci asperiores consequuntur
-                                        hic repudiandae soluta laborum commodi repellendus veritatis incidunt ea.</p>
-
-                                </div>
-                                <div class="text-end">
-                                    <a href="" class="text-decoration-none ">Baca selengkapnya <img
-                                            src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 pb-3">
-                        <div class="card">
-                            <img src="{{ asset('assets/images/content 1.png') }}" alt="" class="card-img-top">
-                            <div class="card-body">
-                                <div class="card-tittle fw-bold ">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Aliquam dolorum quisquam non necessitatibus,</div>
-                                <div class="row p-0 m-0 justify-content-between py-1 font-size-10">
-                                    <div class="col-6 p-0 m-0 text-start"><span class=""><i
-                                                class="fa-solid fa-calendar"></i> 17 January 2023</span></div>
-                                    <div class="col-6 p-0 m-0 text-end"><span class=""><i
-                                                class="fa-solid fa-comment"></i> 0 Comment</span></div>
-                                </div>
-                                <div class="card-text font-size-10 ">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum quisquam non
-                                        necessitatibus, minus assumenda dolorem libero quas adipisci asperiores consequuntur
-                                        hic repudiandae soluta laborum commodi repellendus veritatis incidunt ea.</p>
-
-                                </div>
-                                <div class="text-end">
-                                    <a href="" class="text-decoration-none ">Baca selengkapnya <img
-                                            src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endForeach
                 </div>
             </div>
         </div>

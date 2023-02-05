@@ -8,6 +8,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Dashboard\TagController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\RoleController;
+use App\Http\Controllers\PostController as PostIndex;
 use App\Http\Controllers\Dashboard\CustomUIController;
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\CategoryPostController;
@@ -25,10 +26,14 @@ use App\Http\Controllers\Dashboard\IndexController as DashboardIndexController;
 */
 
 Route::get('/',[IndexController::class,'index'])->name('index');
+Route::get('post',[PostIndex::class,'post'])->name('post.index');
+Route::get('post/{post:slug}',[PostIndex::class,'post'])->name('post.detail');
+
+Route::get('/page/{id}',[PageController::class,'pageFinder'])->name('page');
 
 Auth::routes();
 Route::middleware(['auth'])->name('dash.')->prefix('dashboard')->group(function(){
-    Route::get('/', [DashboardIndexController::class,'index']);
+    Route::get('/', [DashboardIndexController::class,'index'])->name('index');
     // Post
     Route::resource('post', PostController::class);
     Route::patch('post/{id}/restore', [PostController::class,'restore'])->name('post.restore');

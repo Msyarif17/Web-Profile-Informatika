@@ -28,7 +28,7 @@ class CategoryPostController extends Controller
                     return $categoryPost->name;
                 })
                 ->addColumn('description', function (CategoryPost $categoryPost) {
-                    return Str::limit(strip_tags($categoryPost->description,100));
+                    return Str::limit(strip_tags($categoryPost->description),100);
                 })
                 ->addColumn('post_count', function (CategoryPost $categoryPost) {
                     return $categoryPost->post->count();
