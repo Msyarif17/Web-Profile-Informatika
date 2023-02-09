@@ -3,15 +3,19 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Contracts\Role;
+use App\Http\Controllers\PageController;
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Dashboard\TagController;
+use App\Http\Controllers\Dashboard\MenuController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\RoleController;
+use App\Http\Controllers\Dashboard\BannerController;
 use App\Http\Controllers\PostController as PostIndex;
 use App\Http\Controllers\Dashboard\CustomUIController;
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\CategoryPostController;
+use App\Http\Controllers\Dashboard\PageController as DPageController;
 use App\Http\Controllers\Dashboard\IndexController as DashboardIndexController;
 
 /*
@@ -55,14 +59,22 @@ Route::middleware(['auth'])->name('dash.')->prefix('dashboard')->group(function(
     Route::delete('cui/{id}/delete-permanently', [CustomUIController::class, 'forceDestroy'])->name('cui.forceDelete');
     Route::get('cui/{id}/active',[CustomUIController::class, 'activationTheme'])->name('cui.active');
     // Partner
-    Route::resource('tag',TagController::class);
-    Route::patch('tag/{id}/restore', [TagController::class, 'restore'])->name('tag.restore');
-    Route::delete('tag/{id}/delete-permanently', [CategoryPostController::class, 'forceDestroy'])->name('tag.forceDelete');
+    Route::resource('tag',PartnerController::class);
+    Route::patch('tag/{id}/restore', [PartnerController::class, 'restore'])->name('tag.restore');
+    Route::delete('tag/{id}/delete-permanently', [PartnerController::class, 'forceDestroy'])->name('tag.forceDelete');
     
     // Banner
-    Route::resource('tag',TagController::class);
-    Route::patch('tag/{id}/restore', [TagController::class, 'restore'])->name('tag.restore');
-    Route::delete('tag/{id}/delete-permanently', [CategoryPostController::class, 'forceDestroy'])->name('tag.forceDelete');
+    Route::resource('banner',BannerController::class);
+    Route::patch('banner/{id}/restore', [BannerController::class, 'restore'])->name('banner.restore');
+    Route::delete('banner/{id}/delete-permanently', [BannerController::class, 'forceDestroy'])->name('banner.forceDelete');
+    //Page
+    Route::resource('page',DPageController::class);
+    Route::patch('page/{id}/restore', [DPageController::class, 'restore'])->name('page.restore');
+    Route::delete('page/{id}/delete-permanently', [DPageController::class, 'forceDestroy'])->name('page.forceDelete');
+    //Menu
+    Route::resource('menu',MenuController::class);
+    Route::patch('menu/{id}/restore', [MenuController::class, 'restore'])->name('menu.restore');
+    Route::delete('menu/{id}/delete-permanently', [MenuController::class, 'forceDestroy'])->name('menu.forceDelete');
     
     
     Route::resource('roles', RoleController::class);

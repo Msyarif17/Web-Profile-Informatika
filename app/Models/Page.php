@@ -6,15 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CategoryMenu extends Model
+class Page extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable = [
-        'name',
+        'title',
         'slug',
-        'url_target'
+        'content',
+        'posted_by',
+        'banner',
+        'thumbnail'
     ];
-    public function menu(){
-        return $this->hasMany(Menu::class);
+    public function user(){
+        return $this->belongsTo(User::class,'posted_by');
     }
 }

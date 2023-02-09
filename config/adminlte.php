@@ -340,15 +340,15 @@ return [
                     'url'   => 'dashboard/cui/',
                 ],
                 [
-                    'text'  => 'Logo',
+                    'text'  => 'Menu',
                     'icon'  => 'fa-solid  fa-font-awesome',
-                    'url'   => 'dashboard/logo',
+                    'url'   => 'dashboard/menu',
 
                 ],
                 [
-                    'text'  => 'Banner',
+                    'text'  => 'Pages',
                     'icon'  => 'fa-solid fa-id-card',
-                    'url'   => 'dashboard/banner/*',
+                    'url'   => 'dashboard/page',
                 ],
             ]
         ],

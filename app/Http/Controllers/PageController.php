@@ -11,6 +11,6 @@ class PageController extends Controller
     public function pageFinder($slug){
         
         CategoryMenu::where('slug',$slug)->firstOrFail();
-
+        return \view('')
     }
 }
