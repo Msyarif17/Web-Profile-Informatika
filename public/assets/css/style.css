@@ -1,0 +1,33 @@
+.navbar-color {
+    background-color: #4F8A8B;
+}
+
+.font-default {
+    font-family: 'Montserrat';
+}
+
+.font-size-24 {
+    font-size: 24px;
+}
+
+.font-size-16 {
+    font-size: 16px;
+}
+.font-size-14{
+    font-size: 14px;
+}
+.font-size-12 {
+    font-size: 12px;
+}
+.font-size-10{
+    font-size: 10px;
+}
+.font-black {
+    color: black;
+}
+.font-white{
+    color:white;
+}
+.nav-link{
+    color: white;
+}

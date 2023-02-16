@@ -15,15 +15,19 @@ return new class extends Migration
     {
         Schema::create('custom_user_interfaces', function (Blueprint $table) {
             $table->id();
-            $table->string('logo');
-            $table->string('favicon');
-            $table->string('video_thumbnail');
+            $table->string('name');
+            $table->string('logo')->default(asset('assets/images/Logo Teknik Informatika.png'));
+            $table->string('logo_name')->default('TEKNIK<br>INFORMATIKA')->nullable();
+            $table->string('favicon')->default(asset('assets/images/Logo Teknik Informatika.png'));
+            $table->string('video_thumbnail')->nullable();
             $table->string('navbar_color')->default('#FFFF');
             $table->string('background_color')->default('#FFFF');
             $table->string('card_color')->default('#FFFF');
             $table->string('button_color')->default('#FFFF');
             $table->string('font')->default('roboto');
             $table->string('footer_color')->default('#FFFF');
+            
+            $table->softDeletes();
             $table->timestamps();
         });
     }

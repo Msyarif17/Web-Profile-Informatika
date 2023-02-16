@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(CategoryPost::class);
             $table->string('title');
             $table->string('slug');
-            $table->string('content');
+            $table->longText('content');
             $table->foreignIdFor(User::class,'posted_by');
             $table->string('banner');
             $table->string('thumbnail');

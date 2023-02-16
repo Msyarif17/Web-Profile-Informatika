@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('visi');
             $table->string('misi');
             $table->string('tujuan');
+            $table->string('sasaran');
             $table->timestamps();
         });
     }
