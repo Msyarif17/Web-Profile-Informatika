@@ -52,37 +52,40 @@
             <div class="collapse navbar-collapse justify-content-md-end" id="navbarCollapse" >
                 
                 <ul class="navbar-nav mb-2 mb-md-0 ">
+                    @foreach($nav as $n)
+                    
                     <li class="nav-item navbar-pills rounded-0 dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Profil Jurusan
-                        </a>
+                        
+                        @if(count($n->menu)>0)
+                        <a class="nav-link dropdown-toggle" href="{{url($n->url_target)}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{$n->name}}
+                         </a>
                         <ul class="dropdown-menu rounded-0 ">
-                            <li><a class="dropdown-item" href="#">Sejarah</a></li>
-                            <li><a class="dropdown-item" href="#">Visi, Misi, Tujuan dan Sasaran</a></li>
-                            <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
-                            <li>
-                                <a class="dropdown-item" href="#">stuff</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Dosen</a></li>
-                                    <li><a class="dropdown-item" href="#">Admin</a></li>
-                                    <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
+                            
+                                @foreach($n->menu as $m)
+                                    @if(count($m->subMenu)==0)
+                                    <li><a class="dropdown-item" href="{{url($m->url_target)}}">{{$m->name}}</a></li>
                                     
-                                </ul>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    @else
+                                    <li class="dropdown">
+                                        <button class="dropdown-item dropdown-toggle" href="{{url($m->url_target)}}" role="button" data-bs-toggle="dropdown" id="{{$m->slug}}" aria-expanded="false">{{$m->name}}</button>
+                                        <ul class="dropdown-menu rounded-0" aria-labelledby="{{$m->slug}}">
+                                            @foreach($m->subMenu as $sm)
+                                            <li><a class="dropdown-item" href="{{url($sm->url_target)}}">{{$sm->name}}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    @endif
+                                @endforeach
                         </ul>
+                        @else
+                        <a class="nav-link " href="{{url($n->url_target)}}" role="button" >
+                            {{$n->name}}
+                         </a>
+                        @endif
                     </li>
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link" href="#">Akademik</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#">Layanan Akademik</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Berita</a>
-                    </li>
+                    @endforeach
+                    
                 </ul>
             
             </div>

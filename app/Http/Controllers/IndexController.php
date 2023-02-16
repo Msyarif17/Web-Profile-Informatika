@@ -11,14 +11,15 @@ class IndexController extends Controller
 {
     public function index(){
         $data = Post::with(['tag','category']);
-        
+        $nav = NavigationController::nav();
+       
         $pengumuman = $data->whereHas('category',function ($query){
             $query->where('name','Berita');
         })->latest()->get();
         $posts = $data->latest()->get();
         $cui = CustomUserInterface::where('isActive',true)->first();
         if($cui){
-            return view('frontend.index',compact('cui','posts','pengumuman'));
+            return view('frontend.index',compact('cui','posts','pengumuman','nav'));
         }
         return 'tema tidak ditemukan, mohon setting tema terlebih dahulu,<a href="'.route('dash.cui.index').'" target="_blank">login</a>';
     }
