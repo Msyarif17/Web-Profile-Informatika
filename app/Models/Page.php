@@ -15,9 +15,11 @@ class Page extends Model
         'content',
         'posted_by',
         'banner',
-        'thumbnail'
+        'thumbnail',
+        'page_id'
     ];
     public function user(){
         return $this->belongsTo(User::class,'posted_by');
     }
+    
 }

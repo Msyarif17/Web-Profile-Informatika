@@ -12,9 +12,14 @@ class CategoryMenu extends Model
     protected $fillable = [
         'name',
         'slug',
-        'url_target'
+        'url_target',
+        'page_id'
     ];
     public function menu(){
         return $this->hasMany(Menu::class);
+    }
+    public function page()
+    {
+        return $this->hasOne(Page::class);
     }
 }

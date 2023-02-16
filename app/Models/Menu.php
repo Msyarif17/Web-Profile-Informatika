@@ -13,12 +13,17 @@ class Menu extends Model
         'category_menu_id',
         'name',
         'url_target',
-        'slug'
+        'slug',
+        'page_id'
     ];
     public function categoryMenu(){
         return $this->belongsTo(CategoryMenu::class, 'category_menu_id');
     }
     public function subMenu(){
         return $this->hasMany(SubMenu::class);
+    }
+    public function page()
+    {
+        return $this->hasOne(Page::class);
     }
 }

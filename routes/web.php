@@ -59,9 +59,9 @@ Route::middleware(['auth'])->name('dash.')->prefix('dashboard')->group(function(
     Route::delete('cui/{id}/delete-permanently', [CustomUIController::class, 'forceDestroy'])->name('cui.forceDelete');
     Route::get('cui/{id}/active',[CustomUIController::class, 'activationTheme'])->name('cui.active');
     // Partner
-    Route::resource('tag',PartnerController::class);
-    Route::patch('tag/{id}/restore', [PartnerController::class, 'restore'])->name('tag.restore');
-    Route::delete('tag/{id}/delete-permanently', [PartnerController::class, 'forceDestroy'])->name('tag.forceDelete');
+    // Route::resource('tag',PartnerController::class);
+    // Route::patch('tag/{id}/restore', [PartnerController::class, 'restore'])->name('tag.restore');
+    // Route::delete('tag/{id}/delete-permanently', [PartnerController::class, 'forceDestroy'])->name('tag.forceDelete');
     
     // Banner
     Route::resource('banner',BannerController::class);

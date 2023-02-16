@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             // main seeder 
             UserSeeder::class,
             //oder seeder
-
+            MenuSeeder::class,
         ]);
     }
 }

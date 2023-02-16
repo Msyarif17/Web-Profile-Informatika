@@ -13,10 +13,15 @@ class SubMenu extends Model
         'menu_id',
         'name',
         'slug',
-        'url_target'
+        'url_target',
+        'page_id'
     ];
 
     public function menu(){
         return $this->belongsTo(Menu::class, 'menu_id');
+    }
+    public function page()
+    {
+        return $this->hasOne(Page::class);
     }
 }
