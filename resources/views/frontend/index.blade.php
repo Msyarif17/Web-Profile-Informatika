@@ -1,141 +1,8 @@
 @extends('frontend.component.master')
 @section('css')
-    
 @endsection
 @section('content')
-    <section class="container-fluid p-0" >
-        <div id="carouselExampleIndicators" style="background-color: #7868E6;height: 500px;" class="carousel slide"
-            data-bs-ride="true">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="jumbotron p-0 mb-0 m"
-                        style=" background-color: #7868E6;height: 500px;  background-image:url('{{ asset('assets/images/banner.png') }}') ; background-size: cover;background-repeat: no-repeat;background-position:center center; ">
-
-                        <div class="py-0 h-100">
-                            <div class="container d-flex py-0 h-100" style="">
-                                <div class="row justify-content-center align-self-center">
-                                    <div class="row m-0 p-0 ">
-                                        <div class="col-12" style="color: white;">
-                                            <b>
-                                                <h1 style="font-size: 20px;font-weight:1000">Profil Jurusan</h1>
-                                            </b>
-                                            <b>
-                                                <h1 style="font-size: 40px;font-weight:1000">Teknik Informatika</h1>
-                                            </b>
-                                        </div>
-                                    </div>
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12" style="color: white;">
-                                            <p style="font-size: 20px;font-weight:1000">Informatika Sakti</p>
-                                            <p style="font-size: 20px;font-weight:1000">Informatika Satu</p>
-                                        </div>
-                                    </div>
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12">
-                                            <a href=""><button class="btn btn-primary border-0"
-                                                    style="background-color: #4F8A8B;">
-                                                    <p class="p-0 m-0" style="font-weight:1000">Jelajahi Sekarang</p>
-                                                </button></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="jumbotron p-0 mb-0 m"
-                        style=" background-color: #7868E6;height: 500px;  background-image:url('{{ asset('assets/images/banner.png') }}') ; background-size: cover;background-repeat: no-repeat;background-position:center center; ">
-
-                        <div class="py-0 h-100">
-                            <div class="container d-flex py-0 h-100" style="">
-                                <div class="row justify-content-center align-self-center">
-                                    <div class="row m-0 p-0 ">
-                                        <div class="col-12" style="color: white;">
-                                            <b>
-                                                <h1 style="font-size: 20px;font-weight:1000">Profil Jurusan</h1>
-                                            </b>
-                                            <b>
-                                                <h1 style="font-size: 40px;font-weight:1000">Teknik Informatika</h1>
-                                            </b>
-                                        </div>
-                                    </div>
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12" style="color: white;">
-                                            <p style="font-size: 20px;font-weight:1000">Informatika Sakti</p>
-                                            <p style="font-size: 20px;font-weight:1000">Informatika Satu</p>
-                                        </div>
-                                    </div>
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12">
-                                            <a href=""><button class="btn btn-primary border-0"
-                                                    style="background-color: #4F8A8B;">
-                                                    <p class="p-0 m-0" style="font-weight:1000">Jelajahi Sekarang</p>
-                                                </button></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="jumbotron p-0 mb-0 m"
-                        style=" background-color: #7868E6;height: 500px;  background-image:url('{{ asset('assets/images/banner.png') }}') ; background-size: cover;background-repeat: no-repeat;background-position:center center; ">
-
-                        <div class="py-0 h-100">
-                            <div class="container d-flex py-0 h-100" style="">
-                                <div class="row justify-content-center align-self-center">
-                                    <div class="row m-0 p-0 ">
-                                        <div class="col-12" style="color: white;">
-                                            <b>
-                                                <h1 style="font-size: 20px;font-weight:1000">Profil Jurusan</h1>
-                                            </b>
-                                            <b>
-                                                <h1 style="font-size: 40px;font-weight:1000">Teknik Informatika</h1>
-                                            </b>
-                                        </div>
-                                    </div>
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12" style="color: white;">
-                                            <p style="font-size: 20px;font-weight:1000">Informatika Sakti</p>
-                                            <p style="font-size: 20px;font-weight:1000">Informatika Satu</p>
-                                        </div>
-                                    </div>
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12">
-                                            <a href=""><button class="btn btn-primary border-0"
-                                                    style="background-color: #4F8A8B;">
-                                                    <p class="p-0 m-0" style="font-weight:1000">Jelajahi Sekarang</p>
-                                                </button></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev w-auto " type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next  w-auto" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </section>
+    @include('frontend.component.carousel')
     <section>
         <div class="container">
             <div class="my-5 py-5">
@@ -157,31 +24,35 @@
                     </div>
                 </div>
                 <div class="row font-size-12">
-                    @foreach($posts as $post)
-                    <div class="col-md-4 pb-3">
-                        <div class="card">
-                            <img src="{{ asset('storage'.$post->thumbnail) }}"  alt="" class="card-img-top img-fluid" style="height:152px;object-fit: cover;object-position: center;">
-                            <div class="card-body">
-                                <div class="card-tittle fw-bold ">{{$post->title}}</div>
-                                <div class="row p-0 m-0 justify-content-between py-1">
-                                    <div class="col-6 p-0 m-0 text-start"><span class=""><i
-                                                class="fa-solid fa-calendar"></i>{{Carbon\Carbon::parse($post->created_at)->format('l, d F Y, H:m A')}}</span></div>
-                                    <div class="col-6 p-0 m-0 text-end"><span class=""><i
-                                                class="fa-solid fa-comment"></i> 0 Comment</span></div>
-                                </div>
-                                <div class="card-text ">
-                                    <p>{{Str::limit(strip_tags($post->content),100,'...')}}</p>
+                    @foreach ($posts as $post)
+                        <div class="col-md-4 pb-3">
+                            <div class="card">
+                                <img src="{{ asset('storage' . $post->thumbnail) }}" alt=""
+                                    class="card-img-top img-fluid"
+                                    style="height:152px;object-fit: cover;object-position: center;">
+                                <div class="card-body">
+                                    <div class="card-tittle fw-bold ">{{ $post->title }}</div>
+                                    <div class="row p-0 m-0 justify-content-between py-1">
+                                        <div class="col-6 p-0 m-0 text-start"><span class=""><i
+                                                    class="fa-solid fa-calendar"></i>{{ Carbon\Carbon::parse($post->created_at)->format('l, d F Y, H:m A') }}</span>
+                                        </div>
+                                        <div class="col-6 p-0 m-0 text-end"><span class=""><i
+                                                    class="fa-solid fa-comment"></i> 0 Comment</span></div>
+                                    </div>
+                                    <div class="card-text ">
+                                        <p>{{ Str::limit(strip_tags($post->content), 100, '...') }}</p>
 
-                                </div>
-                                <div class="text-end">
-                                    <a href="{{route('post.detail',$post->slug)}}" class="text-decoration-none ">Baca selengkapnya <img
-                                            src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
+                                    </div>
+                                    <div class="text-end">
+                                        <a href="{{ route('post.detail', $post->slug) }}" class="text-decoration-none ">Baca
+                                            selengkapnya <img src="{{ asset('assets/images/Vector.png') }}"
+                                                alt=""></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endForeach
-                    
+
                 </div>
                 {{-- pengumuman --}}
                 <div class="row justify-content-between my-5 pt-2">
@@ -201,29 +72,34 @@
                     </div>
                 </div>
                 <div class="row font-size-12">
-                    @foreach($pengumuman as $post)
-                    <div class="col-md-4 pb-3">
-                        <div class="card">
-                            <img src="{{ asset('storage'.$post->thumbnail) }}"  alt="" class="card-img-top img-fluid" style="height:152px;object-fit: cover;object-position: center;">
-                            <div class="card-body">
-                                <div class="card-tittle fw-bold ">{{$post->title}}</div>
-                                <div class="row p-0 m-0 justify-content-between py-1">
-                                    <div class="col-6 p-0 m-0 text-start"><span class=""><i
-                                                class="fa-solid fa-calendar"></i>{{Carbon\Carbon::parse($post->created_at)->format('l, d F Y, H:m A')}}</span></div>
-                                    <div class="col-6 p-0 m-0 text-end"><span class=""><i
-                                                class="fa-solid fa-comment"></i> 0 Comment</span></div>
-                                </div>
-                                <div class="card-text ">
-                                    <p>{{Str::limit(strip_tags($post->content),100,'...')}}</p>
+                    @foreach ($pengumuman as $post)
+                        <div class="col-md-4 pb-3">
+                            <div class="card">
+                                <img src="{{ asset('storage' . $post->thumbnail) }}" alt=""
+                                    class="card-img-top img-fluid"
+                                    style="height:152px;object-fit: cover;object-position: center;">
+                                <div class="card-body">
+                                    <div class="card-tittle fw-bold ">{{ $post->title }}</div>
+                                    <div class="row p-0 m-0 justify-content-between py-1">
+                                        <div class="col-6 p-0 m-0 text-start"><span class=""><i
+                                                    class="fa-solid fa-calendar"></i>{{ Carbon\Carbon::parse($post->created_at)->format('l, d F Y, H:m A') }}</span>
+                                        </div>
+                                        <div class="col-6 p-0 m-0 text-end"><span class=""><i
+                                                    class="fa-solid fa-comment"></i> 0 Comment</span></div>
+                                    </div>
+                                    <div class="card-text ">
+                                        <p>{{ Str::limit(strip_tags($post->content), 100, '...') }}</p>
 
-                                </div>
-                                <div class="text-end">
-                                    <a href="{{route('post.detail',$post->slug)}}" class="text-decoration-none ">Baca selengkapnya <img
-                                            src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
+                                    </div>
+                                    <div class="text-end">
+                                        <a href="{{ route('post.detail', $post->slug) }}"
+                                            class="text-decoration-none ">Baca
+                                            selengkapnya <img src="{{ asset('assets/images/Vector.png') }}"
+                                                alt=""></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endForeach
                 </div>
             </div>
@@ -238,35 +114,45 @@
             </div>
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+                    <?php
+                    $i = 0;
+                    ?>
+                    @foreach ($prestasi as $p)
+                        @if ($i == 0)
+                            <button type="button" data-bs-target="#carouselExampleCaptions"
+                                data-bs-slide-to="{{ $i }}" class="active" aria-current="true"
+                                aria-label="Slide {{ $i++ }}"></button>
+                        @else
+                            <button type="button" data-bs-target="#carouselExampleCaptions"
+                                data-bs-slide-to="{{ $i }}" aria-label="Slide {{ $i++ }}"></button>
+                        @endif
+                    @endforeach
+
                 </div>
                 <div class="carousel-inner rounded">
-                    <div class="carousel-item active">
-                        <img src="{{ asset('assets/images/banner.png') }}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('assets/images/banner.png') }}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('assets/images/banner.png') }}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
-                        </div>
-                    </div>
+                    <?php
+                    $i = 0;
+                    ?>
+                    @foreach ($prestasi as $p)
+                        @if ($i == 0)
+                            <div class="carousel-item active">
+                                <img src="{{ asset('storage'.$p->banner) }}" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{$p->title}}</h5>
+                                    <p>{{Str::limit($p->content,100,'...')}}</p>
+                                </div>
+                            </div>
+                        @else
+                            <div class="carousel-item">
+                                <img src="{{ asset('storage'.$p->banner) }}" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{$p->title}}</h5>
+                                    <p>{{Str::limit($p->content,100,'...')}}</p>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                    
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                     data-bs-slide="prev">
@@ -337,95 +223,94 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        
         const ctx = document.getElementById('myChart');
 
         new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021],
-            datasets: [{
-              label: "Peminat Jurusan Teknik Informatika",
-              lineTension: 0.3,
-              backgroundColor: "rgba(78, 115, 223, 0.05)",
-              borderColor: "rgba(78, 115, 223, 1)",
-              pointRadius: 3,
-              pointBackgroundColor: "rgba(78, 115, 223, 1)",
-              pointBorderColor: "rgba(78, 115, 223, 1)",
-              pointHoverRadius: 3,
-              pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-              pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-              pointHitRadius: 10,
-              pointBorderWidth: 2,
-              data: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
-            }],
-          },
-          options: {
-            maintainAspectRatio: false,
-            layout: {
-              padding: {
-                left: 10,
-                right: 25,
-                top: 25,
-                bottom: 0
-              }
+            type: 'line',
+            data: {
+                labels: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+                datasets: [{
+                    label: "Peminat Jurusan Teknik Informatika",
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(78, 115, 223, 0.05)",
+                    borderColor: "rgba(78, 115, 223, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                    pointBorderColor: "rgba(78, 115, 223, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                    pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+                }],
             },
-            scales: {
-              xAxes: [{
-                time: {
-                  unit: 'date'
+            options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 25,
+                        top: 25,
+                        bottom: 0
+                    }
                 },
-                gridLines: {
-                  display: false,
-                  drawBorder: false
+                scales: {
+                    xAxes: [{
+                        time: {
+                            unit: 'date'
+                        },
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 7
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            maxTicksLimit: 5,
+                            padding: 10,
+                            // Include a dollar sign in the ticks
+                            callback: function(value, index, values) {
+                                return '$' + number_format(value);
+                            }
+                        },
+                        gridLines: {
+                            color: "rgb(234, 236, 244)",
+                            zeroLineColor: "rgb(234, 236, 244)",
+                            drawBorder: false,
+                            borderDash: [2],
+                            zeroLineBorderDash: [2]
+                        }
+                    }],
                 },
-                ticks: {
-                  maxTicksLimit: 7
-                }
-              }],
-              yAxes: [{
-                ticks: {
-                  maxTicksLimit: 5,
-                  padding: 10,
-                  // Include a dollar sign in the ticks
-                  callback: function(value, index, values) {
-                    return '$' + number_format(value);
-                  }
+                legend: {
+                    display: false
                 },
-                gridLines: {
-                  color: "rgb(234, 236, 244)",
-                  zeroLineColor: "rgb(234, 236, 244)",
-                  drawBorder: false,
-                  borderDash: [2],
-                  zeroLineBorderDash: [2]
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    titleMarginBottom: 10,
+                    titleFontColor: '#6e707e',
+                    titleFontSize: 14,
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    intersect: false,
+                    mode: 'index',
+                    caretPadding: 10,
+                    callbacks: {
+                        label: function(tooltipItem, chart) {
+                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                            return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+                        }
+                    }
                 }
-              }],
-            },
-            legend: {
-              display: false
-            },
-            tooltips: {
-              backgroundColor: "rgb(255,255,255)",
-              bodyFontColor: "#858796",
-              titleMarginBottom: 10,
-              titleFontColor: '#6e707e',
-              titleFontSize: 14,
-              borderColor: '#dddfeb',
-              borderWidth: 1,
-              xPadding: 15,
-              yPadding: 15,
-              displayColors: false,
-              intersect: false,
-              mode: 'index',
-              caretPadding: 10,
-              callbacks: {
-                label: function(tooltipItem, chart) {
-                  var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                  return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
-                }
-              }
             }
-          }
         });
     </script>
 @endsection

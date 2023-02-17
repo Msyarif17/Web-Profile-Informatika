@@ -15,7 +15,7 @@ return [
     */
 
     'title' => 'Informatika',
-    'title_prefix' => 'Dashboard',
+    'title_prefix' => 'Informatika',
     'title_postfix' => '',
 
     /*
@@ -31,7 +31,7 @@ return [
     */
 
     'use_ico_only' => false,
-    'use_full_favicon' => true,
+    'use_full_favicon' => 'assets/images/Logo Teknik Informatika.png',
 
     /*
     |--------------------------------------------------------------------------
@@ -303,6 +303,7 @@ return [
             'url'         => 'dashboard',
             'icon'        => 'fa-solid fa-gauge',
             'label_color' => 'success',
+            'can' => 'access-dashboard'
         ],
         ['header' => 'POST MAKER'],
 
@@ -310,69 +311,89 @@ return [
             'text'  => 'Category Post',
             'icon'  => 'fa-solid fa-list',
             'url'   => 'dashboard/category-post/',
+            'can' => 'read-category-post'
         ],
         [
             'text'  => 'Tags Post',
             'icon'  => 'fa-solid fa-tags',
             'url'   => 'dashboard/tag/',
+            'can' => 'read-tag'
         ],
         [
             'text'  => 'Post',
             'icon'  => 'fa-solid fa-newspaper',
             'url'   => 'dashboard/post/',
-
+            'can' => 'read-post'
         ],
         [
             'text'  => 'Comment',
             'icon'  => 'fa-solid fa-list',
             'url'   => 'dashboard/comment',
+            'can' => 'edit-comment'
         ],
-        ['header' => 'USER INTERFACE',],
+        [
+            'header' => 'USER INTERFACE',
+            'can' => 'access-theme-editor',
+        ],
         [
             'text'        => 'Custom',
             'icon'        => 'fa-solid fa-paint-roller',
             'label_color' => 'success',
+            'can' => 'access-theme-editor',
             'submenu' => [
-
+                [
+                    'text'  => 'Banner',
+                    'icon'  => 'fa-solid fa-brush',
+                    'url'   => 'dashboard/banner/',
+                    'can' => 'read-banner'
+                ],
                 [
                     'text'  => 'Theme',
                     'icon'  => 'fa-solid fa-brush',
                     'url'   => 'dashboard/cui/',
+                    'can' => 'access-theme-editor'
                 ],
                 [
-                    'text'  => 'Menu',
+                    'text'  => 'Navigation',
                     'icon'  => 'fa-solid  fa-font-awesome',
                     'url'   => 'dashboard/menu',
+                    'can' => [
+                        'read-category-menu',
+                        'read-menu',
+                        'read-sub-menu',
+                    ]
 
                 ],
                 [
                     'text'  => 'Pages',
                     'icon'  => 'fa-solid fa-id-card',
                     'url'   => 'dashboard/page',
+                    'can' => 'read-page'
                 ],
             ]
         ],
 
-        ['header' => 'account_settings'],
+        [
+            'header' => 'User Manager',
+            'can' => 'read-user'
+        ],
         [
             'text' => 'Roles',
             'url'  => 'dashboard/roles',
             'icon' => 'fa-solid fa-gear',
+            'can' => 'read-role'
         ],
         [
             'text' => 'Permissions',
             'url'  => 'dashboard/permissions',
             'icon' => 'fa-solid fa-key',
+            'can' => 'read-permission'
         ],
         [
             'text' => 'Users',
-            'url'  => 'dashboard/Users',
+            'url'  => 'dashboard/users',
             'icon' => 'fa-solid fa-users',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'can' => 'read-user'
         ],
 
     ],

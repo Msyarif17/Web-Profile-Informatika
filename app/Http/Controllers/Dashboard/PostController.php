@@ -22,18 +22,36 @@ class PostController extends Controller
      */
     public function index(DataTables $datatables, Request $request)
     {
+        
+        $data = Post::with([
+            'category' => function ($query) {
+                return $query->withTrashed();
+            },
+            'user' => function ($query) {
+                return $query->withTrashed();
+            },
+            'tag' => function ($query) {
+                return $query->withTrashed();
+            }
+        ]);
+        $roleUser = Auth::user()->getRoleNames();
+        switch($roleUser){
+            case 'Super Admin':
+                $data->withTrashed();
+                break;
+            case 'Admin':
+                $data->withTrashed();
+                break;
+            case 'Dosen':
+                $data->where('posted_by',Auth::user()->id)->withTrashed();
+                break;
+            default:
+                Auth::logout();
+                return redirect()->route('login');
+                break;
+        }
         if ($request->ajax()) {
-            return $datatables->of(Post::with([
-                'category' => function ($query) {
-                    return $query->withTrashed();
-                },
-                'user' => function ($query){
-                    return $query->withTrashed();
-                },
-                'tag' => function ($query) {
-                    return $query->withTrashed();
-                }
-                ])->withTrashed())
+            return $datatables->of($data)
                 ->addColumn('judul', function (Post $post) {
                     return $post->title;
                 })

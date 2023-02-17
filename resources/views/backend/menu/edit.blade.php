@@ -23,7 +23,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        {!! Form::open(['route' => ['dash.menu.update',$page->id,'param'=>$param], 'method' => 'put', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
+                        {!! Form::open(['route' => ['dash.menu.update',$old->id,'param'=>$param], 'method' => 'put', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
                         @include('backend.menu._form')
                         {!! Form::close() !!}
                     </div>

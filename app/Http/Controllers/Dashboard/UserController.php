@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -12,9 +18,36 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(DataTables $datatables, Request $request)
+    {   
+
+        if ($request->ajax()) {
+            return $datatables->of(User::query())
+                ->addColumn('name', function (User $users) {
+                    return $users->name;
+                })
+                ->addColumn('role', function (User $users) {
+                    return implode(", ", $users->getRoleNames()? $users->getRoleNames()->toArray():[]);
+                })
+                ->addColumn('permission', function (User $users) {
+                    return implode(", ", $users->getPermissionNames()? $users->getPermissionNames()->toArray():[]);
+                })
+                ->addColumn('status', function (User $user) {
+                    if ($user->deleted_at) {
+                        return 'Inactive';
+                    } else {
+                        return 'Active';
+                    }
+                })
+                ->addColumn('action', function (User $users) {
+                    return \view('backend.users.button_action', compact('users'));
+                })
+                ->rawColumns(['status', 'action'])
+                ->make(true);
+        } else {
+
+            return view('backend.users.index');
+        }
     }
 
     /**
@@ -24,7 +57,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::pluck('name','name')->all();
+        return view('backend.users.create',compact('roles'));
     }
 
     /**
@@ -35,7 +69,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'roles' => 'required'
+        ]);
+
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+
+        $user = User::create($input);
+        $user->assignRole($request->input('roles'));
+
+        return redirect()->route('dash.users.index')
+        ->with('success', 'User created successfully');
     }
 
     /**
@@ -57,7 +105,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $users = User::find($id);
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $users->roles->pluck('name', 'name')->all();
+
+        return view('backend.users.edit', compact('users', 'roles', 'userRole'));
     }
 
     /**
@@ -69,7 +121,29 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'email|unique:users,email,' . $id,
+            'password' => 'same:confirm-password',
+            'roles' => 'required'
+        ]);
+
+        $input = $request->all();
+        if (!empty($input['password'])) {
+            $input['password'] = Hash::make($input['password']);
+        } 
+
+        $user = User::find($id);
+        $user->update($input);
+        if($request->roles){
+
+            DB::table('model_has_roles')->where('model_id', $id)->delete();
+    
+            $user->assignRole($request->roles);
+        }
+
+        return redirect()->route('dash.users.index')
+        ->with('success', 'User updated successfully');
     }
 
     /**
@@ -80,6 +154,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('dash.users.index')
+        ->with('success', 'User deleted successfully');
     }
 }

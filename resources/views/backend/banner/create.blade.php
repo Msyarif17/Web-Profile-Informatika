@@ -1,6 +1,6 @@
 @extends('layouts.dash')
 @push('css')
-    @include('backend.component.tinymce-config')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 @endpush
 @section('content')
     <section class="content">
@@ -11,7 +11,7 @@
                         <div class="row justify-content-between fw-bold align-items-center">
                             <div class="card-title fs-1 ">
                                 
-                                    Create Post
+                                    Create Banner
                                 
                             </div>
                             <a href="{{URL::previous()}}">
@@ -23,8 +23,8 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        {!! Form::open(['route' => 'dash.post.store', 'method' => 'post', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
-                        @include('backend.post._form')
+                        {!! Form::open(['route' => 'dash.banner.store', 'method' => 'post', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
+                        @include('backend.banner._form')
                         {!! Form::close() !!}
                     </div>
                     <!-- /.card-body -->
@@ -36,3 +36,9 @@
         <!-- /.row -->
     </section>
 @endsection
+@push('js') 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/js/bootstrap-colorpicker.min.js"></script>
+    <script>
+        $('.colorpicker').colorpicker();
+    </script>
+@endpush

@@ -11,7 +11,7 @@
                         <div class="row justify-content-between fw-bold align-items-center">
                             <div class="card-title fs-1 ">
                                 
-                                Edit Tag Post
+                                Edit Role
                                 
                             </div>
                             <a href="{{URL::previous()}}">
@@ -23,8 +23,8 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        {!! Form::open(['route' => ['dash.tag.update',$tag->id], 'method' => 'put', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
-                        @include('backend.post-tag._form')
+                        {!! Form::open(['route' => ['dash.roles.update',$roles->id], 'method' => 'put', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
+                        @include('backend.roles._form')
                         {!! Form::close() !!}
                     </div>
                     <!-- /.card-body -->

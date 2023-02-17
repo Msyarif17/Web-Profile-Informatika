@@ -186,7 +186,7 @@ return [
          * Package Service Providers...
          */
         Spatie\Permission\PermissionServiceProvider::class,
-
+        Shetabit\Visitor\Provider\VisitorServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -210,6 +210,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Page' => App\Models\Page::class,
+        'Post' => App\Models\Post::class,
+        'Visitor' => Shetabit\Visitor\Facade\Visitor::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

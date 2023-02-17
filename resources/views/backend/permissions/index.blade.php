@@ -21,10 +21,6 @@
                                 <thead>
                                 <tr>
                                     <th>Nama</th>
-                                    <th>Deskripsi</th>
-                                    <th>Jumlah Post</th>
-                                    <th>Tanggal Dibuat</th>
-                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
@@ -52,19 +48,6 @@
                 },
                 columns: [
                     {data: 'name'},
-                    {data: 'description'},
-                    {data: 'post_count'},
-                    {data: 'created_at'},
-                    {
-                        data: 'status', name: 'deleted_at', render: function (datum, type, row) {
-                            if (row.status == 'Active') {
-                                return `<span class="badge badge-success">${row.status}<span>`;
-                            } else {
-                                return `<span class="badge badge-danger">${row.status}<span>`;
-                            }
-
-                        }
-                    },
                     {
                         data: 'action',
                         orderable: false,

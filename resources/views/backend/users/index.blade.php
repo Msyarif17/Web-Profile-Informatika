@@ -7,9 +7,9 @@
             <div class="col-12">
                 <div class="card mt-4">
                     <div class="card-header">
-                        <h3 class="card-title">Post Tag</h3>
+                        <h3 class="card-title">Users</h3>
                         <div class="float-right">
-                            <a href="{{route('dash.tag.create')}}" class="btn btn-success btn-flat btn-sm"
+                            <a href="{{route('dash.users.create')}}" class="btn btn-success btn-flat btn-sm"
                                title="Tambah">Tambah</a>
                         </div>
                     </div>
@@ -21,9 +21,8 @@
                                 <thead>
                                 <tr>
                                     <th>Nama</th>
-                                    <th>Deskripsi</th>
-                                    <th>Jumlah Post</th>
-                                    <th>Tanggal Dibuat</th>
+                                    <th>Role</th>
+                                    <th>Permission</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -48,13 +47,12 @@
                 processing: true,
                 searchDelay: 1000,
                 ajax: {
-                    url: '{{route('dash.tag.index')}}',
+                    url: '{{route('dash.users.index')}}',
                 },
                 columns: [
                     {data: 'name'},
-                    {data: 'description'},
-                    {data: 'post_count'},
-                    {data: 'created_at'},
+                    {data: 'role'},
+                    {data: 'permission'},
                     {
                         data: 'status', name: 'deleted_at', render: function (datum, type, row) {
                             if (row.status == 'Active') {

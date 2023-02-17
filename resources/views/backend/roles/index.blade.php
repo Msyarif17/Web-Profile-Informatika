@@ -7,26 +7,23 @@
             <div class="col-12">
                 <div class="card mt-4">
                     <div class="card-header">
-                        <h3 class="card-title">Post Tag</h3>
+                        <h3 class="card-title">Roles</h3>
                         <div class="float-right">
-                            <a href="{{route('dash.tag.create')}}" class="btn btn-success btn-flat btn-sm"
-                               title="Tambah">Tambah</a>
+                            <a href="{{ route('dash.roles.create') }}" class="btn btn-success btn-flat btn-sm"
+                                title="Tambah">Tambah</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        
+
                         <div class="table-responsive">
                             <table id="data" class="table table-bordered table-striped">
                                 <thead>
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>Deskripsi</th>
-                                    <th>Jumlah Post</th>
-                                    <th>Tanggal Dibuat</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
+                                    <tr>
+                                        <th>Role Name</th>
+                                        <th>Permission Name</th>
+                                        <th>Aksi</th>
+                                    </tr>
                                 </thead>
                             </table>
                         </div>
@@ -48,29 +45,20 @@
                 processing: true,
                 searchDelay: 1000,
                 ajax: {
-                    url: '{{route('dash.tag.index')}}',
+                    url: '{{ route('dash.roles.index') }}',
                 },
                 columns: [
-                    {data: 'name'},
-                    {data: 'description'},
-                    {data: 'post_count'},
-                    {data: 'created_at'},
                     {
-                        data: 'status', name: 'deleted_at', render: function (datum, type, row) {
-                            if (row.status == 'Active') {
-                                return `<span class="badge badge-success">${row.status}<span>`;
-                            } else {
-                                return `<span class="badge badge-danger">${row.status}<span>`;
-                            }
-
-                        }
+                        data: 'name'
+                    },
+                    {
+                        data: 'permission'
                     },
                     {
                         data: 'action',
                         orderable: false,
                         searchable: false
                     },
-
                 ]
             });
         });

@@ -7,9 +7,9 @@
             <div class="col-12">
                 <div class="card mt-4">
                     <div class="card-header">
-                        <h3 class="card-title">Post</h3>
+                        <h3 class="card-title">Banner</h3>
                         <div class="float-right">
-                            <a href="{{route('dash.post.create')}}" class="btn btn-success btn-flat btn-sm"
+                            <a href="{{route('dash.banner.create')}}" class="btn btn-success btn-flat btn-sm"
                                title="Tambah">Tambah</a>
                         </div>
                     </div>
@@ -19,11 +19,10 @@
                         <div class="table-responsive">
                             <table id="data" class="table table-bordered table-striped">
                                 <thead>
-                                <tr>
+                                <tr class="text-center">
+                                    <th>Slide</th>
+                                    <th>Gambar</th>
                                     <th>Judul</th>
-                                    <th>Kategori</th>
-                                    <th>Dibuat Oleh</th>
-                                    <th>Tanggal Pembuatan</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -48,13 +47,19 @@
                 processing: true,
                 searchDelay: 1000,
                 ajax: {
-                    url: '{{route('dash.post.index')}}',
+                    url: '{{route('dash.banner.index')}}',
                 },
                 columns: [
-                    {data: 'judul'},
-                    {data: 'kategori'},
-                    {data: 'created_by'},
-                    {data: 'created_at'},
+                    {data: 'id'},
+                    {
+                        data: 'image',
+                        name: 'image',
+                        render: function (datum, type, row) {
+                            return `<img src="${row.image}" alt="" class="img-fluid">`
+
+                        }
+                    },
+                    {data: 'title_1'},
                     {
                         data: 'status', name: 'deleted_at', render: function (datum, type, row) {
                             if (row.status == 'Active') {

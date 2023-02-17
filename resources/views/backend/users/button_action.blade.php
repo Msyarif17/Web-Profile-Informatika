@@ -1,11 +1,11 @@
-@if ($tag->deleted_at)
-    <form action="{{ route('dash.tag.restore', $tag->id) }}" method="post" class="d-inline">
+@if ($users->deleted_at)
+    <form action="{{ route('dash.users.restore', $users->id) }}" method="post" class="d-inline">
         @method('PATCH')
         @csrf
         <button type="submit" class="btn btn-success btn-flast btn-sm" data-toggle="tootlip" data-placement="top"
             title="restore"><span class="fa fa-undo"></span></button>
     </form>
-    <form action="{{ route('dash.tag.forceDelete', $tag->id) }}" method="post" class="d-inline"
+    <form action="{{ route('dash.users.forceDelete', $users->id) }}" method="post" class="d-inline"
         onsubmit="return confirm('apakah anda yakin?')">
         @csrf
         <input type="hidden" name="_method" value="delete" />
@@ -13,10 +13,10 @@
             title="delete permanent"><span class="fa fa-x"></span></button>
     </form>
 @else
-    <a href="{{ route('dash.tag.edit', $tag->id) }}" class="btn  btn-primary btn-flat btn-sm" data-toggle="tooltip"
+    <a href="{{ route('dash.users.edit', $users->id) }}" class="btn  btn-primary btn-flat btn-sm" data-toggle="tooltip"
         data-placement="top" title="edit"><span class="fa fa-edit"></span></a>
     
-    <form action="{{ route('dash.tag.destroy', $tag->id) }}" method="post" class="d-inline"
+    <form action="{{ route('dash.users.destroy', $users->id) }}" method="post" class="d-inline"
         onsubmit="return confirm('apakah anda yakin?')">
         @csrf
         <input type="hidden" name="_method" value="delete" />
