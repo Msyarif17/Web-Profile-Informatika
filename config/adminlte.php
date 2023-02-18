@@ -329,7 +329,7 @@ return [
             'text'  => 'Comment',
             'icon'  => 'fa-solid fa-list',
             'url'   => 'dashboard/comment',
-            'can' => 'edit-comment'
+            'can' => 'access-comment-manager'
         ],
         [
             'header' => 'Interface Manager',

@@ -94,6 +94,7 @@ class RolePermissionSeeder extends Seeder
                 'access-dashboard',
                 'access-theme-editor',
                 'access-partner-maker',
+                'access-comment-manager',
                 'view-all-post',
                 'create-user',
                 'update-user',
