@@ -8,10 +8,11 @@ use App\Models\CategoryPost;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Shetabit\Visitor\Traits\Visitable;
 
 class Post extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory,SoftDeletes,Visitable;
     protected $fillable = [
         'category_post_id',
         'title',

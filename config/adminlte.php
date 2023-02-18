@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'assets/images/Logo Teknik Informatika.png',
             'alt' => 'Teknik Informatika',
@@ -305,7 +305,7 @@ return [
             'label_color' => 'success',
             'can' => 'access-dashboard'
         ],
-        ['header' => 'POST MAKER'],
+        ['header' => 'Post Manager'],
 
         [
             'text'  => 'Category Post',
@@ -332,47 +332,67 @@ return [
             'can' => 'edit-comment'
         ],
         [
-            'header' => 'USER INTERFACE',
+            'header' => 'Interface Manager',
             'can' => 'access-theme-editor',
         ],
         [
-            'text'        => 'Custom',
-            'icon'        => 'fa-solid fa-paint-roller',
-            'label_color' => 'success',
-            'can' => 'access-theme-editor',
-            'submenu' => [
-                [
-                    'text'  => 'Banner',
-                    'icon'  => 'fa-solid fa-brush',
-                    'url'   => 'dashboard/banner/',
-                    'can' => 'read-banner'
-                ],
-                [
-                    'text'  => 'Theme',
-                    'icon'  => 'fa-solid fa-brush',
-                    'url'   => 'dashboard/cui/',
-                    'can' => 'access-theme-editor'
-                ],
-                [
-                    'text'  => 'Navigation',
-                    'icon'  => 'fa-solid  fa-font-awesome',
-                    'url'   => 'dashboard/menu',
-                    'can' => [
-                        'read-category-menu',
-                        'read-menu',
-                        'read-sub-menu',
-                    ]
-
-                ],
-                [
-                    'text'  => 'Pages',
-                    'icon'  => 'fa-solid fa-id-card',
-                    'url'   => 'dashboard/page',
-                    'can' => 'read-page'
-                ],
+            'text'  => 'Banner',
+            'icon'  => 'fa-solid fa-paint-roller',
+            'url'   => 'dashboard/banner/',
+            'can' => 'read-banner'
+        ],
+        [
+            'text'  => 'Theme',
+            'icon'  => 'fa-solid fa-brush',
+            'url'   => 'dashboard/cui/',
+            'can' => 'access-theme-editor'
+        ],
+        [
+            'text'  => 'Navigation',
+            'icon'  => 'fa-solid  fa-font-awesome',
+            'url'   => 'dashboard/menu',
+            'can' => [
+                'read-category-menu',
+                'read-menu',
+                'read-sub-menu',
             ]
+
         ],
 
+        [
+            'text'  => 'Footer',
+            'icon'  => 'fa-solid  fa-font-awesome',
+            'url'   => 'dashboard/menu',
+            'can' => [
+                'read-category-menu',
+                'read-menu',
+                'read-sub-menu',
+            ]
+
+        ],
+        [
+            'text'  => 'Pages',
+            'icon'  => 'fa-solid fa-id-card',
+            'url'   => 'dashboard/page',
+            'can' => 'read-page'
+        ],
+        [
+            'header' => 'Info Manager',
+            'can' => 'read-user'
+        ],
+        [
+            'text'  => 'Peminat Prodi',
+            'icon'  => 'fa-solid fa-id-card',
+            'url'   => 'dashboard/page',
+            'can' => 'read-page'
+        ],
+
+        [
+            'text'  => 'Partner',
+            'icon'  => 'fa-solid fa-id-card',
+            'url'   => 'dashboard/partner',
+            // 'can' => 'access-partner-maker'
+        ],
         [
             'header' => 'User Manager',
             'can' => 'read-user'

@@ -45,10 +45,6 @@ class PostController extends Controller
             case 'Dosen':
                 $data->where('posted_by',Auth::user()->id)->withTrashed();
                 break;
-            default:
-                Auth::logout();
-                return redirect()->route('login');
-                break;
         }
         if ($request->ajax()) {
             return $datatables->of($data)
@@ -56,7 +52,6 @@ class PostController extends Controller
                     return $post->title;
                 })
                 ->addColumn('kategori', function (Post $post) {
-                    // dd($post->category);
                     return $post->category->name;
                 })
                 ->addColumn('created_by', function (Post $post) {

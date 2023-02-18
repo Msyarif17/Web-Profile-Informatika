@@ -36,12 +36,6 @@ class MenuSeeder extends Seeder
                 'url_target' => '#',
                 'page_id' => null,
             ],
-            [
-                'name' => 'Login',
-                'slug' => 'login',
-                'url_target' => '/login',
-                'page_id' => null,
-            ],
         ]);
         Menu::insert([
             [

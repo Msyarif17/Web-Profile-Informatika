@@ -1,26 +1,26 @@
 <section class="container-fluid p-0">
-    <div id="indicate" style="background-color: #7868E6;height: 500px;" class="carousel slide" data-bs-ride="true">
+    <div id="indicate" style="background-color:{{$cui->navbar_color }};height: 500px;" class="carousel slide" data-bs-ride="true">
         <div class="carousel-indicators">
-            @foreach ($banners as $banner)
-                @if ($slide == 0)
-                    <button type="button" data-bs-target="#indicate" data-bs-slide-to="{{ $slide }}" class="active"
-                        aria-current="true" aria-label="{{'Slide'.$slide++ }}"></button>
+            @foreach ($banners as $key=>$banner)
+                @if ($key == 0)
+                    <button type="button" data-bs-target="#indicate" data-bs-slide-to="{{ $key }}" class="active"
+                        aria-current="true" aria-label="{{'Slide'.$key+1 }}"></button>
                     @else
-                    <button type="button" data-bs-target="#indicate" data-bs-slide-to="{{ $slide }}" 
-                        aria-label="{{'Slide'.$slide++ }}"></button>
+                    <button type="button" data-bs-target="#indicate" data-bs-slide-to="{{ $key }}" 
+                        aria-label="{{'Slide'.$key+1 }}"></button>
                 @endif
             @endforeach
 
 
         </div>
         <div class="carousel-inner">
-            @foreach ($banners as $banner)
-                @if ($slide == 0)
+            @foreach ($banners as $key=>$banner)
+                @if ($key == 0)
                     
                 <div class="carousel-item active">
-                    <span class="d-none">{{ $slide++ }}</span>
+                    
                     <div class="jumbotron p-0 mb-0 m"
-                        style=" background-color: #7868E6;height: 500px;  background-image:url('{{ asset('storage' . $banner->image) }}') ; background-size: cover;background-repeat: no-repeat;background-position:center center; ">
+                        style=" background-color:{{$cui->navbar_color }};height: 500px;  background-image:url('{{ asset('storage' . $banner->image) }}') ; background-size: cover;background-repeat: no-repeat;background-position:center center; ">
 
                         <div class="py-0 h-100">
                             <div class="container d-flex py-0 h-100" style="">
@@ -80,9 +80,9 @@
                 </div>
                 @else
                 <div class="carousel-item active">
-                    <span class="d-none">{{ $slide++ }}</span>
+                    
                     <div class="jumbotron p-0 mb-0 m"
-                        style=" background-color: #7868E6;height: 500px;  background-image:url('{{ asset('storage' . $banner->image) }}') ; background-size: cover;background-repeat: no-repeat;background-position:center center; ">
+                        style=" background-color:{{$cui->navbar_color }};height: 500px;  background-image:url('{{ asset('storage' . $banner->image) }}') ; background-size: cover;background-repeat: no-repeat;background-position:center center; ">
 
                         <div class="py-0 h-100">
                             <div class="container d-flex py-0 h-100" style="">
