@@ -7,13 +7,14 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PartnerController extends Controller
 {
     public function index(DataTables $datatables, Request $request)
     {
         if ($request->ajax()) {
-            return $datatables->of(Partner::withTrashed()->query())
+            return $datatables->of(Partner::query()->withTrashed())
                 ->addColumn('name', function (Partner $partner) {
                     return $partner->name;
                 })
@@ -21,7 +22,7 @@ class PartnerController extends Controller
                     return $partner->url;
                 })
                 ->addColumn('image', function (Partner $partner) {
-                    return asset('storage' . $partner->image);
+                    return asset('storage'.$partner->img);
                 })
                 ->addColumn('action', function (Partner $partner) {
                     return \view('backend.partner.button_action', compact('partner'));
@@ -64,7 +65,11 @@ class PartnerController extends Controller
 
         ]);
         $input = $request->all();
-        $input['slug'] = Str::slug($input['name']);
+        $image = $request->file('img');
+        if ($image) {
+            $image->storeAs('public/partner/image/', 'partner-' . $image->hashName());
+            $input['img'] = '/partner/image/partner-' . $image->hashName();
+        }
         Partner::create($input);
         return back()->with('success', 'Partner Created successfully');
     }
@@ -106,9 +111,16 @@ class PartnerController extends Controller
             'description' => 'string',
         ]);
         $input = $request->all();
-        $input['slug'] = Str::slug($input['name']);
-
-        Partner::find($id)->update($input);
+        $partner = Partner::find($id);
+        $image = $request->file('image');
+        if ($image) {
+            if(Storage::exists($partner->first()->image)){
+                Storage::delete($partner->first()->image);
+            }
+            $image->storeAs('public/partner/image/', 'partner-' . $image->hashName());
+            $input['image'] = '/partner/image/partner-' . $image->hashName();
+        }
+        $partner->update($input);
         return back()->with('success', 'Partner Updated successfully');
     }
 

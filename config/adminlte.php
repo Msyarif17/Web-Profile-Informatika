@@ -391,7 +391,7 @@ return [
             'text'  => 'Partner',
             'icon'  => 'fa-solid fa-id-card',
             'url'   => 'dashboard/partner',
-            // 'can' => 'access-partner-maker'
+            'can' => 'access-partner-maker'
         ],
         [
             'header' => 'User Manager',

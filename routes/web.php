@@ -39,6 +39,7 @@ Route::get('post', [PostIndex::class, 'post'])->name('post.index');
 Route::get('post/{post:slug}', [PostIndex::class, 'post'])->name('post.detail');
 Route::post('comment/{slug}', [CommentController::class, 'up'])->name('comment');
 Route::get('page/{page:slug}', [PageController::class, 'pageFinder'])->name('page');
+Route::get('groups/{selection}',[PostIndex::class,'postManager'])->name('post.manager');
 
 Auth::routes();
 Route::middleware(['auth', 'can:access-dashboard','maintenace.mode'])->name('dash.')->prefix('dashboard')->group(function () {
@@ -89,6 +90,7 @@ Route::middleware(['auth', 'can:access-dashboard','maintenace.mode'])->name('das
         Route::patch('page/{id}/restore', [DPageController::class, 'restore'])->name('page.restore');
         Route::delete('page/{id}/delete-permanently', [DPageController::class, 'forceDestroy'])->name('page.forceDelete');
     });
+    //Partner
     Route::middleware('can:access-partner-maker')->group(function () {
 
         Route::resource('partner', PartnerController::class);

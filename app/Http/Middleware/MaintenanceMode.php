@@ -19,7 +19,7 @@ class MaintenanceMode
     public function handle($request, Closure $next, $guard = null)
     {
         // dd(Storage::disk('framework')->exists('maintenance'));
-        if (Storage::disk('framework')->exists('maintenance') && $request->is('/') && $request->is('page*') && $request->is('post*')&& $request->is('comment*')) {
+        if (Storage::disk('framework')->exists('maintenance') && !$request->is('dashboard*') && !$request->is('login*') && !$request->is('storage*')&&!$request->is('filemanager*')) {
             return response()->view('components.maintenance', [], 500);
         }
 

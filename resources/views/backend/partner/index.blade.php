@@ -50,7 +50,8 @@
                     url: '{{route('dash.partner.index')}}',
                 },
                 columns: [
-                    {data: 'id'},
+                    {data: 'name'},
+                    {data: 'url'},
                     {
                         data: 'image',
                         name: 'image',
@@ -59,7 +60,6 @@
 
                         }
                     },
-                    {data: 'title_1'},
                     {
                         data: 'status', name: 'deleted_at', render: function (datum, type, row) {
                             if (row.status == 'Active') {

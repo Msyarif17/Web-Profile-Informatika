@@ -84,7 +84,7 @@
                                 </ul>
                             </li>
                         @else
-                            <li class="nav-item navbar-pills rounded-0 dropdown">
+                            <li class="nav-item navbar-pills rounded-0 ">
                                 <a class="nav-link " href="{{ url($n->url_target) }}" role="button">
                                     {{ $n->name }}
                                 </a>

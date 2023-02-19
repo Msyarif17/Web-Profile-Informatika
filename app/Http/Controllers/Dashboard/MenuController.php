@@ -141,7 +141,8 @@ class MenuController extends Controller
         ]);
         
         $input = $request->all();
-        $input['page_id'] = implode("", $input['page_id']);
+        // dd($input['page_id'][0] == null);
+        $input['page_id'] = $input['page_id'][0] ? implode("",  $input['page_id']) : null;
         switch ($request->param) {
             case 'category_menu':
                 $input['slug'] = Str::slug($input['name']);
@@ -246,7 +247,7 @@ class MenuController extends Controller
 
         ]);
         $input = $request->all();
-        $input['page_id'] = implode("", $input['page_id']);
+        $input['page_id'] = $input['page_id'][0] ? implode("",  $input['page_id']) : null;
         switch ($request->param) {
             case 'category_menu':
                 $input['slug'] = Str::slug($input['name']);

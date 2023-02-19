@@ -116,7 +116,6 @@ class CategoryPostController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string',
-            'description' => 'string',
         ]);
         $input = $request->all();
         $input['slug'] = Str::slug($input['name']);

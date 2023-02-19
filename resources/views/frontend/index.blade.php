@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-6 font-size-16 align-self-center  text-end">
 
-                        <a href="" class="text-dark text-decoration-none d-inline-flex "><span
+                        <a href="{{route('post.manager','berita')}}" class="text-dark text-decoration-none d-inline-flex "><span
                                 class="align-middle">Informasi Lainnya </span><img
                                 src="{{ asset('assets/images/Polygon 2.png') }}" alt="" sizes="14px"
                                 srcset=""></a>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="col-6 font-size-16 align-self-center  text-end">
 
-                        <a href="/" class="text-dark text-decoration-none d-inline-flex"><span
+                        <a href="{{route('post.manager','pengumuman')}}" class="text-dark text-decoration-none d-inline-flex"><span
                                 class="align-middle">Informasi Lainnya </span><img
                                 src="{{ asset('assets/images/Polygon 2.png') }}" alt="" sizes="14px"
                                 srcset=""></a>
@@ -152,16 +152,16 @@
                             <div class="carousel-item active">
                                 <img src="{{ asset('storage'.$p->banner) }}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>{{$p->title}}</h5>
-                                    <p>{{Str::limit($p->content,100,'...')}}</p>
+                                    <h5 class="text-capitalize  text-shadow fw-bold">{{$p->title}}</h5>
+                                    <p>{{Str::limit(strip_tags($p->content),100,'...')}}</p>
                                 </div>
                             </div>
                         @else
                             <div class="carousel-item">
                                 <img src="{{ asset('storage'.$p->banner) }}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>{{$p->title}}</h5>
-                                    <p>{{Str::limit($p->content,100,'...')}}</p>
+                                    <h5 class="text-capitalize text-shadow fw-bold">{{$p->title}}</h5>
+                                    <p>{{Str::limit(strip_tags($p->content),100,'...')}}</p>
                                 </div>
                             </div>
                         @endif
@@ -224,13 +224,14 @@
 
             </div>
             <div class="row justify-content-center">
-                @for ($i = 1; $i <= 11; $i++)
-                    <div class="col-lg-4 col-md-6 py-md-3 py-sm-3 align-self-center">
-                        <div class="d-flex justify-content-center">
-                            <img class="" src="{{ asset('assets/images/' . $i . '.png') }}" alt="">
-                        </div>
+                @foreach ($partner as $p)
+                    
+                <div class="col-lg-4 col-md-6 py-md-3 py-sm-3 align-self-center">
+                    <div class="d-flex justify-content-center">
+                        <img class="" src="{{ asset('storage'.$p->img) }}" alt="">
                     </div>
-                @endfor
+                </div>
+                @endforeach
             </div>
         </div>
     </section>

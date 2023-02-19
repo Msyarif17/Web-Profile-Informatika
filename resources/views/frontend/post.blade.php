@@ -4,7 +4,7 @@
         <div class="container pt-0">
             <hr class="pt-3 pb-0">
             <div class="row">
-                <div class="col-md-9 col-sm-12">
+                <div class="col-md-8 col-sm-12">
                     <div class="row">
                         <div class="col-12">
                             <h1 class="text-capitalize" style="font-size: 40px;font-weight:1000">
@@ -158,7 +158,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-3 d-md-block d-sm-none">
+                <div class="col-md-4 d-md-block d-sm-none">
                     <div class="row">
                         @foreach ($posts as $post)
                             <div class="col-12 pb-3">
