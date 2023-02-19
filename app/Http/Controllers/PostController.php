@@ -10,7 +10,7 @@ use App\Models\CustomUserInterface;
 class PostController extends Controller
 {
     public function post(Post $post){
-        Request::visitor()->visit($post);
+        $post->createVisitLog();
         $cui = CustomUserInterface::where('isActive',true)->first();
         $posts = Post::latest()->get();
         $content = $post->first();

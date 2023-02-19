@@ -19,6 +19,7 @@ use App\Http\Controllers\PostController as PostIndex;
 use App\Http\Controllers\Dashboard\CustomUIController;
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\CategoryPostController;
+use App\Http\Controllers\Dashboard\FeatureController;
 use App\Http\Controllers\Dashboard\PageController as DPageController;
 use App\Http\Controllers\Dashboard\IndexController as DashboardIndexController;
 
@@ -40,7 +41,7 @@ Route::post('comment/{slug}', [CommentController::class, 'up'])->name('comment')
 Route::get('page/{page:slug}', [PageController::class, 'pageFinder'])->name('page');
 
 Auth::routes();
-Route::middleware(['auth', 'can:access-dashboard'])->name('dash.')->prefix('dashboard')->group(function () {
+Route::middleware(['auth', 'can:access-dashboard','maintenace.mode'])->name('dash.')->prefix('dashboard')->group(function () {
     Route::get('/', [DashboardIndexController::class, 'index'])->name('index');
     // Post
     Route::middleware('can:read-post')->group(function(){
@@ -88,8 +89,14 @@ Route::middleware(['auth', 'can:access-dashboard'])->name('dash.')->prefix('dash
         Route::patch('page/{id}/restore', [DPageController::class, 'restore'])->name('page.restore');
         Route::delete('page/{id}/delete-permanently', [DPageController::class, 'forceDestroy'])->name('page.forceDelete');
     });
+    Route::middleware('can:access-partner-maker')->group(function () {
+
+        Route::resource('partner', PartnerController::class);
+        Route::patch('partner/{id}/restore', [PartnerController::class, 'restore'])->name('partner.restore');
+        Route::delete('partner/{id}/delete-permanently', [PartnerController::class, 'forceDestroy'])->name('partner.forceDelete');
+    });
     //Menu
-    Route::middleware('can:read-category-menu|read-menu|read-sub-menu')->group(function(){
+    Route::middleware('can:read-category-menu')->group(function(){
 
         Route::resource('menu', MenuController::class);
         Route::patch('menu/{id}/restore', [MenuController::class, 'restore'])->name('menu.restore');
@@ -116,4 +123,6 @@ Route::middleware(['auth', 'can:access-dashboard'])->name('dash.')->prefix('dash
     Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
         Lfm::routes();
     });
+    //Addtional Feature
+    Route::get('maintenance/{refresh_time?}',[FeatureController::class, 'maintenance'])->name('maintenance');
 });

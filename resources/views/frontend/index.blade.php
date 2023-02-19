@@ -4,6 +4,24 @@
 @section('content')
     @include('frontend.component.carousel')
     <section>
+            <div class="container py-5">
+                <div class="row d-flex py-5">
+                        <div class="col-lg-6 align-self-center">
+                                <div class="text-center " style="color:black;">
+                                    <b><h1 style="font-weight:1000">Bikinnya <span style="color: #0500FF;">Gak Ribet</span>!</h1></b>
+                                    <p style="font-weight:1000">Tempat Kamu Bisa Bikin Website Sesukamu</p>
+                                </div>
+                        </div>
+                        <div class="col-lg-6 align-self-center">
+                            <div class="ratio ratio-16x9 rounded overflow-hidden" style="box-shadow: 0px 10px 10px;">
+                                <iframe src="https://www.youtube.com/embed/1tk1pqwrOys" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </section>
+    <section>
         <div class="container">
             <div class="my-5 py-5">
                 {{-- informasi terbaru --}}
@@ -105,6 +123,7 @@
             </div>
         </div>
     </section>
+    @if(count($prestasi) > 0)
     <section class="gallery">
         <div class="container pb-3">
             <div class="row my-3 pt-3">
@@ -114,26 +133,21 @@
             </div>
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
                 <div class="carousel-indicators">
-                    <?php
-                    $i = 0;
-                    ?>
-                    @foreach ($prestasi as $p)
+                    
+                    @foreach ($prestasi as $i=>$p)
                         @if ($i == 0)
                             <button type="button" data-bs-target="#carouselExampleCaptions"
                                 data-bs-slide-to="{{ $i }}" class="active" aria-current="true"
-                                aria-label="Slide {{ $i++ }}"></button>
+                                aria-label="Slide {{ $i+1 }}"></button>
                         @else
                             <button type="button" data-bs-target="#carouselExampleCaptions"
-                                data-bs-slide-to="{{ $i }}" aria-label="Slide {{ $i++ }}"></button>
+                                data-bs-slide-to="{{ $i }}" aria-label="Slide {{ $i+1}}"></button>
                         @endif
                     @endforeach
 
                 </div>
                 <div class="carousel-inner rounded">
-                    <?php
-                    $i = 0;
-                    ?>
-                    @foreach ($prestasi as $p)
+                    @foreach ($prestasi as $i=>$p)
                         @if ($i == 0)
                             <div class="carousel-item active">
                                 <img src="{{ asset('storage'.$p->banner) }}" class="d-block w-100" alt="...">
@@ -167,6 +181,7 @@
             </div>
         </div>
     </section>
+    @endif
     <section class="my-4">
         <div class="container">
             <div class="row justify-content-between my-5 pt-2">

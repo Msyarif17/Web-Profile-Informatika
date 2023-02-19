@@ -13,6 +13,7 @@ use App\Models\CustomUserInterface;
 class PageController extends Controller
 {
     public function pageFinder(Page $page,Request $request){
+        $page->createVisitLog();
         $cui = CustomUserInterface::where('isActive', true)->first();
         $posts = Post::latest()->get();
         $content = $page->first();

@@ -22,6 +22,7 @@ class RolePermissionSeeder extends Seeder
         $arrayOfPermissionNames = [
             'access-dashboard',
             'access-theme-editor',
+            'access-parter-maker',
             'view-all-post',
             'create-user',
             'update-user',
@@ -81,6 +82,7 @@ class RolePermissionSeeder extends Seeder
             'Dosen',
             'Mahasiswa',
             'Alumni',
+            'Guest'
         ];
         $roles = collect($arrayOfRolesNames)->map(function ($permission) {
             return ['name' => $permission, 'guard_name' => 'web'];
@@ -90,6 +92,8 @@ class RolePermissionSeeder extends Seeder
         $permissionsByRole = [
             'Super Admin' => [
                 'access-dashboard',
+                'access-theme-editor',
+                'access-partner-maker',
                 'view-all-post',
                 'create-user',
                 'update-user',
@@ -135,6 +139,7 @@ class RolePermissionSeeder extends Seeder
                 'update-page',
                 'read-page',
                 'delete-page',
+                'edit-profile',
                 'comment',
             ],
             'Admin' => [

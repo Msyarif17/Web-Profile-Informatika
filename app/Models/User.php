@@ -9,13 +9,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Shetabit\Visitor\Traits\Visitor;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,SoftDeletes,
-    HasRoles
-    ;
+    use HasApiTokens, HasFactory, Notifiable,SoftDeletes,HasRoles,Visitor;
 
     /**
      * The attributes that are mass assignable.

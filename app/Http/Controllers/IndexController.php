@@ -24,7 +24,8 @@ class IndexController extends Controller
         $prestasi = $data->whereHas('category', function ($query) {
             $query->where('name', 'Prestasi');
         })->latest()->get();
-        $posts = $data->latest()->get();
+        $posts = Post::latest()->get();
+        // dd($posts);
         $cui = CustomUserInterface::where('isActive', true)->first();
         if ($cui) {
             return view('frontend.index', compact('cui', 'posts', 'pengumuman', 'nav', 'banners', 'slide','prestasi'));
