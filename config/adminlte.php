@@ -382,14 +382,14 @@ return [
         ],
         [
             'text'  => 'Peminat Prodi',
-            'icon'  => 'fa-solid fa-id-card',
+            'icon'  => 'fa-solid fa-chart-simple',
             'url'   => 'dashboard/page',
             'can' => 'read-page'
         ],
 
         [
-            'text'  => 'Partner',
-            'icon'  => 'fa-solid fa-id-card',
+            'text'  => 'Partner/Mitra',
+            'icon'  => 'fa-solid fa-handshake',
             'url'   => 'dashboard/partner',
             'can' => 'access-partner-maker'
         ],

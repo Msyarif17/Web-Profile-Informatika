@@ -107,11 +107,11 @@
                         </a>
                     </div>
                     <div class="col-12">
-                        <a class="text-dark" href="#">
-                            <div class="card bg-danger">
+                        <a class="text-dark" href="{{route('dash.backup')}}">
+                            <div class="card bg-primary">
                                 <div class="card-body">
                                     <p class="card-title">
-                                        Logout All User (Comming Soon)
+                                        Backup Database (Masih proses)
                                     </p>
                                 </div>
                             </div>

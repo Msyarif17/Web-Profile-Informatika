@@ -18,11 +18,21 @@ class FeatureController extends Controller
                 Storage::disk('framework')->put('maintenance', sha1(time()));
                 return back()->withSuccess('The application has been maintained');
             } catch (Exception $e) {
-                return redirect()->route('dash.index')->with('Error:' . $e);
+                return redirect()->route('dash.index')->withSuccess('Error:' . $e);
             }
         } else {
             Storage::disk('framework')->delete('maintenance');
             return back()->withSuccess('The application has been live');
+        }
+    }
+    public function backup(){
+        try{
+
+            Artisan::call('backup:run');
+            return back()->withSuccess('Database Backup Successful');
+        }
+        catch(Exception $e){
+            return redirect()->route('dash.index')->withSuccess('Error:' . $e);
         }
     }
 }

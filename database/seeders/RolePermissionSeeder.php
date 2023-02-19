@@ -22,6 +22,7 @@ class RolePermissionSeeder extends Seeder
         $arrayOfPermissionNames = [
             'access-dashboard',
             'access-theme-editor',
+            'access-comment-manager',
             'access-partner-maker',
             'view-all-post',
             'create-user',
@@ -145,6 +146,7 @@ class RolePermissionSeeder extends Seeder
             ],
             'Admin' => [
                 'access-dashboard',
+                'access-comment-manager',
                 'view-all-post',
                 'create-user',
                 'update-user',

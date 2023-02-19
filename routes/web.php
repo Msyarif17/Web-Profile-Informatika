@@ -126,5 +126,6 @@ Route::middleware(['auth', 'can:access-dashboard','maintenace.mode'])->name('das
         Lfm::routes();
     });
     //Addtional Feature
-    Route::get('maintenance/{refresh_time?}',[FeatureController::class, 'maintenance'])->name('maintenance');
+    Route::get('maintenance/{refresh_time?}', [FeatureController::class, 'maintenance'])->name('maintenance');
+    Route::get('backup/', [FeatureController::class, 'backup'])->name('backup');
 });
