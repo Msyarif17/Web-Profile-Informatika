@@ -16,10 +16,21 @@ class Page extends Model
         'posted_by',
         'banner',
         'thumbnail',
-        'page_id'
+        'category_menu_id',
+        'menu_id',
+        'sub_menu_id'
     ];
     public function user(){
         return $this->belongsTo(User::class,'posted_by');
+    }
+    public function categoryMenu(){
+        return $this->hasMany(CategoryMenu::class);
+    }
+    public function menu(){
+        return $this->hasMany(Menu::class);
+    }
+    public function subMenu(){
+        return $this->hasMany(SubMenu::class);
     }
     
 }

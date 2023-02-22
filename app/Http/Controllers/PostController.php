@@ -4,22 +4,37 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Post;
+use App\Models\Comment;
 use App\Models\CategoryPost;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Models\CustomUserInterface;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\NavigationController;
 
 class PostController extends Controller
 {
 
-    public function post(Post $post, Request $request)
+    public function post($slug, Request $request)
     {
+        $content = Post::where('slug',$slug)->first();
+        $comment = CommentController::get($content->id);
         $nav = NavigationController::nav();
-        $request->visitor()->visit($post);
+        $request->visitor()->visit($content);
         $cui = CustomUserInterface::where('isActive', true)->first();
-        $posts = Post::latest()->get();
-        $content = $post->first();
-        return \view('frontend.post', \compact('content', 'cui', 'posts', 'nav'));
+        $posts = Post::latest()->take(3)->get();
+        $category = CategoryPost::with([
+            'post' => function ($query) {
+                return $query->latest();
+            }
+        ])->get();
+        $arsip = Post::latest()->get()->groupBy(function ($d) {
+            return Carbon::parse($d->created_at)->format('Y');
+        })->map(function ($value, $key) {
+            return $value->count();
+        });
+        // dd(Comment::all());
+        return \view('frontend.post', \compact('content', 'cui', 'posts', 'nav','comment','category','arsip'));
     }
     public function postManager($selection = 'berita', Request $request)
     {
@@ -27,12 +42,12 @@ class PostController extends Controller
         $nav = NavigationController::nav();
         $cui = CustomUserInterface::where('isActive', true)->first();
         if ($selection == 'berita') {
-            $posts = Post::latest()->paginate(5);
+            $posts = Post::with('comment')->latest()->paginate(5);
         } elseif ($selection == 'arsip') {
             $request->validate([
                 'year' => 'required|numeric'
             ]);
-            $posts = Post::whereYear('created_at', $request->year)->latest()->paginate(5);
+            $posts = Post::with('comment')->whereYear('created_at', $request->year)->latest()->paginate(5);
         } else {
             $category = CategoryPost::where('slug', $selection)->first();
             $posts = Post::with([
@@ -41,7 +56,8 @@ class PostController extends Controller
                 },
                 'tag' => function ($query) {
                     return $query;
-                }
+                },
+                'comment' 
             ])->where('category_post_id',$category->id)->latest()->paginate(5);
         }
         $category = CategoryPost::with([

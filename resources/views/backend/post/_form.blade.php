@@ -43,7 +43,7 @@
                 {!! Form::select(
                     'category_post_id[]',
                     $categoryPost,
-                    [],
+                    @$post->category,
                     ['class' => 'form-control', 'placeholder' => 'Select Category Post'],
                 ) !!}
                 {!! $errors->first('category_post_id', '<p class="help-block invalid-feedback">:message</p>') !!}

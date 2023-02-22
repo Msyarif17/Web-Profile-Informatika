@@ -64,7 +64,7 @@
             <div class="form-group">
                 {!! Form::label('post_id', 'Post') !!}
                 <span class="text-secondary fw-italic">(Opstion)</span>
-                {!! Form::select('post_id[]', $post, [], ['class' => 'form-control', 'placeholder' => 'Select Page']) !!}
+                {!! Form::select('post_id[]', $post, [], ['class' => 'form-control','id'=>'post' ,'placeholder' => 'Select Page']) !!}
                 {!! $errors->first('post_id', '<p class="help-block invalid-feedback">:message</p>') !!}
             </div>
         </div>
@@ -72,7 +72,7 @@
             <div class="form-group">
                 {!! Form::label('page_id', 'Page') !!}
                 <span class="text-secondary fw-italic">(Opstion)</span>
-                {!! Form::select('page_id[]', $page, [], ['class' => 'form-control', 'placeholder' => 'Select Page']) !!}
+                {!! Form::select('page_id[]', $page, [], ['class' => 'form-control','id'=>'page' ,'placeholder' => 'Select Page']) !!}
                 {!! $errors->first('page_id', '<p class="help-block invalid-feedback">:message</p>') !!}
             </div>
         </div>

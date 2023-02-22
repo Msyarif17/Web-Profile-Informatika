@@ -187,6 +187,7 @@ return [
          */
         Spatie\Permission\PermissionServiceProvider::class,
         Shetabit\Visitor\Provider\VisitorServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -213,7 +214,7 @@ return [
         'Page' => App\Models\Page::class,
         'Post' => App\Models\Post::class,
         'Visitor' => Shetabit\Visitor\Facade\Visitor::class,
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        'DataTables' => Yajra\DataTables\DataTables::class,
     ])->toArray(),
 
 ];

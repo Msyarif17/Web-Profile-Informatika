@@ -5,7 +5,7 @@
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     {!! Form::label('category_menu_id', 'Category Menu*') !!}
-                    {!! Form::select('category_menu_id[]', $data, [], ['class' => 'form-control', 'placeholder' => 'Select Category Menu']) !!}
+                    {!! Form::select('category_menu_id[]', $data, @$old->categoryMenu->id, ['class' => 'form-control', 'placeholder' => 'Select Category Menu']) !!}
                     {!! $errors->first('category_menu_id', '<p class="help-block invalid-feedback">:message</p>') !!}
                 </div>
             </div>
@@ -16,14 +16,14 @@
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     {!! Form::label('category_menu_id', 'Category Menu*') !!}
-                    {!! Form::select('category_menu_id[]', $data, [], ['class' => 'form-control', 'placeholder' => 'Select Menu']) !!}
+                    {!! Form::select('category_menu_id[]', $data, @$old->menu->categoryMenu->id, ['class' => 'form-control', 'placeholder' => 'Select Menu','id'=>'select1']) !!}
                     {!! $errors->first('category_menu_id', '<p class="help-block invalid-feedback">:message</p>') !!}
                 </div>
             </div>
             <div class="col-sm-12 col-md-6">
                 <div class="form-group">
                     {!! Form::label('menu_id', 'Menu*') !!}
-                    {!! Form::select('menu_id[]', $data1, [], ['class' => 'form-control', 'placeholder' => 'Select Sub Menu']) !!}
+                    {!! Form::select('menu_id[]', $data1, @$old->menu->id, ['class' => 'form-control', 'placeholder' => 'Select Sub Menu','id'=>'select2']) !!}
                     {!! $errors->first('menu_id', '<p class="help-block invalid-feedback">:message</p>') !!}
                 </div>
             </div>
@@ -57,7 +57,7 @@
             <div class="form-group">
                 {!! Form::label('page_id', 'Page') !!}
                 <span class="text-secondary fw-italic">(Opstion)</span>
-                {!! Form::select('page_id[]', $page, [], ['class' => 'form-control', 'placeholder' => 'Select Page']) !!}
+                {!! Form::select('page_id[]', $page, @$old->page->slug, ['class' => 'form-control', 'placeholder' => 'Select Page','id'=>'page']) !!}
                 {!! $errors->first('page_id', '<p class="help-block invalid-feedback">:message</p>') !!}
             </div>
         </div>

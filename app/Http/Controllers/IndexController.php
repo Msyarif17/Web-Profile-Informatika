@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Banner;
 use App\Models\Partner;
+use App\Models\CategoryPost;
 use Illuminate\Http\Request;
+use App\Models\PeminatJurusan;
 use Illuminate\Routing\Controller;
 use App\Models\CustomUserInterface;
 use App\Http\Controllers\NavigationController;
-use App\Models\CategoryPost;
 
 class IndexController extends Controller
 {
@@ -21,7 +22,8 @@ class IndexController extends Controller
         $banners = Banner::latest()->take(3)->get();
         $slide = 0;
         $partner = $this->partner();
-
+        $peminat = PeminatJurusan::pluck('peminat','tahun_akademik')->all();
+        
         $pengumuman = CategoryPost::where('slug', 'pengumuman')->latest()->first();
         $prestasi = CategoryPost::where('slug', 'prestasi')->latest()->first();
         if ($pengumuman)
@@ -36,7 +38,7 @@ class IndexController extends Controller
         // dd($posts);
         $cui = CustomUserInterface::where('isActive', true)->first();
         if ($cui) {
-            return view('frontend.index', compact('cui', 'posts', 'pengumuman', 'nav', 'banners', 'slide', 'prestasi', 'partner'));
+            return view('frontend.index', compact('cui', 'posts', 'pengumuman', 'nav', 'banners', 'slide', 'prestasi', 'partner','peminat'));
         }
         return 'tema tidak ditemukan, mohon setting tema terlebih dahulu,<a href="' . route('login') . '" target="_blank">login</a>';
     }

@@ -11,7 +11,7 @@
                         <div class="row justify-content-between fw-bold align-items-center">
                             <div class="card-title fs-1 ">
                                 
-                                    Edit Post
+                                    Edit Comment
                                 
                             </div>
                             <a href="{{URL::previous()}}">
@@ -23,8 +23,8 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        {!! Form::open(['route' => ['dash.post.update',$post->id], 'method' => 'put', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
-                        @include('backend.post._form')
+                        {!! Form::open(['route' => ['dash.comment.update',$comment->id], 'method' => 'put', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
+                        @include('backend.comment._form')
                         {!! Form::close() !!}
                     </div>
                     <!-- /.card-body -->

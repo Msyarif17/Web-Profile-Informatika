@@ -19,6 +19,12 @@ class MenuSeeder extends Seeder
     {
         CategoryMenu::insert([
             [
+                    'name' => 'Berita',
+                    'slug' => '',
+                    'url_target' => '#',
+                    'page_id' => null,
+            ],
+            [
                 'name'=> 'Profil Jurusan',
                 'slug' => 'profil-jurusan',
                 'url_target' => '#',

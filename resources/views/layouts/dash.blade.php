@@ -49,6 +49,37 @@
     </script>
     <script>
         var dateToday = new Date();
+        $("#select2").hide();
+        $("#select1").on('change', function() {
+            var param = $("#select1").val();
+
+            // console.log(param);
+            if (param != null) {
+                $("#select2").show();
+                $.ajax("{{ route('dash.menu.create') }}", {
+                    type: "GET",
+                    data: {
+                        'id': param,
+                        'param': 'submenu'
+                    },
+                    success: function(data, status, xhr) {
+                        $("#select2 option").remove();
+                        $('#select2').append('<option selected="selected" value="">Select Sub Menu</option>');
+                        data.forEach(element => {
+                            console.log(element);
+                            $('#select2').append('<option value="' + element.id + '">' + element
+                                .name + '</option>');
+                        });
+                    },
+                    error: function(jqXhr, textStatus, errorMessage) {
+                        $('#select2').append('Error' + errorMessage);
+                    }
+                });
+            } else {
+                $("#select2").hide();
+            }
+            // $('#select2').
+        });
         $(".select2").select2({
             width: '100%'
         });

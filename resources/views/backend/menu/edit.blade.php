@@ -36,3 +36,14 @@
         <!-- /.row -->
     </section>
 @endsection
+@push('js')
+    <script>
+        $("#page").on("change", function() {
+            getname();
+        });
+
+        function getname() {
+            $('#url_target').val("/page/" + $('#page').val());
+        }
+    </script>
+@endpush

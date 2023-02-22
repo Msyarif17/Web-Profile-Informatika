@@ -14,12 +14,14 @@ use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\BannerController;
+use App\Http\Controllers\Dashboard\FeatureController;
 use App\Http\Controllers\Dashboard\PartnerController;
+use App\Http\Controllers\Dashboard\WebInfoController;
 use App\Http\Controllers\PostController as PostIndex;
 use App\Http\Controllers\Dashboard\CustomUIController;
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\CategoryPostController;
-use App\Http\Controllers\Dashboard\FeatureController;
+use App\Http\Controllers\Dashboard\CommentController as CController;
 use App\Http\Controllers\Dashboard\PageController as DPageController;
 use App\Http\Controllers\Dashboard\IndexController as DashboardIndexController;
 
@@ -36,9 +38,10 @@ use App\Http\Controllers\Dashboard\IndexController as DashboardIndexController;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('post', [PostIndex::class, 'post'])->name('post.index');
-Route::get('post/{post:slug}', [PostIndex::class, 'post'])->name('post.detail');
-Route::post('comment/{slug}', [CommentController::class, 'up'])->name('comment');
-Route::get('page/{page:slug}', [PageController::class, 'pageFinder'])->name('page');
+Route::get('post/{slug}', [PostIndex::class, 'post'])->name('post.detail');
+Route::post('comment/{post:id}/{parent_id?}', [CommentController::class, 'send'])->name('comment');
+Route::delete('delete-comment/{id}',[CommentController::class,'destroy'])->name('comment.delet');
+Route::get('page/{slug}', [PageController::class, 'pageFinder'])->name('page');
 Route::get('groups/{selection}',[PostIndex::class,'postManager'])->name('post.manager');
 
 Auth::routes();
@@ -121,7 +124,17 @@ Route::middleware(['auth', 'can:access-dashboard','maintenace.mode'])->name('das
         Route::patch('permissions/{id}/restore', [PermissionController::class, 'restore'])->name('permission.restore');
         Route::delete('permissions/{id}/delete-permanently', [PermissionController::class, 'forceDestroy'])->name('permission.forceDelete');
     });
-
+    //Comment Manager
+    Route::middleware('can:access-comment-manager')->group(function (){
+        Route::resource('comment', CController::class);
+        Route::patch('comment/{id}/restore', [CController::class, 'restore'])->name('comment.restore');
+        Route::delete('comment/{id}/delete-permanently', [CController::class, 'forceDestroy'])->name('comment.forceDelete');
+    
+    });
+    //Web Info
+    // Route::middleware('auth')->group(function () {
+        Route::resource('webinfo', WebInfoController::class);
+       
     Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
         Lfm::routes();
     });

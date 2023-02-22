@@ -9,20 +9,20 @@
                     <div class="card-header">
                         <h3 class="card-title">Post permissions</h3>
                         <div class="float-right">
-                            <a href="{{route('dash.permissions.create')}}" class="btn btn-success btn-flat btn-sm"
-                               title="Tambah">Tambah</a>
+                            <a href="{{ route('dash.permissions.create') }}" class="btn btn-success btn-flat btn-sm"
+                                title="Tambah">Tambah</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        
-                        <div class="table-responsive">
+
+                        <div class="table-responsive p-2 p-2">
                             <table id="data" class="table table-bordered table-striped">
                                 <thead>
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>Aksi</th>
-                                </tr>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Aksi</th>
+                                    </tr>
                                 </thead>
                             </table>
                         </div>
@@ -40,14 +40,15 @@
     <script>
         $(function() {
             $('#data').DataTable({
-                serverSide: true,
+                //serverSide: true,
                 processing: true,
                 searchDelay: 1000,
                 ajax: {
-                    url: '{{route('dash.permissions.index')}}',
+                    url: '{{ route('dash.permissions.index') }}',
                 },
-                columns: [
-                    {data: 'name'},
+                columns: [{
+                        data: 'name'
+                    },
                     {
                         data: 'action',
                         orderable: false,
