@@ -11,11 +11,11 @@
                         <div class="col align-self-center">
                         <div class="d-inline-flex justify-content-center">
                                 <div style="margin-right: 4px;">
-                                    <img class="" src="{{ asset('assets/images/Logo Teknik Informatika.png') }}"
+                                    <img class="" src="{{ asset('storage'.$cui->logo) }}"
                                         alt="Teknik Informatika" height="100px" width="100px">
                                 </div>
                                 <span class="font-size-24 align-self-center">
-                                    <h2 style="font-weight:1000">TEKNIK<br>INFORMATIKA</h2>
+                                    <h2 style="font-weight:1000">{!!$cui->logo_name!!}</h2>
                                 </span>
                             </div>
                         </div>

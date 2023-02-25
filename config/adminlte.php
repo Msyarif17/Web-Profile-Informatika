@@ -362,12 +362,8 @@ return [
         [
             'text'  => 'Footer',
             'icon'  => 'fa-solid  fa-font-awesome',
-            'url'   => 'dashboard/menu',
-            'can' => [
-                'read-category-menu',
-                'read-menu',
-                'read-sub-menu',
-            ]
+            'url'   => 'dashboard/footer',
+            'can' => 'access-footer-manager',
 
         ],
         [
@@ -384,6 +380,7 @@ return [
             'text'  => 'Web Information',
             'icon'  => 'fa-solid fa-circle-info',
             'url'   => 'dashboard/webinfo',
+            'can' => 'access-webinfo-manager'
         ],
         [
             'text'  => 'Peminat Prodi',

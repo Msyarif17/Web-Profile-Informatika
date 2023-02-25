@@ -1,4 +1,4 @@
-<section class="container-xl container-md-fluid container-sm-fluid p-0 ">
+<section class="container-xl container-lg-fluid container-md-fluid container-sm-fluid p-0 ">
     <div id="indicate" style="background-color:{{ $cui->navbar_color }};height: 500px;" class="carousel slide"
         data-bs-ride="true">
         <div class="carousel-indicators">

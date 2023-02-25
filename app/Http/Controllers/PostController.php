@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Post;
+use App\Models\Footer;
 use App\Models\Comment;
+use App\Models\WebInfo;
+use App\Models\SocialMedia;
 use App\Models\CategoryPost;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+
 use App\Models\CustomUserInterface;
+use function PHPUnit\Framework\isNull;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NavigationController;
 
@@ -18,10 +23,13 @@ class PostController extends Controller
     public function post($slug, Request $request)
     {
         $content = Post::where('slug',$slug)->first();
+        $socials = SocialMedia::all();
+        $footer = Footer::get()->all();
         $comment = CommentController::get($content->id);
         $nav = NavigationController::nav();
         $request->visitor()->visit($content);
         $cui = CustomUserInterface::where('isActive', true)->first();
+        $webinfo = WebInfo::first();
         $posts = Post::latest()->take(3)->get();
         $category = CategoryPost::with([
             'post' => function ($query) {
@@ -34,11 +42,14 @@ class PostController extends Controller
             return $value->count();
         });
         // dd(Comment::all());
-        return \view('frontend.post', \compact('content', 'cui', 'posts', 'nav','comment','category','arsip'));
+        return \view('frontend.post', \compact('content', 'cui', 'posts', 'nav','comment','category','arsip','webinfo','socials'));
     }
     public function postManager($selection = 'berita', Request $request)
     {
         $banner = Post::latest()->first();
+        $socials = SocialMedia::all();
+        $webinfo = WebInfo::first();
+        $footer = Footer::get()->all();
         $nav = NavigationController::nav();
         $cui = CustomUserInterface::where('isActive', true)->first();
         if ($selection == 'berita') {
@@ -70,13 +81,16 @@ class PostController extends Controller
         })->map(function ($value, $key) {
             return $value->count();
         });
-        // dd($arsip);
-        if (!$posts) {
+        // dd();
+        if (count($posts) == 0) {
             $message = '404 Not Found';
             if ($cui) {
                 return view('frontend.component.errors.404', compact(
                     'message',
                     'cui',
+                    'webinfo',
+                    'footer',
+                    'socials',
                     'nav'
                 ));
             }
@@ -89,6 +103,9 @@ class PostController extends Controller
             'nav',
             'posts',
             'category',
+            'webinfo',
+            'footer',
+            'socials',
             'arsip'
         ));
     }

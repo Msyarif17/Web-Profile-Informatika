@@ -116,7 +116,7 @@ class CommentController extends Controller
     public function edit($id)
     {
         $comment = Comment::find($id);
-        return view('backend.comment.create', compact('Tag'));
+        return view('backend.comment.create', compact('comment'));
     }
 
     /**

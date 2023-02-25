@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Banner;
+use App\Models\Footer;
 use App\Models\Partner;
+use App\Models\WebInfo;
+use App\Models\SocialMedia;
 use App\Models\CategoryPost;
 use Illuminate\Http\Request;
 use App\Models\PeminatJurusan;
@@ -21,9 +24,11 @@ class IndexController extends Controller
         $nav = NavigationController::nav();
         $banners = Banner::latest()->take(3)->get();
         $slide = 0;
+        $webinfo = WebInfo::first();
         $partner = $this->partner();
         $peminat = PeminatJurusan::pluck('peminat','tahun_akademik')->all();
-        
+        $footer = Footer::get()->all();
+        $socials = SocialMedia::all();
         $pengumuman = CategoryPost::where('slug', 'pengumuman')->latest()->first();
         $prestasi = CategoryPost::where('slug', 'prestasi')->latest()->first();
         if ($pengumuman)
@@ -38,7 +43,7 @@ class IndexController extends Controller
         // dd($posts);
         $cui = CustomUserInterface::where('isActive', true)->first();
         if ($cui) {
-            return view('frontend.index', compact('cui', 'posts', 'pengumuman', 'nav', 'banners', 'slide', 'prestasi', 'partner','peminat'));
+            return view('frontend.index', compact('webinfo','cui', 'posts', 'pengumuman', 'nav', 'banners', 'slide', 'prestasi', 'partner','peminat','footer','socials'));
         }
         return 'tema tidak ditemukan, mohon setting tema terlebih dahulu,<a href="' . route('login') . '" target="_blank">login</a>';
     }

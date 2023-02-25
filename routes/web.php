@@ -22,6 +22,7 @@ use App\Http\Controllers\Dashboard\CustomUIController;
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\CategoryPostController;
 use App\Http\Controllers\Dashboard\CommentController as CController;
+use App\Http\Controllers\Dashboard\FooterController;
 use App\Http\Controllers\Dashboard\PageController as DPageController;
 use App\Http\Controllers\Dashboard\IndexController as DashboardIndexController;
 
@@ -132,9 +133,15 @@ Route::middleware(['auth', 'can:access-dashboard','maintenace.mode'])->name('das
     
     });
     //Web Info
-    // Route::middleware('auth')->group(function () {
+    Route::middleware('can:access-webinfo-manager')->group(function () {
         Route::resource('webinfo', WebInfoController::class);
-       
+    });
+    //Footer
+    Route::middleware('can:access-footer-manager')->group(function(){
+        Route::resource('/footer',FooterController::class);
+        Route::patch('comment/{id}/restore', [CController::class, 'restore'])->name('comment.restore');
+        Route::delete('comment/{id}/delete-permanently', [CController::class, 'forceDestroy'])->name('comment.forceDelete');
+    });
     Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
         Lfm::routes();
     });

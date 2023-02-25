@@ -4,30 +4,26 @@
         <div class="row justify-content-between text-center text-nowrap ">
             <div class="col">
                 <a href="#" class="nav-link link-dark">
-                    <i class="fa-solid fa-phone"></i> (022)7800525
+                    <i class="fa-solid fa-phone"></i> {{$webinfo->phone_number}}
                 </a>
             </div>
             <div class="col">
                 <a href="#" class="nav-link link-dark">
-                    <i class="fa-solid fa-envelope"></i> info@uinsgd.ac.id
+                    <i class="fa-solid fa-envelope"></i> {{env('MAIL_FROM_ADDRESS')}}
                 </a>
             </div>
             <div class="col ">
                 <a href="#" class="nav-link link-dark ">
-                    <i class="fa-solid fa-location-dot"></i> Jl. A.H. Nasution No.105, Cibiru, Bandung 40614
+                    <i class="fa-solid fa-location-dot"></i> {{$webinfo->short_address}}
                 </a>
             </div>
             <div class="col">
                 <div class="d-inline-flex">
-                    <a href="#" class="nav-link link-dark">
-                        <i class="px-2 fa-brands fa-square-facebook"></i>
+                    @foreach ($socials as $s)
+                    <a href="{{$s->url}}" class="nav-link link-dark">
+                        <i class="px-2 fa-brands fa-square-{{$s->name}}"></i>
                     </a>
-                    <a href="#" class="nav-link link-dark">
-                        <i class="px-2 fa-brands fa-youtube"></i>
-                    </a>
-                    <a href="#" class="nav-link link-dark">
-                        <i class="px-2 fa-brands fa-twitter"></i>
-                    </a>
+                    @endforeach
                 </div>
             </div>
         </div>

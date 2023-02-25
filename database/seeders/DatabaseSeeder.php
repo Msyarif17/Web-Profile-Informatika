@@ -17,11 +17,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
+        $iter = [
             MenuSeeder::class,
             RolePermissionSeeder::class,
             UserSeeder::class,
             PeminatJurusanInformatikaSeeder::class,
-        ]);
+            ThemeSeeder::class,
+            FooterDefaultSeeder::class,
+            
+        ];
+        $this->call($iter);
     }
 }

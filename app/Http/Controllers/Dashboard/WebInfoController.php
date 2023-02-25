@@ -29,7 +29,8 @@ class WebInfoController extends Controller
      */
     public function create()
     {
-        return view('backend.webinfo.create');
+        $socials = SocialMedia::get();
+        return view('backend.webinfo.create',\compact('socials'));
     }
 
     /**
@@ -52,8 +53,8 @@ class WebInfoController extends Controller
         $input = $request->all();
         $image = $request->file('logo');
         if ($image) {
-            $image->storeAs('public/banner/image/', 'banner-' . $image->hashName());
-            $input['image'] = '/banner/image/banner-' . $image->hashName();
+            $image->storeAs('public/webinfo/image/', 'webinfo-' . $image->hashName());
+            $input['logo'] = '/webinfo/image/webinfo-' . $image->hashName();
         }
         $webinfo = WebInfo::create($input);
         // dd($request);
@@ -107,11 +108,10 @@ class WebInfoController extends Controller
             $image = $request->file('logo');
         
         if ($image) {
-            $image->storeAs('public/banner/image/', 'banner-' . $image->hashName());
-            $input['image'] = '/banner/image/banner-' . $image->hashName();
+            $image->storeAs('public/webinfo/image/', 'webinfo-' . $image->hashName());
+            $input['logo'] = '/webinfo/image/webinfo-' . $image->hashName();
         }
         SocialMedia::truncate();
-        dd($request->social);
         $webinfo = WebInfo::find($id);
         foreach ($request->social as $key => $value) {
             $value['web_info_id'] = $webinfo->id;
