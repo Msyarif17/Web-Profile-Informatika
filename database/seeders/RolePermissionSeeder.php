@@ -22,7 +22,11 @@ class RolePermissionSeeder extends Seeder
         $arrayOfPermissionNames = [
             'access-dashboard',
             'access-theme-editor',
+<<<<<<< HEAD
             'access-parter-maker',
+=======
+            'access-partner-maker',
+>>>>>>> dc90199365855f1f7bba72eb32907cdc42c7ed24
             'view-all-post',
             'create-user',
             'update-user',
@@ -94,6 +98,10 @@ class RolePermissionSeeder extends Seeder
                 'access-dashboard',
                 'access-theme-editor',
                 'access-partner-maker',
+<<<<<<< HEAD
+=======
+                'access-comment-manager',
+>>>>>>> dc90199365855f1f7bba72eb32907cdc42c7ed24
                 'view-all-post',
                 'create-user',
                 'update-user',
@@ -177,6 +185,9 @@ class RolePermissionSeeder extends Seeder
             ],
             'Alumni' => [
                 'comment'
+            ],
+            'Guest'=>[
+
             ]
         ];
 
