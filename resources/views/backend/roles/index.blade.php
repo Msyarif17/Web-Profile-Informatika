@@ -16,7 +16,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
 
-                        <div class="table-responsive">
+                        <div class="table-responsive p-2 p-2">
                             <table id="data" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -41,14 +41,13 @@
     <script>
         $(function() {
             $('#data').DataTable({
-                serverSide: true,
+                //serverSide: true,
                 processing: true,
                 searchDelay: 1000,
                 ajax: {
                     url: '{{ route('dash.roles.index') }}',
                 },
-                columns: [
-                    {
+                columns: [{
                         data: 'name'
                     },
                     {

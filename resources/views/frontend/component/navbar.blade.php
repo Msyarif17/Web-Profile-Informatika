@@ -37,11 +37,11 @@
             <a class="navbar-brand" href="{{ route('index') }}">
                 <div class="d-inline-flex justify-content-start">
                     <div style="margin-right: 4px;">
-                        <img class="" src="{{ asset('assets/images/Logo Teknik Informatika.png') }}"
+                        <img class="" src="{{ asset('storage'.$cui->logo) }}"
                             alt="Teknik Informatika" height="44px" width="44px">
                     </div>
                     <span class="font-size-16 fw-bold">
-                        TEKNIK<br>INFORMATIKA
+                        {!!$cui->logo_name!!}
                     </span>
                 </div>
 
@@ -84,7 +84,7 @@
                                 </ul>
                             </li>
                         @else
-                            <li class="nav-item navbar-pills rounded-0 dropdown">
+                            <li class="nav-item navbar-pills rounded-0 ">
                                 <a class="nav-link " href="{{ url($n->url_target) }}" role="button">
                                     {{ $n->name }}
                                 </a>

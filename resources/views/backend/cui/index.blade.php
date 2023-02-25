@@ -16,7 +16,7 @@
                     <!-- /.card-header -->
                     <div class="card-body ">
 
-                        <div class="table-responsive">
+                        <div class="table-responsive p-2 p-2">
                             <table id="data" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -41,8 +41,7 @@
                     </div>
                     <div class="card-body p-0">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="{{route('index')}}"
-                                allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item" src="{{ route('index') }}" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -56,7 +55,7 @@
     <script>
         $(function() {
             $('#data').DataTable({
-                serverSide: true,
+                //serverSide: true,
                 processing: true,
                 searchDelay: 1000,
                 ajax: {

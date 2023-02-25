@@ -19,7 +19,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(DataTables $datatables, Request $request)
-    {   
+    {
 
         if ($request->ajax()) {
             return $datatables->of(User::query())
@@ -27,10 +27,10 @@ class UserController extends Controller
                     return $users->name;
                 })
                 ->addColumn('role', function (User $users) {
-                    return implode(", ", $users->getRoleNames()? $users->getRoleNames()->toArray():[]);
+                    return implode(", ", $users->getRoleNames() ? $users->getRoleNames()->toArray() : []);
                 })
                 ->addColumn('permission', function (User $users) {
-                    return implode(", ", $users->getPermissionNames()? $users->getPermissionNames()->toArray():[]);
+                    return implode(", ", $users->getPermissionNames() ? $users->getPermissionNames()->toArray() : []);
                 })
                 ->addColumn('status', function (User $user) {
                     if ($user->deleted_at) {
@@ -57,8 +57,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name','name')->all();
-        return view('backend.users.create',compact('roles'));
+        $roles = Role::pluck('name', 'name')->all();
+        return view('backend.users.create', compact('roles'));
     }
 
     /**
@@ -83,7 +83,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('dash.users.index')
-        ->with('success', 'User created successfully');
+            ->with('success', 'User created successfully');
     }
 
     /**
@@ -127,23 +127,25 @@ class UserController extends Controller
             'password' => 'same:confirm-password',
             'roles' => 'required'
         ]);
-
+        $user = User::find($id);
         $input = $request->all();
         if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
-        } 
+        } else {
+            $input['password'] = $user->first()->password;
+        }
 
-        $user = User::find($id);
+
         $user->update($input);
-        if($request->roles){
+        if ($request->roles) {
 
             DB::table('model_has_roles')->where('model_id', $id)->delete();
-    
+
             $user->assignRole($request->roles);
         }
 
         return redirect()->route('dash.users.index')
-        ->with('success', 'User updated successfully');
+            ->with('success', 'User updated successfully');
     }
 
     /**
@@ -156,6 +158,6 @@ class UserController extends Controller
     {
         User::find($id)->delete();
         return redirect()->route('dash.users.index')
-        ->with('success', 'User deleted successfully');
+            ->with('success', 'User deleted successfully');
     }
 }

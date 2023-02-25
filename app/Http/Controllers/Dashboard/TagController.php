@@ -98,7 +98,7 @@ class TagController extends Controller
     public function edit($id)
     {
         $tag = Tag::find($id);
-        return view('backend.post-tag.create', compact('Tag'));
+        return view('backend.post-tag.create', compact('tag'));
     }
 
     /**
@@ -135,7 +135,7 @@ class TagController extends Controller
     public function forceDestroy($id)
     {
         Tag::withTrashed()->find($id)->forceDelete();
-        return redirect()->route('dash.category-post.index')->with('success', 'Category Post Permanently Deleted successfully');
+        return redirect()->route('dash.tag-post.index')->with('success', 'tag Post Permanently Deleted successfully');
     }
     public function restore($id)
     {

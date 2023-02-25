@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->longText('address');
             $table->longText('short_address');
-            $table->string('phone-number');
+            $table->string('phone_number');
             $table->longText('major_name');
             $table->longText('logo');
+            
             $table->timestamps();
         });
     }

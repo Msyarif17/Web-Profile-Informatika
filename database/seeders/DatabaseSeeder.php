@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             MenuSeeder::class,
             RolePermissionSeeder::class,
             UserSeeder::class,
+            PeminatJurusanInformatikaSeeder::class,
         ]);
     }
 }

@@ -14,12 +14,19 @@ class Comment extends Model
     protected $fillable = [
         'user_id',
         'post_id',
-        'content'
+        'content',
+        'parent_id'
     ];
     public function user(){
         return $this->belongsTo(User::class);
     }
     public function post(){
         return $this->belongsTo(Post::class);
+    }
+    public function parent(){
+        return $this->hasMany(Comment::class,'id', 'parent_id');
+    }
+    public function childrent(){
+        return $this->belongsTo(Comment::class,'parent_id');
     }
 }

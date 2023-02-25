@@ -34,9 +34,11 @@ class PostController extends Controller
                 return $query->withTrashed();
             }
         ]);
-        $roleUser = Auth::user()->getRoleNames();
-        switch($roleUser){
+        $roleUser = Auth::user()->getRoleNames()->toArray();
+        // dd($roleUser);
+        switch(implode("",$roleUser)){
             case 'Super Admin':
+                
                 $data->withTrashed();
                 break;
             case 'Admin':
@@ -180,11 +182,8 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'content' => 'required',
-            'category_post_id' => 'required',
-            'thumbnail' => 'required',
-
         ]);
-
+        $post = Post::find($id);
         $input = $request->all();
         
         $image = $request->file('thumbnail');
@@ -193,9 +192,9 @@ class PostController extends Controller
             $input['thumbnail'] = '/post/image/thumbnail/thumbnail-' . $image->hashName();
         }
         
-        $input['category_post_id'] = implode("", $request->category_post_id);
+        $input['category_post_id'] = $request->category_post_id[0]? implode("", $request->category_post_id):$post->first()->category_post_id;
         
-        $input['tag_id'] = $request->tag_id ? implode("", $request->tag_id):null;
+        $input['tag_id'] = $request->tag_id ? implode("", $request->tag_id):$post->first()->tag_id;
         
         $input['slug'] = Str::slug($input['title']);
         
@@ -207,7 +206,7 @@ class PostController extends Controller
             $input['banner'] = '/post/image/banner/banner-' . $image->hashName();
         }
         
-        Post::find($id)->update($input);
+        $post->update($input);
         return redirect()->route('dash.post.index')->with('success', 'Post Updated successfully');
     }
 
@@ -220,7 +219,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         Post::find($id)->delete();
-        return redirect()->route('dash.post.index')->with('success', 'Category Post deleted successfully');
+        return redirect()->route('dash.post.index')->with('success', 'Post deleted successfully');
     }
     public function forceDestroy($id)
     {
@@ -233,11 +232,11 @@ class PostController extends Controller
 
         $post->forceDelete();
         
-        return redirect()->route('dash.post.index')->with('success', 'Category Post Permanently Deleted successfully');
+        return redirect()->route('dash.post.index')->with('success', 'Post Permanently Deleted successfully');
     }
     public function restore($id)
     {
         Post::withTrashed()->findOrFail($id)->restore();
-        return redirect()->route('dash.post.index')->with('success', 'Category Post restored successfully');
+        return redirect()->route('dash.post.index')->with('success', 'Post restored successfully');
     }
 }

@@ -4,11 +4,12 @@ namespace App\Models;
 
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Comment;
 use App\Models\CategoryPost;
+use Shetabit\Visitor\Traits\Visitable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Shetabit\Visitor\Traits\Visitable;
 
 class Post extends Model
 {
@@ -30,5 +31,8 @@ class Post extends Model
     }
     public function category(){
         return $this->belongsTo(CategoryPost::class,'category_post_id');
+    }
+    public function comment(){
+        return $this->hasMany(Comment::class);
     }
 }

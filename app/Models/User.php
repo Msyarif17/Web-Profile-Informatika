@@ -52,4 +52,7 @@ class User extends Authenticatable
     public function page(){
         return $this->hasMany(Page::class);
     }
+    public function comment(){
+        return $this->hasMany(Comment::class);
+    }
 }

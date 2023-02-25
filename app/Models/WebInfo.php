@@ -8,5 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class WebInfo extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory;
+    protected $fillable = [
+        'address',
+        'short_address',
+        'phone_number',
+        'major_name',
+        'logo',
+        'social_media_id'
+    ];
+    public function socialmedia(){
+        return $this->hasMany(SocialMedia::class);
+    }
 }

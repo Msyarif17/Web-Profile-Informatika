@@ -7,15 +7,16 @@
                 {!! $errors->first('name', '<p class="help-block invalid-feedback">:message</p>') !!}
             </div>
         </div>
-        <div class="col-sm-12 col-md-3">
+        <div class="col-sm-12 col-md-12">
             <div class="form-group">
-                {!! Form::label('video_thumbnail', 'Video Thumbnail') !!}
-                {!! Form::file('video_thumbnail', $errors->has('video_thumbnail') ? ['class'=>'form-control is-invalid','accept'=>"video/mp4,video/x-m4v,video/*"] : ['class'=>'form-control','accept'=>"image/png, image/*"]) !!}
+                {!! Form::label('video_thumbnail', 'Video Thumbnail*') !!}
+                <span class="text-secondary fw-italic">Contoh: https://www.youtube.com/embed/....</span>
+                {!! Form::text('video_thumbnail', @$cui->video_thumbnail, $errors->has('video_thumbnail') ? ['class' => 'form-control is-invalid'] : ['class' => 'form-control']) !!}
                 {!! $errors->first('video_thumbnail', '<p class="help-block invalid-feedback">:message</p>') !!}
-                
             </div>
         </div>
-        <div class="col-sm-12 col-md-3">
+       
+        <div class="col-sm-12 col-md-4">
             <div class="form-group">
                 {!! Form::label('logo', 'Logo*') !!}
                 {!! Form::file('logo', $errors->has('logo') ? ['class'=>'form-control is-invalid','accept'=>"image/*"] : ['class'=>'form-control','accept'=>"image/png, image/*"]) !!}
@@ -23,14 +24,14 @@
                 
             </div>
         </div>
-        <div class="col-sm-12 col-md-3">
+        <div class="col-sm-12 col-md-4">
             <div class="form-group">
                 {!! Form::label('logo_name', 'Logo Name*') !!}
-                {!! Form::text('logo_name', @$cui->name, $errors->has('logo_name') ? ['class' => 'form-control is-invalid'] : ['class' => 'form-control']) !!}
+                {!! Form::text('logo_name', @$cui->logo_name, $errors->has('logo_name') ? ['class' => 'form-control is-invalid'] : ['class' => 'form-control']) !!}
                 {!! $errors->first('logo_name', '<p class="help-block invalid-feedback">:message</p>') !!}
             </div>
         </div>
-        <div class="col-sm-12 col-md-3">
+        <div class="col-sm-12 col-md-4">
             <div class="form-group">
                 {!! Form::label('favicon', 'favicon*') !!}
                 {!! Form::file('favicon', $errors->has('favicon') ? ['class'=>'form-control is-invalid','accept'=>"image/*"] : ['class'=>'form-control','accept'=>"image/png, image/*"]) !!}

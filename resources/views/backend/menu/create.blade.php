@@ -10,11 +10,11 @@
                     <div class="card-header">
                         <div class="row justify-content-between fw-bold align-items-center">
                             <div class="card-title fs-1 ">
-                                
-                                    Create {{$param}}
-                                
+
+                                Create {{ $param }}
+
                             </div>
-                            <a href="{{URL::previous()}}">
+                            <a href="{{ URL::previous() }}">
                                 <button class="btn btn-primary">
                                     <i class="fa-solid fa-arrow-left"></i> Back
                                 </button>
@@ -23,7 +23,12 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        {!! Form::open(['route' => ['dash.menu.store','param'=>$param], 'method' => 'menu', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
+                        {!! Form::open([
+                            'route' => ['dash.menu.store', 'param' => $param],
+                            'method' => 'menu',
+                            'autocomplete' => 'false',
+                            'enctype' => 'multipart/form-data',
+                        ]) !!}
                         @include('backend.menu._form')
                         {!! Form::close() !!}
                     </div>
@@ -36,3 +41,14 @@
         <!-- /.row -->
     </section>
 @endsection
+@push('js')
+    <script>
+        $("#page").on("change", function() {
+            getname();
+        });
+
+        function getname() {
+            $('#url').val("/page/" + $('#page').val());
+        }
+    </script>
+@endpush

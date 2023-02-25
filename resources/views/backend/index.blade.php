@@ -8,39 +8,39 @@
 @section('content')
     <section class="content pt-4">
         <div class="row">
-          <div class="col-12">
-            <div class="row">
-              <div class="col-md-3">
-                <div class="card shadow border-0 rounded">
-                  <div class="card-body">
-                    <span><i class="fa-solid fa-users"></i> User Online {{$online}}</span>
-                  </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card shadow border-0 rounded">
+                            <div class="card-body">
+                                <span><i class="fa-solid fa-users"></i> User Online {{ $online }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card shadow border-0 rounded">
+                            <div class="card-body">
+                                <span><i class="fa-solid fa-newspaper"></i> Jumlah Post {{ $post }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card shadow border-0 rounded">
+                            <div class="card-body">
+                                <span><i class="fa-solid fa-users"></i> Jumlah User {{ $user }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card shadow border-0 rounded">
+                            <div class="card-body">
+                                <span><i class="fa-solid fa-message"></i> Message </span>
+                                <span class="badge badge-light">0</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card shadow border-0 rounded">
-                  <div class="card-body">
-                    <span><i class="fa-solid fa-newspaper"></i> Jumlah Post {{$post}}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card shadow border-0 rounded">
-                  <div class="card-body">
-                    <span><i class="fa-solid fa-users"></i> Jumlah User {{$user}}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card shadow border-0 rounded">
-                  <div class="card-body">
-                    <span><i class="fa-solid fa-message"></i> Message </span>
-                    <span class="badge badge-light">0</span>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
             <div class="col-md-6 col-sm-12">
                 <div class="card shadow border-0 rounded">
                     <div class="card-header">
@@ -75,7 +75,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
 
-                        <div class="table-responsive">
+                        <div class="table-responsive p-2 p-2">
                             <table id="data" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -96,22 +96,22 @@
             <div class="col-md-4 col-sm-12">
                 <div class="row mt-md-4 mt-sm-3">
                     <div class="col-12">
-                        <a class="text-dark" href="{{route('dash.maintenance')}}">
-                            <div class="card {{!$maintenance?'bg-danger':'bg-success'}}">
+                        <a class="text-dark" href="{{ route('dash.maintenance') }}">
+                            <div class="card {{ !$maintenance ? 'bg-danger' : 'bg-success' }}">
                                 <div class="card-body">
                                     <p class="card-title">
-                                        {{!$maintenance?'Maintenance':'Live'}}
+                                        {{ !$maintenance ? 'Maintenance' : 'Live' }}
                                     </p>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="col-12">
-                        <a class="text-dark" href="#">
-                            <div class="card bg-danger">
+                        <a class="text-dark" href="{{ route('dash.backup') }}">
+                            <div class="card bg-primary">
                                 <div class="card-body">
                                     <p class="card-title">
-                                        Logout All User (Comming Soon)
+                                        Backup Database (Masih proses)
                                     </p>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@
     <script>
         $(function() {
             $('#data').DataTable({
-                serverSide: true,
+                //serverSide: true,
                 processing: true,
                 searchDelay: 1000,
                 ajax: {

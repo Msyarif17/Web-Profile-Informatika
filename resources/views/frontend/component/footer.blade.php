@@ -5,15 +5,15 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="d-inline-flex justify-content-start pb-3" >
-                        <div class="col-md-3 align-self-center">
+                        <div class="col-12  align-self-center">
                             <div class="d-inline-flex justify-content-center ">
                                 
-                                <img src="{{asset('assets/images/Logo UIN.png')}}" alt="" height="44px"></div>
+                                <img src="{{asset('assets/images/Logo UIN.png')}}" class="img-fluid" alt="" ></div>
                             </div>
-                        <div class="col-md-3 align-self-center">
+                        <div class="col-12  align-self-center">
                             <div class="d-inline-flex justify-content-center">
                                     
-                                <img src="{{asset('assets/images/Logo Teknik Informatika.png')}}" alt="" height="44px">
+                                <img src="{{asset('assets/images/Logo Teknik Informatika.png')}}" class="img-fluid" alt="" >
                             </div>
                         </div>
                     </div>
