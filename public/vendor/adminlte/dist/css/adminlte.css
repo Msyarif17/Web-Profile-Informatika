@@ -1955,61 +1955,61 @@ pre code {
 }
 
 @media (max-width: 575.98px) {
-  .table-responsive-sm {
+  .table-responsive p-2 p-2-sm {
     display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .table-responsive-sm > .table-bordered {
+  .table-responsive p-2 p-2-sm > .table-bordered {
     border: 0;
   }
 }
 
 @media (max-width: 767.98px) {
-  .table-responsive-md {
+  .table-responsive p-2 p-2-md {
     display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .table-responsive-md > .table-bordered {
+  .table-responsive p-2 p-2-md > .table-bordered {
     border: 0;
   }
 }
 
 @media (max-width: 991.98px) {
-  .table-responsive-lg {
+  .table-responsive p-2 p-2-lg {
     display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .table-responsive-lg > .table-bordered {
+  .table-responsive p-2 p-2-lg > .table-bordered {
     border: 0;
   }
 }
 
 @media (max-width: 1199.98px) {
-  .table-responsive-xl {
+  .table-responsive p-2 p-2-xl {
     display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .table-responsive-xl > .table-bordered {
+  .table-responsive p-2 p-2-xl > .table-bordered {
     border: 0;
   }
 }
 
-.table-responsive {
+.table-responsive p-2 p-2 {
   display: block;
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-.table-responsive > .table-bordered {
+.table-responsive p-2 p-2 > .table-bordered {
   border: 0;
 }
 
@@ -45594,11 +45594,11 @@ blockquote.quote-gray-dark h6 {
     float: left;
     width: 33.3333333%;
   }
-  .table-responsive {
+  .table-responsive p-2 p-2 {
     overflow: auto;
   }
-  .table-responsive > .table tr th,
-  .table-responsive > .table tr td {
+  .table-responsive p-2 p-2 > .table tr th,
+  .table-responsive p-2 p-2 > .table tr td {
     white-space: normal !important;
   }
 }

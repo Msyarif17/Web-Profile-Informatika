@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Tag;
 use App\Models\Menu;
+use App\Models\Page;
 use App\Models\Post;
 use App\Models\SubMenu;
 use Illuminate\Support\Str;
@@ -92,37 +93,43 @@ class MenuController extends Controller
         $this->validate($request, [
             'param' => 'required',
         ]);
+        
         $param = $request->param;
         if (!$param) {
             return back()->with('success', 'In Corect Parameter');
         }
-
+        $page = Page::pluck('title', 'id')->all();
         switch ($param) {
             case 'menu':
                 $data = CategoryMenu::pluck('name', 'id')->all();
                 $route = Route::getRoutes();
                 $url_target = Post::pluck('slug', 'id')->all();
                 if ($data) {
-                    return view('backend.menu.create', \compact('param', 'data', 'url_target'));
+                    return view('backend.menu.create', \compact('param', 'page', 'data', 'url_target'));
                 } else {
                     return \redirect()->route('dash.menu.create', ['param' => 'category_menu'])->with('success', 'Create Category Menu Before Create Menu');
                 }
                 break;
             case 'submenu':
-                $data = CategoryMenu::pluck('name', 'id')->all();
                 $data1 = Menu::pluck('name', 'id')->all();
+                if ($request->ajax()) {
+                    $data1 = CategoryMenu::with('menu')->where('id',$request->id)->first()->menu;
+                    return response()->json($data1);
+                }
+                $data = CategoryMenu::pluck('name', 'id')->all();
+                
                 $url_target = Post::pluck('slug', 'id')->all();
                 if (!$data) {
                     return \redirect()->route('dash.menu.create', ['param' => 'category_menu'])->with('success', 'Create Category Menu Before Create Menu');
                 } elseif (!$data1) {
                     return \redirect()->route('dash.menu.create', ['param' => 'menu'])->with('success', 'Create Menu Before Create Menu');
                 } else {
-                    return view('backend.menu.create', \compact('param', 'data', 'data1', 'url_target'));
+                    return view('backend.menu.create', \compact('param', 'page', 'data', 'data1', 'url_target'));
                 }
                 break;
             default:
                 $url_target = Post::pluck('slug', 'id')->all();
-                return view('backend.menu.create', \compact('param', 'url_target'));
+                return view('backend.menu.create', \compact('param', 'page', 'url_target'));
         }
     }
 
@@ -136,23 +143,23 @@ class MenuController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string',
-            'url_target' => 'required|string',
 
         ]);
+        
+        $input = $request->all();
+        // dd($input['page_id'][0] == null);
+        $input['page_id'] = $input['page_id'][0] ? Page::where('slug', implode("",  $input['page_id']))->first()->id : null;
         switch ($request->param) {
             case 'category_menu':
-                $input = $request->only(['name', 'url_target']);
                 $input['slug'] = Str::slug($input['name']);
                 CategoryMenu::create($input);
                 break;
             case 'menu':
-                $input = $request->only(['category_menu_id', 'name', 'url_target']);
                 $input['category_menu_id'] = implode("", $input['category_menu_id']);
                 $input['slug'] = Str::slug($input['name']);
                 Menu::create($input);
                 break;
             case 'submenu':
-                $input = $request->only(['category_menu_id', 'menu_id', 'name', 'url_target']);
                 $input['category_menu_id'] = implode("", $input['category_menu_id']);
                 $input['menu_id'] = implode("", $input['menu_id']);
                 $input['slug'] = Str::slug($input['name']);
@@ -186,29 +193,41 @@ class MenuController extends Controller
         if (!$param) {
             return back()->with('success', 'In Corect Parameter');
         }
-
+        $page = Page::pluck('title', 'slug')->all();
         switch ($param) {
             case 'menu':
-                $page = Menu::with([
+                $old = Menu::with([
                     'categoryMenu' => function ($query) {
                         return $query->withTrashed();
+                    },
+                    'page' => function ($q) {
+                        return $q->withTrashed();
                     }
                 ])->find($id);
+                // dd($old);
                 $data = CategoryMenu::pluck('name', 'id')->all();
                 $route = Route::getRoutes();
                 $url_target = Post::pluck('slug', 'id')->all();
                 if ($data) {
-                    return view('backend.menu.edit', \compact('param', 'data', 'page'));
+                    return view('backend.menu.edit', \compact('param','old', 'data', 'page'));
                 } else {
                     return \redirect()->route('dash.menu.edit', [$id, 'param' => 'category_menu'])->with('success', 'Create Category Menu Before Create Menu');
                 }
                 break;
             case 'submenu':
-                $page = SubMenu::with([
+                $old = SubMenu::with([
                     'menu' => function ($query) {
-                        return $query->withTrashed();
+                        return $query->with([
+                            'categoryMenu' => function($query){
+                                return $query->withTrashed();
+                            }
+                        ])->withTrashed();
+                    },
+                    'page' =>function($q){
+                        return $q->withTrashed();
                     }
                 ])->find($id);
+                // dd($old->menu->categoryMenu->id);
                 $data = CategoryMenu::pluck('name', 'id')->all();
                 $data1 = Menu::pluck('name', 'id')->all();
                 $url_target = Post::pluck('slug', 'id')->all();
@@ -217,17 +236,17 @@ class MenuController extends Controller
                 } elseif (!$data1) {
                     return \redirect()->route('dash.menu.edit', [$id, 'param' => 'menu'])->with('success', 'Create Menu Before Create Menu');
                 } else {
-                    return view('backend.menu.edit', \compact('param', 'data', 'data1', 'page'));
+                    return view('backend.menu.edit', \compact('param','old', 'data', 'data1', 'page'));
                 }
                 break;
             default:
-                $page = CategoryMenu::with([
-                    'menu' => function ($query) {
-                        return $query->withTrashed();
+                $old = CategoryMenu::with([
+                    'page' => function ($q) {
+                        return $q->withTrashed();
                     }
                 ])->find($id);
 
-                return view('backend.menu.edit', \compact('param', 'page'));
+                return view('backend.menu.edit', \compact('param','old', 'page'));
         }
     }
 
@@ -242,24 +261,22 @@ class MenuController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string',
-            'url_target' => 'required|string',
             'param' => 'required|string',
 
         ]);
+        $input = $request->all();
+        $input['page_id'] = $input['page_id'][0] ? Page::where('slug',implode("",  $input['page_id']))->first()->id : null;
         switch ($request->param) {
             case 'category_menu':
-                $input = $request->only(['name', 'url_target']);
                 $input['slug'] = Str::slug($input['name']);
                 CategoryMenu::find($id)->update($input);
                 break;
             case 'menu':
-                $input = $request->only(['category_menu_id', 'name', 'url_target']);
                 $input['category_menu_id'] = implode("", $input['category_menu_id']);
                 $input['slug'] = Str::slug($input['name']);
                 Menu::find($id)->update($input);
                 break;
             case 'submenu':
-                $input = $request->only(['category_menu_id', 'menu_id', 'name', 'url_target']);
                 $input['category_menu_id'] = implode("", $input['category_menu_id']);
                 $input['menu_id'] = implode("", $input['menu_id']);
                 $input['slug'] = Str::slug($input['name']);

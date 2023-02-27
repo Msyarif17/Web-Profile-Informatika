@@ -15,7 +15,7 @@ return [
     */
 
     'title' => 'Informatika',
-    'title_prefix' => 'Dashboard',
+    'title_prefix' => 'Informatika',
     'title_postfix' => '',
 
     /*
@@ -31,7 +31,7 @@ return [
     */
 
     'use_ico_only' => false,
-    'use_full_favicon' => true,
+    'use_full_favicon' => 'assets/images/Logo Teknik Informatika.png',
 
     /*
     |--------------------------------------------------------------------------
@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'assets/images/Logo Teknik Informatika.png',
             'alt' => 'Teknik Informatika',
@@ -303,76 +303,119 @@ return [
             'url'         => 'dashboard',
             'icon'        => 'fa-solid fa-gauge',
             'label_color' => 'success',
+            'can' => 'access-dashboard'
         ],
-        ['header' => 'POST MAKER'],
+        ['header' => 'Post Manager'],
 
         [
             'text'  => 'Category Post',
             'icon'  => 'fa-solid fa-list',
             'url'   => 'dashboard/category-post/',
+            'can' => 'read-category-post'
         ],
         [
             'text'  => 'Tags Post',
             'icon'  => 'fa-solid fa-tags',
             'url'   => 'dashboard/tag/',
+            'can' => 'read-tag'
         ],
         [
             'text'  => 'Post',
             'icon'  => 'fa-solid fa-newspaper',
             'url'   => 'dashboard/post/',
-
+            'can' => 'read-post'
         ],
         [
             'text'  => 'Comment',
             'icon'  => 'fa-solid fa-list',
             'url'   => 'dashboard/comment',
+            'can' => 'access-comment-manager'
         ],
-        ['header' => 'USER INTERFACE',],
         [
-            'text'        => 'Custom',
-            'icon'        => 'fa-solid fa-paint-roller',
-            'label_color' => 'success',
-            'submenu' => [
-
-                [
-                    'text'  => 'Theme',
-                    'icon'  => 'fa-solid fa-brush',
-                    'url'   => 'dashboard/cui/',
-                ],
-                [
-                    'text'  => 'Menu',
-                    'icon'  => 'fa-solid  fa-font-awesome',
-                    'url'   => 'dashboard/menu',
-
-                ],
-                [
-                    'text'  => 'Pages',
-                    'icon'  => 'fa-solid fa-id-card',
-                    'url'   => 'dashboard/page',
-                ],
+            'header' => 'Interface Manager',
+            'can' => 'access-theme-editor',
+        ],
+        [
+            'text'  => 'Banner',
+            'icon'  => 'fa-solid fa-paint-roller',
+            'url'   => 'dashboard/banner/',
+            'can' => 'read-banner'
+        ],
+        [
+            'text'  => 'Theme',
+            'icon'  => 'fa-solid fa-brush',
+            'url'   => 'dashboard/cui/',
+            'can' => 'access-theme-editor'
+        ],
+        [
+            'text'  => 'Navigation',
+            'icon'  => 'fa-solid  fa-font-awesome',
+            'url'   => 'dashboard/menu',
+            'can' => [
+                'read-category-menu',
+                'read-menu',
+                'read-sub-menu',
             ]
+
         ],
 
-        ['header' => 'account_settings'],
+        [
+            'text'  => 'Footer',
+            'icon'  => 'fa-solid  fa-font-awesome',
+            'url'   => 'dashboard/footer',
+            'can' => 'access-footer-manager',
+
+        ],
+        [
+            'text'  => 'Pages',
+            'icon'  => 'fa-solid fa-id-card',
+            'url'   => 'dashboard/page',
+            'can' => 'read-page'
+        ],
+        [
+            'header' => 'Info Manager',
+            'can' => 'read-user'
+        ],
+        [
+            'text'  => 'Web Information',
+            'icon'  => 'fa-solid fa-circle-info',
+            'url'   => 'dashboard/webinfo',
+            'can' => 'access-webinfo-manager'
+        ],
+        [
+            'text'  => 'Peminat Prodi',
+            'icon'  => 'fa-solid fa-chart-simple',
+            'url'   => 'dashboard/page',
+            'can' => 'read-page'
+        ],
+
+        [
+            'text'  => 'Partner/Mitra',
+            'icon'  => 'fa-solid fa-handshake',
+            'url'   => 'dashboard/partner',
+            'can' => 'access-partner-maker'
+        ],
+        [
+            'header' => 'User Manager',
+            'can' => 'read-user'
+        ],
         [
             'text' => 'Roles',
             'url'  => 'dashboard/roles',
             'icon' => 'fa-solid fa-gear',
+            'can' => 'read-role'
         ],
         [
             'text' => 'Permissions',
             'url'  => 'dashboard/permissions',
             'icon' => 'fa-solid fa-key',
+            'can' => 'read-permission'
         ],
         [
             'text' => 'Users',
-            'url'  => 'dashboard/Users',
+            'url'  => 'dashboard/users',
             'icon' => 'fa-solid fa-users',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'can' => 'read-user'
         ],
 
     ],
@@ -413,22 +456,121 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
+
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
+                    'location' => 'https://code.jquery.com/jquery-3.5.1.js',
+                ],
+
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js',
+                ],
+
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js',
+                ],
+
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/buttons/2.3.4/js/dataTables.buttons.min.js',
+                ],
+
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/buttons/2.3.4/js/buttons.bootstrap4.min.js',
+                ],
+
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js',
+                ],
+
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js',
+                ],
+
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js',
+                ],
+
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/buttons/2.3.4/js/buttons.html5.min.js',
+                ],
+
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/buttons/2.3.4/js/buttons.print.min.js',
+                ],
+
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/buttons/2.3.4/js/buttons.colVis.min.js',
                 ],
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
+                    'location' => 'https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/buttons/2.3.4/js/dataTables.buttons.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/buttons/2.3.4/css/buttons.bootstrap4.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js',
                 ],
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+                    'location' => 'https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css',
+                ],
+
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css',
+                ],
+
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css',
+                ],
+
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/buttons/2.3.4/css/buttons.bootstrap4.min.css',
                 ],
             ],
         ],

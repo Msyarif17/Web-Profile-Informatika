@@ -19,10 +19,10 @@ class MenuSeeder extends Seeder
     {
         CategoryMenu::insert([
             [
-                'name'=> 'Profil Jurusan',
+                'name' => 'Profil Jurusan',
                 'slug' => 'profil-jurusan',
                 'url_target' => '#',
-                'page_id' =>null,
+                'page_id' => null,
             ],
             [
                 'name' => 'Akademi',
@@ -37,19 +37,19 @@ class MenuSeeder extends Seeder
                 'page_id' => null,
             ],
             [
-                'name' => 'Login',
-                'slug' => 'login',
-                'url_target' => '/login',
+                'name' => 'Berita',
+                'slug' => '',
+                'url_target' => '/groups/berita',
                 'page_id' => null,
             ],
         ]);
         Menu::insert([
             [
                 'category_menu_id' => 1,
-                'name'=> 'Sejarah',
+                'name' => 'Sejarah',
                 'url_target' => '#',
                 'slug' => 'sejarah',
-                'page_id' => null  
+                'page_id' => null
             ],
             [
                 'category_menu_id' => 1,
@@ -138,14 +138,14 @@ class MenuSeeder extends Seeder
         ]);
         SubMenu::insert([
             [
-                'menu_id' => 1,
-                'name'=> 'dosen',
+                'menu_id' => 4,
+                'name' => 'dosen',
                 'slug' => 'dosen',
-                'url_target' =>'',
-                'page_id'=> null
+                'url_target' => '',
+                'page_id' => null
             ],
             [
-                'menu_id' => 1,
+                'menu_id' => 4,
                 'name' => 'admin',
                 'slug' => 'admin',
                 'url_target' => '',

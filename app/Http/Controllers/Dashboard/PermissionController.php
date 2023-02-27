@@ -25,13 +25,6 @@ class PermissionController extends Controller
                 ->addColumn('action', function (Permission $permissions) {
                     return \view('backend.permissions.button_action', compact('permissions'));
                 })
-                ->addColumn('status', function (Permission $permissions) {
-                    if (!$permissions->isActive) {
-                        return 'Inactive';
-                    } else {
-                        return 'Active';
-                    }
-                })
                 ->rawColumns(['status', 'action'])
                 ->make(true);
         } else {
@@ -62,7 +55,7 @@ class PermissionController extends Controller
             'name' => 'required',
         ]);
         Permission::create($request->only(['name']));
-        return back()->with('success', 'Post Category Created successfully');
+        return back()->with('success', 'Permission Created successfully');
     }
 
     /**
@@ -84,7 +77,8 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $permissions = Permission::find($id);
+        return view('backend.permissions.edit',compact('permissions'));
     }
 
     /**
@@ -96,7 +90,11 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+        Permission::find($id)->update($request->only(['name']));
+        return back()->with('success', 'Permission Created successfully');
     }
 
     /**
@@ -107,6 +105,17 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Permission::find($id)->delete();
+        return redirect()->route('dash.permissions.index')->with('success', 'Permission deleted successfully');
+    }
+    public function forceDestroy($id)
+    {
+        Permission::withTrashed()->find($id)->forceDelete();
+        return redirect()->route('dash.permissions.index')->with('success', 'Permission Permanently Deleted successfully');
+    }
+    public function restore($id)
+    {
+        Permission::withTrashed()->findOrFail($id)->restore();
+        return redirect()->route('dash.permissions.index')->with('success', 'Permission restored successfully');
     }
 }

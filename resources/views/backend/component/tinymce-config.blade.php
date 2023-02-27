@@ -5,7 +5,9 @@
     const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
 
     tinymce.init({
+        path_absolute : "/dashboard/",
         selector: '#richtext',
+        relative_urls: false,
         deprecation_warnings: false,
         plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
         imagetools_cors_hosts: ['picsum.photos'],
@@ -14,60 +16,36 @@
         toolbar_sticky: true,
         // autosave_ask_before_unload: true,
         // autosave_interval: '30s',
-        // autosave_prefix: '{{}}',
+        // autosave_prefix: '',
         // autosave_restore_when_empty: false,
         // autosave_retention: '2m',
         image_advtab: true,
-        link_list: [{
-                title: 'My page 1',
-                value: 'https://www.tiny.cloud'
-            },
-            {
-                title: 'My page 2',
-                value: 'http://www.moxiecode.com'
-            }
-        ],
-        image_list: [{
-                title: 'My page 1',
-                value: 'https://www.tiny.cloud'
-            },
-            {
-                title: 'My page 2',
-                value: 'http://www.moxiecode.com'
-            }
-        ],
-        image_class_list: [{
-                title: 'None',
-                value: ''
-            },
-            {
-                title: 'Some class',
-                value: 'class-name'
-            }
-        ],
+       
         importcss_append: true,
         file_picker_callback: function(callback, value, meta) {
-            /* Provide file and text for the link dialog */
-            if (meta.filetype === 'file') {
-                callback('https://www.google.com/logos/google.jpg', {
-                    text: 'My text'
-                });
+            var x = window.innerWidth || document.documentElement.clientWidth || document
+                .getElementsByTagName('body')[0].clientWidth;
+            var y = window.innerHeight || document.documentElement.clientHeight || document
+                .getElementsByTagName('body')[0].clientHeight;
+
+            var cmsURL = '{{route("dash.index")}}'+ '/laravel-filemanager?editor=' + meta.fieldname;
+            if (meta.filetype == 'image') {
+                cmsURL = cmsURL + "&type=Images";
+            } else {
+                cmsURL = cmsURL + "&type=Files";
             }
 
-            /* Provide image and alt text for the image dialog */
-            if (meta.filetype === 'image') {
-                callback('https://www.google.com/logos/google.jpg', {
-                    alt: 'My alt text'
-                });
-            }
-
-            /* Provide alternative source and posted for the media dialog */
-            if (meta.filetype === 'media') {
-                callback('movie.mp4', {
-                    source2: 'alt.ogg',
-                    poster: 'https://www.google.com/logos/google.jpg'
-                });
-            }
+            tinyMCE.activeEditor.windowManager.openUrl({
+                url: cmsURL,
+                title: 'Filemanager',
+                width: x * 0.8,
+                height: y * 0.8,
+                resizable: "yes",
+                close_previous: "no",
+                onMessage: (api, message) => {
+                    callback(message.content);
+                }
+            });
         },
         templates: [{
                 title: 'New Table',

@@ -9,24 +9,24 @@
                     <div class="card-header">
                         <h3 class="card-title">Post</h3>
                         <div class="float-right">
-                            <a href="{{route('dash.post.create')}}" class="btn btn-success btn-flat btn-sm"
-                               title="Tambah">Tambah</a>
+                            <a href="{{ route('dash.post.create') }}" class="btn btn-success btn-flat btn-sm"
+                                title="Tambah">Tambah</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        
-                        <div class="table-responsive">
+
+                        <div class="table-responsive p-2 p-2">
                             <table id="data" class="table table-bordered table-striped">
                                 <thead>
-                                <tr>
-                                    <th>Judul</th>
-                                    <th>Kategori</th>
-                                    <th>Dibuat Oleh</th>
-                                    <th>Tanggal Pembuatan</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
+                                    <tr>
+                                        <th>Judul</th>
+                                        <th>Kategori</th>
+                                        <th>Dibuat Oleh</th>
+                                        <th>Tanggal Pembuatan</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
                                 </thead>
                             </table>
                         </div>
@@ -44,19 +44,28 @@
     <script>
         $(function() {
             $('#data').DataTable({
-                serverSide: true,
+                //serverSide: true,
                 processing: true,
                 searchDelay: 1000,
                 ajax: {
-                    url: '{{route('dash.post.index')}}',
+                    url: '{{ route('dash.post.index') }}',
                 },
-                columns: [
-                    {data: 'judul'},
-                    {data: 'kategori'},
-                    {data: 'created_by'},
-                    {data: 'created_at'},
+                columns: [{
+                        data: 'judul'
+                    },
                     {
-                        data: 'status', name: 'deleted_at', render: function (datum, type, row) {
+                        data: 'kategori'
+                    },
+                    {
+                        data: 'created_by'
+                    },
+                    {
+                        data: 'created_at'
+                    },
+                    {
+                        data: 'status',
+                        name: 'deleted_at',
+                        render: function(datum, type, row) {
                             if (row.status == 'Active') {
                                 return `<span class="badge badge-success">${row.status}<span>`;
                             } else {

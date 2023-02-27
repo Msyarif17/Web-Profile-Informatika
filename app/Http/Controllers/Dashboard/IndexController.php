@@ -4,35 +4,55 @@ namespace App\Http\Controllers\Dashboard;
 
 use Carbon\Carbon;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Shetabit\Visitor\Visitor;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
+use Shetabit\Visitor\Models\Visit;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class IndexController extends Controller
 {
-    public function index(DataTables $datatables, Request $request){
-        $data = new Post;
-        if($data){
-            $data->get()->groupBy(function($d) {
-                return Carbon::parse($d->created_at)->format('m');
-            });
-            
+    public function index(DataTables $datatables, Request $request)
+    {
+        $visit = Visit::get();
+        $post = Post::get();
+
+        $data = [$visit, $post];
+        foreach ($data as $key => $value) {
+            $a = $value
+                ->groupBy(function ($d) {
+                    return Carbon::parse($d->created_at)->format('d');
+                })
+                ->map(function ($visit, $key) {
+                    return $visit->count();
+                })
+                ->toArray();
+            foreach (range(1, Carbon::now()->daysInMonth) as $i) {
+                $b[$i] = 0;
+            }
+            // dd([$b, $a])
+
+            $data[$key] = array_replace($b, $a);
         }
-        else{
-            $data = [];
-        }
+        $user = User::get()->count();
+        $post = Post::get()->count();
+        $online = User::online()->get()->count();
+        $maintenance = Storage::disk('framework')->exists('maintenance');
         if ($request->ajax()) {
             return $datatables->of(Post::with([
                 'category' => function ($query) {
                     return $query->withTrashed();
                 },
-                'user' => function ($query){
+                'user' => function ($query) {
                     return $query->withTrashed();
                 },
                 'tag' => function ($query) {
                     return $query->withTrashed();
                 }
-                ])->withTrashed())
+            ])->withTrashed())
                 ->addColumn('judul', function (Post $post) {
                     return $post->title;
                 })
@@ -59,7 +79,12 @@ class IndexController extends Controller
                 ->rawColumns(['status', 'action'])
                 ->make(true);
         }
-        return view('backend.index');
+        return view('backend.index', compact(
+            'data',
+            'online',
+            'user',
+            'post',
+            'maintenance'
+        ));
     }
-    
 }

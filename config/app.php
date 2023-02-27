@@ -186,7 +186,8 @@ return [
          * Package Service Providers...
          */
         Spatie\Permission\PermissionServiceProvider::class,
-
+        Shetabit\Visitor\Provider\VisitorServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -210,7 +211,10 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Page' => App\Models\Page::class,
+        'Post' => App\Models\Post::class,
+        'Visitor' => Shetabit\Visitor\Facade\Visitor::class,
+        'DataTables' => Yajra\DataTables\DataTables::class,
     ])->toArray(),
 
 ];

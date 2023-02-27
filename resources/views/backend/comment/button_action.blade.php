@@ -1,11 +1,11 @@
-@if ($post->deleted_at)
-    <form action="{{ route('dash.post.restore', $post->id) }}" method="post" class="d-inline">
+@if ($comment->deleted_at)
+    <form action="{{ route('dash.comment.restore', $comment->id) }}" method="post" class="d-inline">
         @method('PATCH')
         @csrf
         <button type="submit" class="btn btn-success btn-flast btn-sm" data-toggle="tootlip" data-placement="top"
             title="restore"><span class="fa fa-undo"></span></button>
     </form>
-    <form action="{{ route('dash.post.forceDelete', $post->id) }}" method="post" class="d-inline"
+    <form action="{{ route('dash.comment.forceDelete', $comment->id) }}" method="post" class="d-inline"
         onsubmit="return confirm('apakah anda yakin?')">
         @csrf
         <input type="hidden" name="_method" value="delete" />
@@ -13,10 +13,13 @@
             title="delete permanent"><span class="fa fa-x"></span></button>
     </form>
 @else
-    <a href="{{ route('dash.post.edit', $post->id) }}" class="btn  btn-primary btn-flat btn-sm" data-toggle="tooltip"
-        data-placement="top" title="edit"><span class="fa fa-edit"></span></a>
-    
-    <form action="{{ route('dash.post.destroy', $post->id) }}" method="post" class="d-inline"
+    @if ($comment->user_id == Auth::user()->id)
+        <a href="{{ route('dash.comment.edit', $comment->id) }}" class="btn  btn-primary btn-flat btn-sm"
+            data-toggle="tooltip" data-placement="top" title="edit"><span class="fa fa-edit"></span></a>
+    @endif
+    <a href="{{ route('dash.comment.create', ['id' => $comment->id]) }}" class="btn btn-success btn-flat btn-sm"
+        data-placement="top" title="reply"><span class="fa fa-reply"></span></a>
+    <form action="{{ route('dash.comment.destroy', $comment->id) }}" method="post" class="d-inline"
         onsubmit="return confirm('apakah anda yakin?')">
         @csrf
         <input type="hidden" name="_method" value="delete" />

@@ -24,7 +24,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         {!! Form::open(['route' => ['dash.permissions.update',$permissions->id], 'method' => 'put', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
-                        @include('backend.post-permissions._form')
+                        @include('backend.permissions._form')
                         {!! Form::close() !!}
                     </div>
                     <!-- /.card-body -->

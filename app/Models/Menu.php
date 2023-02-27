@@ -24,6 +24,6 @@ class Menu extends Model
     }
     public function page()
     {
-        return $this->hasOne(Page::class);
+        return $this->belongsTo(Page::class);
     }
 }
