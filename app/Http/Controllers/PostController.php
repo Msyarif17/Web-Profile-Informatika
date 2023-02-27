@@ -42,7 +42,7 @@ class PostController extends Controller
             return $value->count();
         });
         // dd(Comment::all());
-        return \view('frontend.post', \compact('content', 'cui', 'posts', 'nav','comment','category','arsip','webinfo','socials'));
+        return \view('frontend.post', \compact('footer','content', 'cui', 'posts', 'nav','comment','category','arsip','webinfo','socials'));
     }
     public function postManager($selection = 'berita', Request $request)
     {

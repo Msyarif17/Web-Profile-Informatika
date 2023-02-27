@@ -40,7 +40,9 @@
                         </div>
                         <hr class="my-3">
                         <div class="col-12 pb-3">
-                            {!! $content->content !!}
+                            <figure>
+                                {!! $content->content !!}
+                            </figure>
                         </div>
                         @if (!Request::is('page*'))
                             <div class="col-12">
