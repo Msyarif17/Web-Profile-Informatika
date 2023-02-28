@@ -32,14 +32,14 @@ class IndexController extends Controller
         $pengumuman = CategoryPost::where('slug', 'pengumuman')->orWhere('slug','Pengumuman')->latest()->first();
         $prestasi = CategoryPost::where('slug', 'prestasi')->orWhere('slug','Prestasi')->latest()->first();
         if ($pengumuman)
-            $pengumuman = $data->where('category_post_id', $pengumuman->id)->latest()->all()->take(3)->get();
+            $pengumuman = $data->where('category_post_id', $pengumuman->id)->latest()->take(3)->get();
         else
             $pengumuman = [];
         if ($prestasi)
-            $prestasi = $data->where('category_post_id', $prestasi->id)->latest()->all()->take(3)->get();
+            $prestasi = $data->where('category_post_id', $prestasi->id)->latest()->take(3)->get();
         else
             $pengumuman = [];
-        $posts = Post::latest()->all()->take(3)->get();
+        $posts = Post::latest()->take(3)->get();
         // dd($posts);
         $cui = CustomUserInterface::where('isActive', true)->first();
         if ($cui) {
