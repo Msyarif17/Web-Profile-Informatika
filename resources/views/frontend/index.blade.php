@@ -173,7 +173,8 @@
                             @else
                                 <div class="carousel-item">
                                     <img src="{{ asset('storage' . $p->banner) }}" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
+                                    <div class="carousel-caption d-none d-md-block" style="background: rgb(0,0,0);
+                                    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);">
                                         <h5 class="text-capitalize text-shadow fw-bold">{{ $p->title }}</h5>
                                         <p>{{ Str::limit(strip_tags($p->content), 100, '...') }}</p>
                                     </div>
