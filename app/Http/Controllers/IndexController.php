@@ -36,7 +36,7 @@ class IndexController extends Controller
         else
             $pengumuman = [];
         if ($prestasi)
-            $prestasi = $data->where('category_post_id', $prestasi->id)->latest()->take(3)->get();
+            $prestasi = $data->where('category_post_id', $prestasi->id)->latest()->all()->take(3)->get();
         else
             $pengumuman = [];
         $posts = Post::latest()->all()->take(3)->get();
