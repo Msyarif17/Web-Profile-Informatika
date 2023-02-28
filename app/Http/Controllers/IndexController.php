@@ -32,11 +32,11 @@ class IndexController extends Controller
         $pengumuman = CategoryPost::where('slug', 'pengumuman')->latest()->first();
         $prestasi = CategoryPost::where('slug', 'prestasi')->latest()->first();
         if ($pengumuman)
-            $pengumuman = $data->where('category_post_id', $pengumuman->id)->latest()->get();
+            $pengumuman = $data->where('category_post_id', $pengumuman->id)->latest()->take(3)->get();
         else
             $pengumuman = [];
         if ($prestasi)
-            $prestasi = $data->where('category_post_id', $prestasi->id)->latest()->get();
+            $prestasi = $data->where('category_post_id', $prestasi->id)->latest()->take(3)->get();
         else
             $pengumuman = [];
         $posts = Post::latest()->get();
