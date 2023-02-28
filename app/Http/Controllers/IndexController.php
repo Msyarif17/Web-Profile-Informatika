@@ -30,7 +30,7 @@ class IndexController extends Controller
         $footer = Footer::get()->all();
         $socials = SocialMedia::all();
         $pengumuman = CategoryPost::where('slug', 'pengumuman')->orWhere('slug','Pengumuman')->latest()->first();
-        $prestasi = CategoryPost::where('slug', 'prestasi')->latest()->first();
+        $prestasi = CategoryPost::where('slug', 'prestasi')->orWhere('slug','Prestasi')->latest()->first();
         if ($pengumuman)
             $pengumuman = $data->where('category_post_id', $pengumuman->id)->latest()->take(3)->get();
         else
