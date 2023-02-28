@@ -164,19 +164,17 @@
                         @foreach ($prestasi as $i => $p)
                             @if ($i == 0)
                                 <div class="carousel-item active">
-                                    <img src="{{ asset('storage' . $p->banner) }}" class="d-block w-100" style="background: rgb(0,0,0);
-                                    background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);" alt="...">
-                                    <div class="carousel-caption d-none d-md-block float-center w-100"  >
-                                        <h5 class="text-capitalize  text-shadow fw-bold">{{ $p->title }}</h5>
+                                    <img src="{{ asset('storage' . $p->banner) }}" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block justify-content-center text-wrap bg-dark rounded">
+                                        <h5 class="text-capitalize text-center text-shadow fw-bold">{{ $p->title }}</h5>
                                         <p>{{ Str::limit(strip_tags($p->content), 100, '...') }}</p>
                                     </div>
                                 </div>
                             @else
                                 <div class="carousel-item">
-                                    <img src="{{ asset('storage' . $p->banner) }}" class="d-block w-100" style="background: rgb(0,0,0);
-                                    background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);" alt="...">
-                                    <div class="carousel-caption d-none d-md-block float-center w-100" >
-                                        <h5 class="text-capitalize text-shadow fw-bold">{{ $p->title }}</h5>
+                                    <img src="{{ asset('storage' . $p->banner) }}" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block justify-content-center text-wrap bg-dark rounded">
+                                        <h5 class="text-capitalize text-center text-shadow fw-bold">{{ $p->title }}</h5>
                                         <p>{{ Str::limit(strip_tags($p->content), 100, '...') }}</p>
                                     </div>
                                 </div>
