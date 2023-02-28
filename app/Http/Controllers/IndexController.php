@@ -31,14 +31,22 @@ class IndexController extends Controller
         $socials = SocialMedia::all();
         $pengumuman = CategoryPost::where('slug','LIKE', '%pengumuman%')->latest()->first();
         $prestasi = CategoryPost::where('slug','LIKE', '%prestasi%')->latest()->first();
-        if (isset($pengumuman))
+        if (isset($pengumuman)){
+
             $pengumuman = $data->where('category_post_id', $pengumuman->id)->latest()->take(3)->get();
-        else
+        }
+        else{
+
             $pengumuman = [];
-        if (isset($prestasi))
+        }
+        if (isset($prestasi)){
+
             $prestasi = $data->where('category_post_id', $prestasi->id)->latest()->take(3)->get();
-        else
+        }
+        else{
+
             $prestasi = [];
+        }
         $posts = Post::latest()->take(3)->get();
         // dd($posts);
         $cui = CustomUserInterface::where('isActive', true)->first();
