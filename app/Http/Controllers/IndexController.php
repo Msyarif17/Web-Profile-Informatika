@@ -36,11 +36,11 @@ class IndexController extends Controller
             $pengumuman = $data->where('category_post_id', $pengumuman->id)->latest()->take(3)->get();
         }
         else{
-
+            
             $pengumuman = [];
         }
         if (isset($prestasi)){
-
+            $data = Post::with(['tag', 'category']);
             $prestasi = $data->where('category_post_id', $prestasi->id)->latest()->take(3)->get();
         }
         else{
