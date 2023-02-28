@@ -31,11 +31,11 @@ class IndexController extends Controller
         $socials = SocialMedia::all();
         $pengumuman = CategoryPost::where('slug','LIKE', '%pengumuman%')->latest()->first();
         $prestasi = CategoryPost::where('slug','LIKE', '%prestasi%')->latest()->first();
-        if ($pengumuman)
+        if (isset($pengumuman))
             $pengumuman = $data->where('category_post_id', $pengumuman->id)->latest()->take(3)->get();
         else
             $pengumuman = [];
-        if ($prestasi)
+        if (isset($prestasi))
             $prestasi = $data->where('category_post_id', $prestasi->id)->latest()->take(3)->get();
         else
             $pengumuman = [];
