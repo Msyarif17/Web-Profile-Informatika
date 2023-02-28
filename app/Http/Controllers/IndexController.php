@@ -38,7 +38,7 @@ class IndexController extends Controller
         if (isset($prestasi))
             $prestasi = $data->where('category_post_id', $prestasi->id)->latest()->take(3)->get();
         else
-            $pengumuman = [];
+            $prestasi = [];
         $posts = Post::latest()->take(3)->get();
         // dd($posts);
         $cui = CustomUserInterface::where('isActive', true)->first();
