@@ -2,20 +2,18 @@
 
 @section('content')
 
-    @include('frontend.component.banner')
+
     <section>
-        <div class="container pt-0">
-            <div class="row pt-3">
-                <hr class=" px-0 pb-0">
-            </div>
+        <div class="container pt-sm-3">
             <div class="row">
                 <div class="col-md-8 col-sm-12 ">
                     <div class="row">
                         <div class="col-12">
-                            <h1 class="text-capitalize" style="font-weight:1000">
+                            <h3 class="text-capitalize" style="font-weight:1000">
                                 {{ $content->title }}
-                            </h1>
+                            </h3>
                         </div>
+                        @include('frontend.component.banner')
                         <hr class="my-3">
                         <div class="col-12">
                             <div class="d-flex justify-content-between">
@@ -46,12 +44,10 @@
                         </div>
                         @if (!Request::is('page*'))
                             <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header"
-                                        style="background-color:{{ $cui->navbar_color }};color:{{ $cui->navbar_text_color }}">
-                                        <h3 class="card-title">Komentar Lainnya</h3>
-                                    </div>
+                                <div class="card  rounded-0"style="background-color:{{ $cui->card_color }};color:{{ $cui->navbar_text_color }}">
+                                    
                                     <div class="card-body">
+                                        <h3 class="card-title">Komentar Lainnya</h3>
                                         <div class="row">
                                             @foreach ($comment as $c)
                                                 <div class="col-12 pb-3">
@@ -81,23 +77,25 @@
                                                                             class="fa-solid fa-message pe-3"></i>{{ $c->content }}
                                                                     </p>
                                                                 </div>
-                                                                @if (Auth::user()->id == $c->user->id)
-                                                                    <div class="col align-self-center">
-                                                                        <form
-                                                                            action="{{ route('dash.comment.destroy', $content->id) }}"
-                                                                            method="post" class="d-inline"
-                                                                            onsubmit="return confirm('apakah anda yakin?')">
-                                                                            @csrf
-                                                                            <input type="hidden" name="_method"
-                                                                                value="delete" />
-                                                                            <button type="submit"
-                                                                                class="btn btn-danger btn-flat btn-sm delete"
-                                                                                data-toggle="tooltip" data-placement="top"
-                                                                                title="delete"><span
-                                                                                    class="fa fa-trash"></span></button>
-                                                                        </form>
-                                                                    </div>
-                                                                @endif
+                                                                @auth
+                                                                    @if (Auth::user()->id == $c->user->id)
+                                                                        <div class="col align-self-center">
+                                                                            <form
+                                                                                action="{{ route('dash.comment.destroy', $content->id) }}"
+                                                                                method="post" class="d-inline"
+                                                                                onsubmit="return confirm('apakah anda yakin?')">
+                                                                                @csrf
+                                                                                <input type="hidden" name="_method"
+                                                                                    value="delete" />
+                                                                                <button type="submit"
+                                                                                    class="btn btn-danger btn-flat btn-sm delete"
+                                                                                    data-toggle="tooltip" data-placement="top"
+                                                                                    title="delete"><span
+                                                                                        class="fa fa-trash"></span></button>
+                                                                            </form>
+                                                                        </div>
+                                                                    @endif
+                                                                @endauth
                                                             </div>
                                                         </div>
                                                     </div>
@@ -112,7 +110,7 @@
                             @auth
                                 @can('comment')
                                     <div class="col-12 pb-3">
-                                        <div class="card bg-light">
+                                        <div class="card rounded-0" style="background-color:{{ $cui->card_color }};color:{{ $cui->navbar_text_color }}">
                                             <div class="card-body">
                                                 <h3 class="card-title pb-3">Komentar</h3>
                                                 {!! Form::open([
@@ -151,55 +149,48 @@
                     </div>
 
                 </div>
-                <div class="col-md-4 col-sm-12 pe-0">
+                <div class="col-md-4 col-sm-12 pe-0 d-md-block d-none">
                     <div class="row">
                         <div class="col-12 pb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-center">
-                                        <div class="align-self-center">
-                                            <div class="text-capitalize">
-                                                Informasi Terbaru
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
+                            <div class="text-capitalize">
+                                Informasi Terbaru
                             </div>
+
                         </div>
                     </div>
                     <div class="row">
                         @foreach ($posts as $post)
-                            <div class="col-12 pb-3">
-                                <div class="card">
-                                    <img src="{{ asset($post->thumbnail ? 'storage' . $post->thumbnail : $post->thumbnail) }}"
-                                        alt="" class="card-img-top img-fluid"
-                                        style="height:152px;object-fit: cover;object-position: center;">
-                                    <div class="card-body">
-                                        <div class="card-tittle fw-bold ">
-                                            <small>
-                                                {{ Str::limit(strip_tags($post->title), 100, '...') }}
-                                            </small>
-                                        </div>
-                                        <div class="row p-0 m-0 justify-content-between py-1">
-                                            <div class="col-6 p-0 m-0 text-start"><small class=""><i
-                                                        class="fa-solid fa-calendar"></i>{{ Carbon\Carbon::parse($post->created_at)->format('l, d F Y') }}</small>
-                                            </div>
-                                            <div class="col-6 p-0 m-0 text-end"><small class=""><i
-                                                        class="fa-solid fa-comment"></i> {{ $post->comment->count() }}
-                                                    Comment</small></div>
-                                        </div>
-                                        <div class="card-text ">
-                                            <p>{{ Str::limit(strip_tags($post->content), 50, '...') }}</p>
+                        <div class="col-md-12 pb-3">
+                            <a href="{{ route('post.detail', $post->slug) }}" class="text-decoration-none ">
+                                <div class="card rounded-0"
+                                    style="height:350px;
+                                background-image:url('{{ asset('storage' . $post->thumbnail) }}') ; 
+                                background-size: cover;
+                                background-repeat: no-repeat;
+                                background-position:center center;">
+                                    <div class="card-body p-0">
+                                        <div class="d-flex justify-content-center"
+                                            style="height:100%; background: rgb(0,0,0);
+                                        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);">
+                                            <div class="col-12 align-self-end p-3">
 
+                                                <div class="card-tittle fw-bold ">
+                                                    <h3>
+                                                        {{ Str::limit($post->title, 50, '...') }}
+                                                    </h3>
+                                                    <span class=""><i
+                                                            class="fa-solid fa-calendar"></i>{{ Carbon\Carbon::parse($post->created_at)->format('l, d F Y, H:m A') }}</span>
+
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="text-end">
-                                            <a href="{{ route('post.detail', $post->slug) }}"
-                                                class="text-decoration-none ">Baca selengkapnya <img
-                                                    src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
-                                        </div>
+
+
                                     </div>
                                 </div>
-                            </div>
+                            </a>
+                        </div>
                         @endForeach
                     </div>
                     <div class="row mb-5">

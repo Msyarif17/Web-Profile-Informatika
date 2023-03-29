@@ -45,7 +45,7 @@ class PageController extends Controller
             if(!$content){
                 return \abort(404,'Not Found');
             }
-            return \view('frontend.post', \compact('content', 'cui', 'posts','nav','category','arsip','footer','webinfo','socials'));
+            return \view('frontend.page', \compact('content', 'cui', 'posts','nav','category','arsip','footer','webinfo','socials'));
         }catch(Exception $e){
             return \abort(500,$e);
 

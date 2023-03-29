@@ -1,7 +1,6 @@
 
-<div class="fw-bold" style="background-color: #f7d217">
-
-    <div class="container " style="font-size: 12px;">
+<div class="fw-bold d-none d-md-block" style="background-color: #f7d217">
+    <div class="container py-1" style="font-size: 12px;">
         
         <div class="d-flex">
             <div class="ms-auto">
@@ -37,7 +36,7 @@
         </div>
     </div>
 </div>
-<nav class="navbar navbar-expand-md text-bold shadow py-0 sticky-top my-0" style="height: 82px">
+<nav class="navbar navbar-expand-md text-bold py-0 sticky-top my-0" style="height: 82px">
     <div class="container my-0 py-0 ">
         <a class="navbar-brand" href="{{ route('index') }}">
             <div class="d-inline-flex justify-content-start">

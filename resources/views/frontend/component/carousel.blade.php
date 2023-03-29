@@ -1,5 +1,5 @@
 <section class="container-fluid container-lg-fluid container-md-fluid container-sm-fluid p-0 ">
-    <div id="indicate" style="background-color:{{ $cui->navbar_color }};height: 500px;" class="carousel slide"
+    <div id="indicate" style="height: 500px;" class="carousel slide"
         data-bs-ride="true">
         <div class="carousel-indicators">
             @foreach ($banners as $key => $banner)
@@ -20,7 +20,15 @@
                     <div class="carousel-item active">
 
                         <div class="jumbotron p-0 mb-0 m"
-                            style=" background-color:{{ $cui->navbar_color }};height: 500px;  background-image:url('{{ asset('storage' . $banner->image) }}') ; background-size: cover;background-repeat: no-repeat;background-position:center center; ">
+                            style=" 
+                            border-radius: 0 0 0 200px;
+                            background-color:{{ $cui->navbar_color }};
+                            height: 500px;  
+                            background-image:url('{{ asset('storage' . $banner->image) }}') ; 
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-position:center center; 
+                            ">
 
                             <div class="py-0 h-100 ps-3">
                                 <div class="container d-flex py-0 h-100" style="">
@@ -81,7 +89,7 @@
                         </div>
                     </div>
                 @else
-                    <div class="carousel-item active">
+                    <div class="carousel-item">
 
                         <div class="jumbotron p-0 mb-0 m"
                             style=" background-color:{{ $cui->navbar_color }};height: 500px;  background-image:url('{{ asset('storage' . $banner->image) }}') ; background-size: cover;background-repeat: no-repeat;background-position:center center; ">

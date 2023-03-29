@@ -3,41 +3,44 @@
     {{-- code --}}
 @endsection
 @section('content')
-    <section class="container pt-5">
+    <section class="container ">
         <div class="row">
-            <div class="card overflow-hidden rounded-3 shadow p-0 h-100 ">
-                <img src="{{ asset('storage' . $banner->thumbnail) }}" alt="" class="card-img-top img-fluid"
-                    style="max-height:520px;height:280px;object-fit: cover;object-position: center; ">
-                <div class="card-body">
-                    <div class="card-title fw-bold ">
-                        <h3 class="text-capitalize">
+            <div class="col-12 pb-3">
+                <a href="{{ route('post.detail', $banner->slug) }}" class="text-decoration-none ">
+                    <div class="card rounded-0"
+                        style="height:420px;
+                    background-image:url('{{ asset('storage' . $banner->thumbnail) }}') ; 
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position:center center;">
+                        <div class="card-body p-0">
+                            <div class="d-flex justify-content-center"
+                                style="height:100%; background: rgb(0,0,0);
+                            background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 50%);">
+                                <div class="col-12 align-self-end p-3">
 
-                            {{ $banner->title, 100, '...' }}
-                        </h3>
-                    </div>
-                    {{-- <div class="row p-0 m-0 justify-content-between py-1">
-                        <div class="col-6 p-0 m-0 text-start"><small class=""><i
-                                    class="fa-solid fa-calendar"></i>{{ Carbon\Carbon::parse($banner->created_at)->format('l, d F Y, H:m A') }}</small>
+                                    <div class="card-tittle fw-bold ">
+                                        <h3>
+                                            {{ Str::limit($banner->title, 50, '...') }}
+                                        </h3>
+                                        <span class=""><i
+                                                class="fa-solid fa-calendar"></i>{{ Carbon\Carbon::parse($banner->created_at)->format('l, d F Y, H:m A') }}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
-                        <div class="col-6 p-0 m-0 text-end"><small class=""><i class="fa-solid fa-comment"></i> 0
-                                Comment</small></div>
-                    </div> --}}
-                    <div class="card-text ">
-                        <p>{{ Str::limit(strip_tags($banner->content), 100, '...') }}</p>
-
                     </div>
-                    <div class="text-end">
-                        <a href="{{ route('post.detail', $banner->slug) }}" class="text-decoration-none ">Baca
-                            selengkapnya <img src="{{ asset('assets/images/Vector.png') }}" alt=""></a>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
     <section class="container py-5">
         <div class="row">
             <div class="col-md-6 col-sm-12 pb-3">
-                <div class="card  rounded-3 shadow ">
+                <div class="card">
                     <div class="d-flex ">
                         <div class="col-6 rounded-start-3" style="background-color: {{ $cui->card_color }}">
                             <div class="d-flex h-100">
@@ -51,7 +54,7 @@
                         </div>
                         <div class="col-6 rounded-end-3 p-0">
                             <div class="dropdown w-100">
-                                <button class="btn w-100 h-100 dropdown-toggle rounded-0 border-0"
+                                <button class="btn w-100 h-100 dropdown-toggle  rounded-0 border-0"
                                     style="background-color:white" type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Pilih Kategori
@@ -72,7 +75,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">
-                <div class="card  rounded-3 shadow">
+                <div class="card  rounded-3 ">
                     <div class="d-flex">
                         <div class="col-6" style="background-color: {{ $cui->card_color }}">
                             <div class="d-flex h-100">
@@ -111,88 +114,39 @@
         <div class="container">
             <div class="row">
                 @foreach ($posts as $key => $post)
-                    @if (($key + 1) % 2 == 1)
-                        <div class="col-12 v-25">
-                            <a href="{{ route('post.detail', $post->slug) }}" class="text-decoration-none ">
-                                <div class="card overflow-hidden rounded-3 shadow mb-3 ">
-                                    <div class="row g-0">
-                                        <div class="col-md-6" style="box-shadow: inset 0 0 10px #000000;">
-                                            <img src="{{ asset('storage' . $post->thumbnail) }}" class=" w-100"
-                                                style="height:280px;object-fit: cover;object-position: center; "
-                                                alt="{{ Str::limit(strip_tags($post->title), 100, '...') }}">
-                                        </div>
-                                        <div class="col-md-6" style="background-color:{{ $cui->card_color }}">
-                                            <div class="card-body overflow-auto"
-                                                style="max-height:280px;background-color:rgba(255, 255, 255, 0)">
-                                                <div class="card-tittle fw-bold ">
-                                                    <h4>{{ Str::limit(strip_tags($post->title), 100, '...') }}</h4>
-                                                </div>
-                                                <div class="row p-0 m-0 justify-content-between py-1">
-                                                    <div class="col-6 p-0 m-0 text-start"><small class=""><i
-                                                                class="fa-solid fa-calendar"></i>{{ Carbon\Carbon::parse($post->created_at)->format('l, d F Y, H:m A') }}</small>
-                                                    </div>
-                                                    <div class="col-6 p-0 m-0 text-end"><small class=""><i
-                                                                class="fa-solid fa-comment"></i>
-                                                            {{$post->comment->count()}} Comment</small></div>
-                                                </div>
-                                                <div class="card-text ">
-                                                    <p>{{ Str::limit(strip_tags($post->content), 100, '...') }}</p>
+                <div class="col-md-4 pb-3">
+                    <a href="{{ route('post.detail', $post->slug) }}" class="text-decoration-none ">
+                        <div class="card rounded-0"
+                            style="height:350px;
+                        background-image:url('{{ asset('storage' . $post->thumbnail) }}') ; 
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position:center center;">
+                            <div class="card-body p-0">
+                                <div class="d-flex justify-content-center"
+                                    style="height:100%; background: rgb(0,0,0);
+                                background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 50%);">
+                                    <div class="col-12 align-self-end p-3">
 
-                                                </div>
-                                                <div class="text-end ">
-                                                    Baca
-                                                    selengkapnya <img src="{{ asset('assets/images/Vector.png') }}"
-                                                        alt="">
-                                                </div>
-                                            </div>
+                                        <div class="card-tittle fw-bold ">
+                                            <h3>
+                                                {{ Str::limit($post->title, 50, '...') }}
+                                            </h3>
+                                            <span class=""><i
+                                                    class="fa-solid fa-calendar"></i>{{ Carbon\Carbon::parse($post->created_at)->format('l, d F Y, H:m A') }}</span>
+
                                         </div>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
-                    @else
-                        <div class="col-12 v-25">
-                            <a href="{{ route('post.detail', $post->slug) }}" class="text-decoration-none ">
-                                <div class="card overflow-hidden rounded-3 shadow mb-3 vh-50" style="">
-                                    <div class="row g-0">
-                                        <div class="col-md-6" style="box-shadow: inset 0 0 10px #000000;">
-                                            <img src="{{ asset('storage' . $post->thumbnail) }}" class="max-vh-50 w-100"
-                                                style="height:280px;object-fit: cover;object-position: center; "
-                                                alt="{{ Str::limit(strip_tags($post->title), 100, '...') }}">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card-body"
-                                                style="max-height:280px;background-color: white ;color:black">
-                                                <div class="card-tittle fw-bold ">
-                                                    <h4>{{ Str::limit(strip_tags($post->title), 100, '...') }}</h4>
-                                                </div>
-                                                <div class="row p-0 m-0 justify-content-between py-1">
-                                                    <div class="col-6 p-0 m-0 text-start"><small class=""><i
-                                                                class="fa-solid fa-calendar"></i>{{ Carbon\Carbon::parse($post->created_at)->format('l, d F Y, H:m A') }}</small>
-                                                    </div>
-                                                    <div class="col-6 p-0 m-0 text-end"><small class=""><i
-                                                                class="fa-solid fa-comment"></i>
-                                                            {{$post->comment->count()}} Comment</small></div>
-                                                </div>
-                                                <div class="card-text ">
-                                                    <p>{{ Str::limit(strip_tags($post->content), 100, '...') }}</p>
 
-                                                </div>
-                                                <div class="text-end ">
-                                                    Baca
-                                                    selengkapnya <img src="{{ asset('assets/images/Vector.png') }}"
-                                                        alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+
+                            </div>
                         </div>
-                    @endif
+                    </a>
+                </div>
                 @endforeach
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-12">
                     {{ $posts->links() }}
                 </div>

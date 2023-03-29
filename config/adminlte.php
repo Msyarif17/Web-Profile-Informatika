@@ -382,12 +382,12 @@ return [
             'url'   => 'dashboard/webinfo',
             'can' => 'access-webinfo-manager'
         ],
-        [
-            'text'  => 'Peminat Prodi',
-            'icon'  => 'fa-solid fa-chart-simple',
-            'url'   => 'dashboard/page',
-            'can' => 'read-page'
-        ],
+        // [
+        //     'text'  => 'Peminat Prodi',
+        //     'icon'  => 'fa-solid fa-chart-simple',
+        //     'url'   => 'dashboard/page',
+        //     'can' => 'read-page'
+        // ],
 
         [
             'text'  => 'Partner/Mitra',

@@ -135,12 +135,7 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'content' => 'required',
-            'thumbnail' => 'required',
-
-        ]);
+        
 
         $input = $request->all();
 

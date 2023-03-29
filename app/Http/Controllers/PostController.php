@@ -53,7 +53,7 @@ class PostController extends Controller
         $nav = NavigationController::nav();
         $cui = CustomUserInterface::where('isActive', true)->first();
         if ($selection == 'berita') {
-            $posts = Post::with('comment')->latest()->paginate(5);
+            $posts = Post::with('comment')->latest()->paginate(6);
         } elseif ($selection == 'arsip') {
             $request->validate([
                 'year' => 'required|numeric'
