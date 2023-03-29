@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "163260093f7f0d43ebfd1d29fcf7b174",
+    "content-hash": "7be5d8b9fcda9c0a67385febb1f799ea",
     "packages": [
         {
             "name": "afrizalmy/bad-word-indonesia",
