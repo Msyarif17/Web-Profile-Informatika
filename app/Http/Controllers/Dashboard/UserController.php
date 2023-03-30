@@ -40,7 +40,14 @@ class UserController extends Controller
                     }
                 })
                 ->addColumn('action', function (User $users) {
-                    return \view('backend.users.button_action', compact('users'));
+                    $role = implode(", ", $users->getRoleNames() ? $users->getRoleNames()->toArray() : []);
+                    if($role == 'Super Admin'){
+                        return '-';
+                    }
+                    else{
+                        return \view('backend.users.button_action', compact('users'));
+
+                    }
                 })
                 ->rawColumns(['status', 'action'])
                 ->make(true);

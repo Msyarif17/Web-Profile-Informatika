@@ -2,10 +2,15 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/js/owlcarousel/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/js/owlcarousel/assets/owl.theme.default.min.css') }}">
+    <style>
+        .hideme {
+            opacity: 0;
+        }
+    </style>
 @endsection
 @section('content')
     @include('frontend.component.carousel')
-    <section>
+    <section class="hideme">
         <div class="container py-5 mt-3 pt-3">
             <div class="row  pt-5">
                 <div class="col-xl-6 col-md-7 col-12 ">
@@ -64,7 +69,7 @@
             </div>
         </div>
     </section>
-    <section>
+    <section class="hideme">
         <div class="container pt-2">
 
             <div class="owl-carousel owl-theme owl-loaded owl-drag" id="owl-1">
@@ -194,7 +199,7 @@
             </div>
         </div>
     </section>
-    <section>
+    <section class="hideme">
         <div class="container mt-3">
             <div class="overflow-hidden w-100 "
                 style="
@@ -208,7 +213,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="hideme">
         <div class="container my-5">
             <div class="row justify-content-center">
                 <div class="col-md-6 col-sm-12 ">
@@ -301,7 +306,7 @@
         </div>
         </div>
     </section>
-    <section style=" background-color: {{ $cui->card_color }};">
+    <section class="hideme" style=" background-color: {{ $cui->card_color }};">
 
         <div class="container ">
             <div class=" py-5 mt-3 pt-3">
@@ -419,7 +424,7 @@
         </div>
     </section>
     @if (isset($prestasi))
-        <section>
+        <section class="hideme">
             <div class="container pb-3">
                 <div class="row  py-4">
                     <div class="col-12 pt-3  text-center">
@@ -529,7 +534,7 @@
             </div>
         </section>
     @endif
-    <section class="my-5">
+    <section class="my-5 hideme">
         <div class="container">
 
             <div class="row">
@@ -555,6 +560,32 @@
             </div>
         </div>
     </section>
+    <section class="hideme">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center mb-3 mt-5">
+                    <h3 class="text-capitalize fw-bold">
+                        Tetap Terhubung Dengan Teknik Informatika
+                    </h3>
+                    <p>Tetap terhubung dengan dunia Teknologi! Ikuti terus perkembangan terbaru dari jurusan Teknik
+                        Informatika UIN Sunan Gunung Djati melalui kanal media sosial kami.</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+
+
+                @foreach ($socials as $s)
+                    <a href="{{ $s->url }}" class="nav-link link-dark">
+                        <i class="px-3 fa-brands fa-square-{{ $s->name }}" style="font-size: 80px;"></i>
+                    </a>
+                @endforeach
+
+
+
+            </div>
+            <hr>
+        </div>
+    </section>
     @if (count($partner) > 0)
         <section class="">
             <div class="container my-5">
@@ -577,6 +608,26 @@
     <script src="{{ asset('assets/js/owlcarousel/owl.carousel.min.js') }}"></script>
     <script>
         $(document).ready(function() {
+            $(window).scroll(function() {
+
+                /* Check the location of each desired element */
+                $('.hideme').each(function(i) {
+
+                    var bottom_of_object = $(this).offset().top/1.5 + $(this).outerHeight() ;
+                    var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+                    /* If the object is completely visible in the window, fade it it */
+                    if (bottom_of_window > bottom_of_object) {
+
+                        $(this).animate({
+                            'opacity': '1'
+                        }, 500);
+
+                    }
+
+                });
+
+            });
             $('#owl-1').owlCarousel({
                 loop: true,
                 margin: 10,
@@ -588,7 +639,7 @@
                         items: 1
                     },
                     600: {
-                        items: 3
+                        items: 1
                     },
                     1000: {
                         items: 3
@@ -600,6 +651,7 @@
                 margin: 10,
                 nav: true,
                 center: true,
+                autoplay: true,
                 responsive: {
                     0: {
                         items: 1
@@ -617,6 +669,7 @@
                 margin: 10,
                 nav: true,
                 center: true,
+                autoplay: true,
                 responsive: {
                     0: {
                         items: 1

@@ -164,7 +164,7 @@
                         <div class="col-md-12 pb-3">
                             <a href="{{ route('post.detail', $post->slug) }}" class="text-decoration-none ">
                                 <div class="card rounded-0"
-                                    style="height:350px;
+                                    style="height:200px;
                                 background-image:url('{{ asset('storage' . $post->thumbnail) }}') ; 
                                 background-size: cover;
                                 background-repeat: no-repeat;
